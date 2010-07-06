@@ -1,0 +1,9 @@
+iPhone/SubwayStatus/build
+android/bin
+.directory
+.DS_Store
+android/.classpath
+GAE/Estadodeltransito/war/WEB-INF/classes
+*.class
+GAE/Transportepublico/war/WEB-INF/appengine-generated
+*~

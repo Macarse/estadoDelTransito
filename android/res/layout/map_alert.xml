@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:orientation="vertical"
+	xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito">
+
+    <ProgressBar android:id="@+id/map_alert_progress"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"/>
+
+	<TextView android:id="@+id/map_alert_location_title"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<View android:id="@+id/map_alert_separator_1"
+		android:layout_width="fill_parent"
+		android:layout_height="1dip"
+		android:background="#CCCCCC"
+		android:layout_marginBottom="5dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_nearby_services"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="gone" />
+
+
+	<TextView android:id="@+id/map_alert_buses_title"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10sp"
+		android:layout_marginBottom="2dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_buses"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20sp"
+		android:layout_marginBottom="5dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_trains_title"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10sp"
+		android:layout_marginBottom="2dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_trains"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20sp"
+		android:layout_marginBottom="5dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_subways_title"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10sp"
+		android:layout_marginBottom="2dp"
+		android:visibility="gone" />
+
+	<TextView android:id="@+id/map_alert_subways"
+		android:textSize="15sp" android:textColor="#999999"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20sp"
+		android:layout_marginBottom="5dp"
+		android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito"
+ 	android:paddingTop="2dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:background="@android:color/white">
+
+                    
+		<ImageView android:id="@+id/avenue_highways_details_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/avenue"/>
+
+        <TextView android:id="@+id/avenue_highways_details_title"
+            android:textSize="25sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/avenue_highways_details_icon"
+            android:text="Av. Rivadavia"/>
+
+
+		<View android:id="@+id/avenue_highways_details_1_separator"
+		    android:layout_width="fill_parent"
+		    android:layout_height="1dip"
+		    android:background="#CCCCCC"
+		    android:layout_marginTop="5dp"
+		    android:layout_marginBottom="5dp"
+		    android:layout_below="@id/avenue_highways_details_title" />
+
+
+        <TextView android:id="@+id/avenue_highways_details_from"
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_1_separator"
+            android:paddingLeft="33dp"
+            android:text="Hacia Norte"/>
+
+        <ImageView android:id="@+id/avenue_highways_details_from_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/green_status"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/avenue_highways_details_1_separator"
+            android:paddingRight="30dp"
+            android:paddingTop="2dp"/>
+
+         <TextView android:id="@+id/avenue_highways_details_from_text"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_1_separator"
+            android:layout_toLeftOf="@id/avenue_highways_details_from_status"
+            android:paddingRight="5dp"
+            android:text="Todo ferfecto!"/>
+
+        <TextView android:id="@+id/avenue_highways_details_to"
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_from"
+            android:paddingLeft="33dp"
+            android:text="Hacia Sur"/>
+
+        <ImageView android:id="@+id/avenue_highways_details_to_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/red_status"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/avenue_highways_details_from_status"
+            android:paddingRight="30dp"
+            android:paddingTop="6dp"/>
+
+         <TextView android:id="@+id/avenue_highways_details_to_text"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_from_text"
+            android:layout_toLeftOf="@id/avenue_highways_details_to_status"
+            android:paddingRight="5dp"
+            android:text="Todo mal!"/>
+
+        <View android:id="@+id/avenue_highways_details_2_separator"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/avenue_highways_details_to_text" />
+
+         <TextView android:id="@+id/avenue_highways_details_from_explanation"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_2_separator"
+            android:textColor="#444444"
+            android:text="ATENCION: cerrada la salida que lleva a la Av. 9 de Julio. El cierre se debe a los cortes por los festejos del Bicentenario. Alternativas: salir por Av Huergo o Av Entre Ríos."/>
+
+         <TextView android:id="@+id/avenue_highways_details_to_explanation"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avenue_highways_details_from_explanation"
+            android:textColor="#444444"
+            android:layout_marginTop="5dp"
+            android:text="OBRAS: calzada parcialmente restringida por tarea de repavimentación en el cruce de Av. Saenz y 27 de Febrero, en Pompeya."/>
+
+	    <com.admob.android.ads.AdView
+	      android:id="@+id/ad_at_highway_details"
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      myapp:backgroundColor="#FFFFFF"
+	      myapp:primaryTextColor="#000000"
+	      myapp:secondaryTextColor="#CCCCCC"
+	      android:layout_below="@id/avenue_highways_details_to_explanation"
+	      android:layout_alignParentBottom="true"
+	    />
+
+</RelativeLayout>

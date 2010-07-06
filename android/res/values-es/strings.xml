@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Estado del Transito</string>
+    <string name="app_author">Nasa Trained Monkeys</string>
+    <string name="subway_menu">Estado de Subte</string>
+    <string name="loading_msg">Cargando...</string>
+    <string name="no_inet">No se pudo actualizar. No existe conexión o el servidor está caido.</string>
+
+    <string name="menu_home">Home</string>
+
+    <string name="menu_subways">Subtes</string>
+    <string name="menu_avenues">Avenidas</string>
+    <string name="menu_highways">Accesos</string>
+    <string name="menu_trains">Trenes</string>
+
+    <string name="context_menu_share">Compartir</string>
+    <string name="context_menu_share_title_fmt">Línea %s</string>
+    <string name="context_menu_share_subject">¡Actualización del estado del tránsito!</string>
+
+    <string name="context_menu_map">Ver en mapa</string>
+
+    <string name="details">Detalles</string>
+
+    <string name="subways_notification_title">¡Estado anormal de subtes!</string>
+    <string name="subways_notification_text">Una de las líneas no se encuentra normalizada!</string>
+    <string name="subways_notification_normal">Normal</string>
+
+    <string name="avenues_notification_title">¡Estado anormal de Avenidas!</string>
+    <string name="avenues_notification_text">Una de las avenidas no se encuentra normalizada!</string>
+    <string name="avenues_notification_normal">Normal</string>
+
+    <string name="pref_settings_title">Estado del Transito</string>
+    <string name="pref_config_category_title">Configuración</string>
+
+    
+	<string name="pref_update_title">Actualizaciones</string>
+	<string name="pref_update_summeryOn">Actualizaciones automáticas</string>
+	<string name="pref_update_summeryOff">Sin actualizaciones automáticas</string>
+
+    <string name="pref_update_time_summary">Cada cuántos minutos actualizar</string>
+    <string name="pref_update_time_title">Tiempo de actualización</string>
+    <string name="pref_update_time_dialog_title">Actualizar cada...</string>
+
+    <string name="pref_notifications_category_title">Notificaciones</string>
+
+    <string name="pref_notifications_title">Notificaciones</string>
+    <string name="pref_notifications_summeryOn">La aplicación le enviará notificaciones</string>
+    <string name="pref_notifications_summeryOff">La aplicación no le enviará notificaciones</string>
+
+    <string name="pref_subways_notifications_title">Líneas de subte</string>
+    <string name="pref_subways_notifications_summary">Líneas que realizan notificaciones</string>
+
+    <string name="pref_avenues_notifications_title">Avenidas</string>
+    <string name="pref_avenues_notifications_summary">Avenidas que realizan notificaciones</string>
+ 
+            
+    <string name="pref_info_category_title">Información</string>
+
+    <string name="mail_support_feedback_to">nasatrainedmonkeys@gmail.com</string>
+    <string name="mail_support_feedback_subject">[Android-EstadoDelTransito]Feedback</string>
+    <string name="pref_sendemail_title">Enviar Feedback</string>
+    <string name="pref_sendemail_summary">¡Danos tu opinión!</string>
+    <string name="pref_sendemail_dialog">Ayúdanos a mejorar la aplicación enviando tu feedback. ¿Quieres enviar un correo electrónico?</string>
+    <string name="pref_sendemail_ok">Ok</string>
+    <string name="pref_sendemail_cancel">Cancelar</string>
+
+    <string name="pref_about_title">Acerca de...</string>
+    <string name="pref_about_text">Estado del Tránsito versión %s\nCreado por:</string>
+    
+
+
+<string name="map_alert_subway_station">%s (Línea %s)</string>
+<string name="map_alert_bus_title">Colectivos :</string>
+<string name="map_alert_subway_title">Subtes :</string>
+<string name="map_alert_train_title">Trenes :</string>
+<string name="map_alert_nearby_services_title">Transportes cerca :</string>
+<string name="map_alert_location_title">Dirección :\n\t%s ( %f , %f )</string>
+<string name="map_alert_address_not_found">No se encontró dirección</string>
+</resources>

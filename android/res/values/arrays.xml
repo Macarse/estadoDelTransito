@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_update_time_entries">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+    </string-array>
+
+    <string-array name="pref_update_time_values">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+    </string-array>
+
+    <string-array name="subways_list">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>H</item>
+        <item>P</item>
+        <item>U</item>
+    </string-array>
+
+    <string-array name="avenues_list">
+        <item>Av. Costanera</item>
+        <item>Av. Figueroa Alcorta</item>
+        <item>Av. Francisco Beiro</item>
+        <item>Av. Independencia</item>
+        <item>Av. Juan Bautista Alberdi</item>
+        <item>Av. Lope de Vega</item>
+        <item>Av. Lugones</item>
+        <item>Av. Ricardo Balbín</item>
+    </string-array>
+</resources>

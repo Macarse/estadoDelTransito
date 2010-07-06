@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito">
+
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/lay_wrapper" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="@android:color/white">
+
+		<RelativeLayout android:id="@+id/lay_main"
+			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:layout_below="@id/lay_wrapper" android:layout_centerInParent="true"
+			android:gravity="center" android:layout_gravity="center">
+
+			<Button android:id="@+id/menu_avenues_button"
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/menu_avenues"
+                android:textSize="25sp"
+				android:drawableTop="@drawable/ic_menu_avenues"
+				android:paddingRight="30dp"
+				android:background="@null" />
+
+			<Button android:id="@+id/menu_highways_button"
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/menu_avenues_button"
+				android:text="@string/menu_highways"
+				android:textSize="25sp"
+				android:drawableTop="@drawable/ic_menu_highways"
+				android:background="@null" />
+
+			<Button android:id="@+id/menu_subways_button"
+			    android:layout_width="wrap_content"
+				android:background="@null"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/menu_avenues_button"
+				android:text="@string/menu_subways"
+				android:textSize="25sp"
+				android:paddingRight="30dp"
+				android:drawableTop="@drawable/ic_menu_subways" />
+
+			<Button android:id="@+id/menu_trains_button"
+			    android:layout_width="wrap_content"
+				android:background="@null" android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/menu_subways_button"
+				android:layout_below="@id/menu_highways_button"
+				android:text="@string/menu_trains"
+				android:textSize="25sp"
+				android:drawableTop="@drawable/ic_menu_trains" />
+		</RelativeLayout>
+	</RelativeLayout>
+
+</LinearLayout>

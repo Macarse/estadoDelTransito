@@ -1,0 +1,38 @@
+<RelativeLayout android:id="@+id/header"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+
+	<ImageView android:id="@+id/title_img" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:src="@drawable/icon">
+	</ImageView>
+
+
+    <ImageView android:id="@+id/menu_preferences"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_menu_preferences"
+        android:layout_alignParentRight="true" />
+
+    <ImageView android:id="@+id/title_separator_refresh_menu"
+               android:src="@drawable/contact_header_bg"
+               android:layout_width="0.5dp"
+               android:layout_height="fill_parent"
+               android:scaleType="fitXY"
+               android:layout_toLeftOf="@id/menu_preferences" />
+
+    <ImageView android:id="@+id/menu_map"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_menu_mapmode"
+        android:layout_toLeftOf="@id/title_separator_refresh_menu" />
+
+    <ImageView android:id="@+id/title_separator_map_menu"
+               android:src="@drawable/contact_header_bg"
+               android:layout_width="0.5dp"
+               android:layout_height="fill_parent"
+               android:scaleType="fitXY"
+               android:layout_toLeftOf="@id/menu_map" />
+
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:key="pref_first_preferencescreen_key" android:title="@string/pref_settings_title">
+
+    <PreferenceCategory
+        android:title="@string/pref_config_category_title">
+
+        <CheckBoxPreference
+			android:key="pref_update_key"
+			android:title="@string/pref_update_title"
+			android:summaryOn="@string/pref_update_summeryOn"
+			android:summaryOff="@string/pref_update_summeryOff"
+			android:persistent="true"
+			android:defaultValue="@bool/pref_update_default" />
+
+        <ListPreference
+            android:key="pref_update_time_key"
+            android:dependency="pref_update_key"
+            android:persistent="true"
+            android:summary="@string/pref_update_time_summary"
+            android:selectable="true"
+            android:title="@string/pref_update_time_title"
+            android:dialogTitle="@string/pref_update_time_dialog_title"
+            android:entries="@array/pref_update_time_entries"
+            android:entryValues="@array/pref_update_time_values"
+            android:defaultValue="@string/pref_update_time_default"
+            android:negativeButtonText="@null"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_notifications_category_title">
+
+        <CheckBoxPreference
+            android:key="pref_notifications_key"
+            android:title="@string/pref_notifications_title"
+            android:summaryOn="@string/pref_notifications_summeryOn"
+            android:summaryOff="@string/pref_notifications_summeryOff"
+            android:persistent="true"
+            android:defaultValue="@bool/pref_notifications_default" />
+
+        <com.appspot.estadodeltransito.preferences.SubwaysNotificationsPreference
+            android:key="pref_subways_notifications_key"
+            android:dependency="pref_notifications_key"
+            android:persistent="true"
+            android:defaultValue="@string/pref_subways_notifications_default"
+            android:title="@string/pref_subways_notifications_title"
+            android:summary="@string/pref_subways_notifications_summary"
+            android:dialogTitle="@string/pref_subways_notifications_title" />
+
+        <com.appspot.estadodeltransito.preferences.AvenuesNotificationsPreference
+            android:key="pref_avenues_notifications_key"
+            android:dependency="pref_notifications_key"
+            android:persistent="true"
+            android:defaultValue="@string/pref_avenues_notifications_default"
+            android:title="@string/pref_avenues_notifications_title"
+            android:summary="@string/pref_avenues_notifications_summary"
+            android:dialogTitle="@string/pref_avenues_notifications_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_info_category_title">
+
+        <com.appspot.estadodeltransito.preferences.EmailDialog
+            android:key="pref_sendemail_key"
+            android:title="@string/pref_sendemail_title"
+            android:summary="@string/pref_sendemail_summary"
+            android:dialogIcon="@drawable/icon"
+            android:dialogTitle="@string/pref_sendemail_title"
+            android:dialogMessage="@string/pref_sendemail_dialog"
+            android:positiveButtonText="@string/pref_sendemail_ok"
+            android:negativeButtonText="@string/pref_sendemail_cancel" />
+
+        <com.appspot.estadodeltransito.preferences.AboutDialog
+            android:id="@+id/about_dialog"
+            android:key="pref_about_key"
+            android:dialogIcon="@drawable/icon"
+            android:title="@string/pref_about_title"
+            android:dialogTitle="@string/pref_about_title"
+            android:dialogMessage="@string/pref_about_text"
+            android:negativeButtonText="@null" />
+    </PreferenceCategory>
+</PreferenceScreen>

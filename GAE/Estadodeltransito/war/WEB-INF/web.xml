@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+  <servlet>
+    <servlet-name>updateHighwaysServlet</servlet-name>
+    <servlet-class>com.edt.update.HighwaysUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateSubwaysServlet</servlet-name>
+    <servlet-class>com.edt.update.SubwaysUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateTrainsServlet</servlet-name>
+    <servlet-class>com.edt.update.TrainsUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getAvenuesServlet</servlet-name>
+    <servlet-class>com.edt.AvenuesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getHighwaysServlet</servlet-name>
+    <servlet-class>com.edt.HighwaysServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getSubwaysServlet</servlet-name>
+    <servlet-class>com.edt.SubwaysServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getTrainsServlet</servlet-name>
+    <servlet-class>com.edt.TrainsServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>updateEnAvenuesServlet</servlet-name>
+    <servlet-class>com.edt.update.en.AvenueEnUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateEnHighwaysServlet</servlet-name>
+    <servlet-class>com.edt.update.en.HighwayEnUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>contactServlet</servlet-name>
+    <servlet-class>com.ContactServlet</servlet-class>
+  </servlet>
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>updateHighwaysServlet</servlet-name>
+    <url-pattern>/estadodeltransito/updateH</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>updateSubwaysServlet</servlet-name>
+    <url-pattern>/estadodeltransito/updateS</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>updateTrainsServlet</servlet-name>
+    <url-pattern>/estadodeltransito/updateT</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getHighwaysServlet</servlet-name>
+    <url-pattern>/estadodeltransito/getHighways</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getAvenuesServlet</servlet-name>
+    <url-pattern>/estadodeltransito/getAvenues</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getSubwaysServlet</servlet-name>
+    <url-pattern>/estadodeltransito/getSubways</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getTrainsServlet</servlet-name>
+    <url-pattern>/estadodeltransito/getTrains</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>updateEnAvenuesServlet</servlet-name>
+    <url-pattern>/estadodeltransito/updateAvenueEn</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+    <servlet-name>updateEnHighwaysServlet</servlet-name>
+    <url-pattern>/estadodeltransito/updateHighwayEn</url-pattern>
+  </servlet-mapping> 
+  <servlet-mapping>
+    <servlet-name>contactServlet</servlet-name>
+    <url-pattern>/Contact</url-pattern>
+  </servlet-mapping> 
+  
+  contactServlet
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

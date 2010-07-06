@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Traffic Status</string>
+    <string name="app_author">Nasa Trained Monkeys</string>
+    <string name="subway_menu">Subway Status</string>
+    <string name="loading_msg">Loading...</string>
+    <string name="no_inet">Update unsuccessful. There is no Internet connection or the server is down.</string>
+
+    <string name="menu_home">Home</string>
+
+    <string name="menu_subways">Subways</string>
+    <string name="menu_avenues">Avenues</string>
+    <string name="menu_highways">Highways</string>
+    <string name="menu_trains">Trains</string>
+
+    <string name="context_menu_share">Share</string>
+    <string name="context_menu_share_title_fmt">Line %s</string>
+    <string name="context_menu_share_subject">¡Traffic Status update!</string>
+
+    <string name="context_menu_map">See in the map</string>
+
+    <string name="details">Details</string>
+
+    <string name="subways_notification_title">Abnormal subways status!</string>
+    <string name="subways_notification_text">One of the lines is not OK!</string>
+    <string name="subways_notification_normal">Normal</string>
+
+
+    <string name="avenues_notification_title">Abnormal avenues status!</string>
+    <string name="avenues_notification_text">One of the avenues is not OK!</string>
+    <string name="avenues_notification_normal">Normal</string>
+
+    <string name="pref_settings_title">Traffic Status</string>
+    <string name="pref_config_category_title">Configuration</string>
+
+    
+	<string name="pref_update_title">Updates</string>
+	<string name="pref_update_summeryOn">Automatic updates</string>
+	<string name="pref_update_summeryOff">Without automatic updates</string>
+
+    <string name="pref_update_time_summary">Refresh every x minutes</string>
+    <string name="pref_update_time_title">Update time</string>
+    <string name="pref_update_time_dialog_title">Update every...</string>
+
+    <string name="pref_notifications_category_title">Notifications</string>
+
+    <string name="pref_notifications_title">Notifications</string>
+    <string name="pref_notifications_summeryOn">The app will send notifications</string>
+    <string name="pref_notifications_summeryOff">The app will not send notifications</string>
+
+    <string name="pref_subways_notifications_title">Subway lines</string>
+    <string name="pref_subways_notifications_summary">Lines that send notifications</string>
+
+    <string name="pref_avenues_notifications_title">Avenues</string>
+    <string name="pref_avenues_notifications_summary">Avenues that send notifications</string>
+ 
+            
+    <string name="pref_info_category_title">Information</string>
+
+    <string name="mail_support_feedback_to">nasatrainedmonkeys@gmail.com</string>
+    <string name="mail_support_feedback_subject">[Android-EstadoDelTransito]Feedback</string>
+    <string name="pref_sendemail_title">Send Feedback</string>
+    <string name="pref_sendemail_summary">Give us your opinion!</string>
+    <string name="pref_sendemail_dialog">Help us improve the application. Do you want to send an e-mail?</string>
+    <string name="pref_sendemail_ok">Ok</string>
+    <string name="pref_sendemail_cancel">Cancel</string>
+
+    <string name="pref_about_title">About...</string>
+    <string name="pref_about_text">Traffic Status version %s\nCreated by:</string>
+    
+
+
+<string name="map_alert_subway_station">%s (Line %s)</string>
+<string name="map_alert_bus_title">Buses :</string>
+<string name="map_alert_subway_title">Subway Stations :</string>
+<string name="map_alert_train_title">Trains :</string>
+<string name="map_alert_nearby_services_title">Nearby public transport :</string>
+<string name="map_alert_location_title">Address :\n\t%s ( %f , %f )</string>
+<string name="map_alert_address_not_found">No address found</string>
+</resources>

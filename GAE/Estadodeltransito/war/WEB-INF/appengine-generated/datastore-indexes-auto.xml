@@ -1,0 +1,10 @@
+<!-- Indices written at Thu, 3 Jun 2010 03:47:18 UTC -->
+
+<datastore-indexes>
+
+    <datastore-index kind="AccessEn" ancestor="false" source="auto">
+        <property name="type" direction="asc"/>
+        <property name="name" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

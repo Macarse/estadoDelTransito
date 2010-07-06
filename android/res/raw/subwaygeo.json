@@ -1,0 +1,424 @@
+[
+    {
+        "nombre": "Línea A",
+        "estaciones": [
+            {
+                "nombreEstacion": "Plaza de Mayo",
+                "latitude": -34.608809,
+                "longitude": -58.372164
+            },
+            {
+                "nombreEstacion": "Perú",
+                "latitude": -34.608623,
+                "longitude": -58.374894
+            },
+            {
+                "nombreEstacion": "Piedras",
+                "latitude": -34.608796,
+                "longitude": -58.377872
+            },
+            {
+                "nombreEstacion": "Lima",
+                "latitude": -34.609087,
+                "longitude": -58.381954
+            },
+            {
+                "nombreEstacion": "Saenz Peña",
+                "latitude": -34.609471,
+                "longitude": -58.387254
+            },
+            {
+                "nombreEstacion": "Congreso",
+                "latitude": -34.609255,
+                "longitude": -58.392076
+            },
+            {
+                "nombreEstacion": "Pasco",
+                "latitude": -34.609595,
+                "longitude": -58.397602
+            },
+            {
+                "nombreEstacion": "Alberti",
+                "latitude": -34.609877,
+                "longitude": -58.401802
+            },
+            {
+                "nombreEstacion": "Plaza Miserere",
+                "latitude": -34.609908,
+                "longitude": -58.406287
+            },
+            {
+                "nombreEstacion": "Loria",
+                "latitude": -34.610729,
+                "longitude": -58.414473
+            },
+            {
+                "nombreEstacion": "Castro Barros",
+                "latitude": -34.611462,
+                "longitude": -58.421034
+            },
+            {
+                "nombreEstacion": "Río de Janeiro",
+                "latitude": -34.615445,
+                "longitude": -58.430024
+            },
+            {
+                "nombreEstacion": "Acoyte",
+                "latitude": -34.618327,
+                "longitude": -58.436446
+            },
+            {
+                "nombreEstacion": "Primera Junta",
+                "latitude": -34.620672,
+                "longitude": -58.441349
+            },
+            {
+                "nombreEstacion": "Puan",
+                "latitude": -34.623616,
+                "longitude": -58.448634
+            },
+            {
+                "nombreEstacion": "Carabobo",
+                "latitude": -34.626702,
+                "longitude": -58.456659
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea B",
+        "estaciones": [
+            {
+                "nombreEstacion": "Leandro N. Alem",
+                "latitude": -34.603016,
+                "longitude": -58.370227
+            },
+            {
+                "nombreEstacion": "Florida",
+                "latitude": -34.603343,
+                "longitude": -58.375216
+            },
+            {
+                "nombreEstacion": "Carlos Pellegrini",
+                "latitude": -34.603709,
+                "longitude": -58.380978
+            },
+			{
+                "nombreEstacion": "Uruguay",
+                "latitude": -34.604009,
+                "longitude": -58.38657
+            },
+            {
+                "nombreEstacion": "Callao",
+                "latitude": -34.604477,
+                "longitude": -58.392307
+            },
+            {
+                "nombreEstacion": "Pasteur",
+                "latitude": -34.604628,
+                "longitude": -58.399447
+            },
+            {
+                "nombreEstacion": "Pueryrredón",
+                "latitude": -34.604566,
+                "longitude": -58.405504
+            },
+            {
+                "nombreEstacion": "Carlos Gardel",
+                "latitude": -34.603952,
+                "longitude": -58.41104
+            },
+            {
+                "nombreEstacion": "Medrano",
+                "latitude": -34.603175,
+                "longitude": -58.420985
+            },
+            {
+                "nombreEstacion": "Ángel Gallardo",
+                "latitude": -34.602075,
+                "longitude": -58.432192
+            },
+            {
+                "nombreEstacion": "Malabia",
+                "latitude": -34.598998,
+                "longitude": -58.439755
+            },
+            {
+                "nombreEstacion": "Dorrego",
+                "latitude": -34.591694,
+                "longitude": -58.447641
+            },
+            {
+                "nombreEstacion": "Federico Lacroze",
+                "latitude": -34.587127,
+                "longitude": -58.455157
+            },
+            {
+                "nombreEstacion": "Tronador",
+                "latitude": -34.58412,
+                "longitude": -58.466234
+            },
+            {
+                "nombreEstacion": "Los Incas",
+                "latitude": -34.581267,
+                "longitude": -58.474329
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea C",
+        "estaciones": [
+            {
+                "nombreEstacion": "Retiro",
+                "latitude": -34.590824,
+                "longitude": -58.374181
+            },
+            {
+                "nombreEstacion": "Esmeralda",
+                "latitude": -34.595187,
+                "longitude": -58.378483
+            },
+            {
+                "nombreEstacion": "Lavalle",
+                "latitude": -34.602349,
+                "longitude": -58.378097
+            },
+            {
+                "nombreEstacion": "Diagonal Norte",
+                "latitude": -34.604866,
+                "longitude": -58.379545
+            },
+            {
+                "nombreEstacion": "Avenida de Mayo",
+                "latitude": -34.609007,
+                "longitude": -58.380699
+            },
+            {
+                "nombreEstacion": "Moreno",
+                "latitude": -34.611815,
+                "longitude": -58.380564
+            },
+            {
+                "nombreEstacion": "Independencia",
+                "latitude": -34.617656,
+                "longitude": -58.38028
+            },
+            {
+                "nombreEstacion": "San Juan",
+                "latitude": -34.622142,
+                "longitude": -58.380012
+            },
+            {
+                "nombreEstacion": "Constitución",
+                "latitude": -34.627796,
+                "longitude": -58.37962
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea D",
+        "estaciones": [
+            {
+                "nombreEstacion": "Congreso de Tucumán",
+                "latitude": -34.555487,
+                "longitude": -58.462608
+            },
+            {
+                "nombreEstacion": "Juramento",
+                "latitude": -34.562052,
+                "longitude": -58.456718
+            },
+            {
+                "nombreEstacion": "José Hernandez",
+                "latitude": -34.566072,
+                "longitude": -58.452351
+            },
+            {
+                "nombreEstacion": "Olleros",
+                "latitude": -34.570171,
+                "longitude": -58.444476
+            },
+            {
+                "nombreEstacion": "Ministro Carranza",
+                "latitude": -34.574933,
+                "longitude": -58.435271
+            },
+            {
+                "nombreEstacion": "Palermo",
+                "latitude": -34.578193,
+                "longitude": -58.426677
+            },
+            {
+                "nombreEstacion": "Plaza Italia",
+                "latitude": -34.581302,
+                "longitude": -58.421044
+            },
+            {
+                "nombreEstacion": "Scalabrini Ortiz",
+                "latitude": -34.585136,
+                "longitude": -58.415916
+            },
+            {
+                "nombreEstacion": "Bulnes",
+                "latitude": -34.588086,
+                "longitude": -58.411549
+            },
+            {
+                "nombreEstacion": "Agüero",
+                "latitude": -34.591672,
+                "longitude": -58.407151
+            },
+            {
+                "nombreEstacion": "Pueyrredón",
+                "latitude": -34.594454,
+                "longitude": -58.402333
+            },
+            {
+                "nombreEstacion": "Facultad de Medicina",
+                "latitude": -34.599744,
+                "longitude": -58.397173
+            },
+            {
+                "nombreEstacion": "Callao",
+                "latitude": -34.599638,
+                "longitude": -58.392935
+            },
+            {
+                "nombreEstacion": "Tribunales",
+                "latitude": -34.602764,
+                "longitude": -58.385189
+            },
+            {
+                "nombreEstacion": "9 de julio",
+                "latitude": -34.603877,
+                "longitude": -58.381112
+            },
+            {
+                "nombreEstacion": "Catedral",
+                "latitude": -34.607917,
+                "longitude": -58.373585
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea E",
+        "estaciones": [
+            {
+                "nombreEstacion": "Plaza de los Virreyes",
+                "latitude": -34.643421,
+                "longitude": -58.46191
+            },
+            {
+                "nombreEstacion": "Varela",
+                "latitude": -34.639899,
+                "longitude": -58.458123
+            },
+            {
+                "nombreEstacion": "Medalla Milagrosa",
+                "latitude": -34.636933,
+                "longitude": -58.450474
+            },
+            {
+                "nombreEstacion": "Emilio Mitre",
+                "latitude": -34.631089,
+                "longitude": -58.442159
+            },
+            {
+                "nombreEstacion": "José María Moreno",
+                "latitude": -34.628008,
+                "longitude": -58.433822
+            },
+            {
+                "nombreEstacion": "Avenida La Plata",
+                "latitude": -34.626958,
+                "longitude": -58.426838
+            },
+            {
+                "nombreEstacion": "Boedo",
+                "latitude": -34.625421,
+                "longitude": -58.416109
+            },
+            {
+                "nombreEstacion": "General Urquiza",
+                "latitude": -34.624645,
+                "longitude": -58.408856
+            },
+            {
+                "nombreEstacion": "Jujuy",
+                "latitude": -34.624645,
+                "longitude": -58.408856
+            },
+            {
+                "nombreEstacion": "Pichincha",
+                "latitude": -34.623223,
+                "longitude": -58.397806
+            },
+            {
+                "nombreEstacion": "Entre Ríos",
+                "latitude": -34.622782,
+                "longitude": -58.391486
+            },
+            {
+                "nombreEstacion": "San José",
+                "latitude": -34.622384,
+                "longitude": -58.3858
+            },
+            {
+                "nombreEstacion": "Independencia",
+                "latitude": -34.617687,
+                "longitude": -58.381509
+            },
+            {
+                "nombreEstacion": "Belgrano",
+                "latitude": -34.612831,
+                "longitude": -58.377517
+            },
+            {
+                "nombreEstacion": "Bolívar",
+                "latitude": -34.608924,
+                "longitude": -58.373575
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea H",
+        "estaciones": [
+            {
+                "nombreEstacion": "Caseros",
+                "latitude": -34.635927,
+                "longitude": -58.398911
+            },
+            {
+                "nombreEstacion": "Inclán",
+                "latitude": -34.629995,
+                "longitude": -58.400863
+            },
+            {
+                "nombreEstacion": "Humberto 1º",
+                "latitude": -34.623091,
+                "longitude": -58.402355
+            },
+            {
+                "nombreEstacion": "Venezuela",
+                "latitude": -34.615851,
+                "longitude": -58.404565
+            },
+            {
+                "nombreEstacion": "Once",
+                "latitude": -34.610111,
+                "longitude": -58.405992
+            } 
+        ] 
+    },
+    {
+        "nombre": "Línea P",
+        "estaciones": [
+            
+        ] 
+    },
+    {
+        "nombre": "Línea U",
+        "estaciones": [
+            
+        ] 
+    }
+]

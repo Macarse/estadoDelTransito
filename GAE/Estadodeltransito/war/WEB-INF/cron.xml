@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/estadodeltransito/updateS</url>
+    <description>Repopulate the Subway cache every 4 minutes</description>
+    <schedule>every 8 minutes</schedule>
+  </cron>
+  
+  <cron>
+    <url>/estadodeltransito/updateH</url>
+    <description>Repopulate the Highway cache every 4 minutes</description>
+    <schedule>every 8 minutes</schedule>
+  </cron>
+ 
+  <cron>
+    <url>/estadodeltransito/updateAvenueEn</url>
+    <description>Repopulate the Avenue English cache every 4 minutes</description>
+    <schedule>every 8 minutes</schedule>
+  </cron>
+   
+  <cron>
+    <url>/estadodeltransito/updateT</url>
+    <description>Repopulate the Trains cache every 4 minutes</description>
+    <schedule>every 8 minutes</schedule>
+  </cron>  
+  
+  <cron>
+    <url>/estadodeltransito/updateHighwayEn</url>
+    <description>Repopulate the Highway English cache every 4 minutes</description>
+    <schedule>every 8 minutes</schedule>
+  </cron>  
+  
+</cronentries>
