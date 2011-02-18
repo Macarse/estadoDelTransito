@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.nasatrainedmonkeys.edt</groupId>
+		<artifactId>edt</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.nasatrainedmonkeys.edt</groupId>
+	<artifactId>edt-app</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<packaging>apk</packaging>
+	<name>edt-app</name>
+	<description>Android application for Estado del Transito</description>
+	<inceptionYear>2010</inceptionYear>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.android.maps</groupId>
+			<artifactId>maps</artifactId>
+			<scope>provided</scope>
+			<version>4_r2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice-no_aop</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>roboguice</groupId>
+			<artifactId>roboguice</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.admob.android.ads</groupId>
+			<artifactId>AdMobAndroid</artifactId>
+			<version>20100331</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>maven-android-plugin</artifactId>
+				<version>2.8.3</version>
+				<configuration>
+					<sdk>
+						<path>${android.sdk.path}</path>
+						<platform>1.6</platform>
+					</sdk>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+        </plugins>
+	</build>
+
+
+    <profiles>
+        <profile>
+            <id>proguard</id>
+            <build>
+                <plugins>
+                	<plugin>
+				<groupId>com.pyx4me</groupId>
+				<artifactId>proguard-maven-plugin</artifactId>
+				<version>2.0.4</version>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>proguard</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<injar>android-classes</injar>
+					<libs>
+						<lib>${java.home}/lib/rt.jar</lib>
+					</libs>
+					<obfuscate>false</obfuscate>
+					<options>
+						<option> -keep public class * extends android.app.Activity</option>
+						<option>-keep public class * extends android.app.Application</option>
+						<option>-keep public class * extends android.app.Service</option>
+						<option>-keep class com.google.inject.Binder</option>
+						<option>-keep public class roboguice.**</option>
+						<option>-keepclassmembers class * { @com.google.inject.Inject &lt;init&gt;(...); }</option>
+						<option>-keep public class * extends
+							android.content.BroadcastReceiver</option>
+						<option>-keep public class * extends
+							android.content.ContentProvider</option>
+						<option>-dontskipnonpubliclibraryclasses</option>
+						<option>-dontoptimize</option>
+						<option>-printmapping map.txt</option>
+						<option>-printseeds seed.txt</option>
+						<option>-ignorewarnings</option>
+					</options>
+				</configuration>
+			</plugin>
+		</plugins>
+            </build>
+        </profile>
+    </profiles>
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+		</repository>
+	</repositories>
+</project>

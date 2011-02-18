@@ -27,12 +27,14 @@ public class UpdateServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Pattern highwayGroupPattern = Pattern.compile("accesos\\s*a\\s*capital\\s*federal</div>(.*?)avenidas de", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
-	private static final Pattern avenueGroupPattern = Pattern.compile("avenidas\\s*de\\s*capital\\s*federal</div>(.*?)<!--/segunda", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
-	private static final Pattern genericAccessPattern = Pattern.compile("<div[^>]*class=\"itemAutos\">\\s*<div[^>]*>\\s*<b[^>]*>([^<]*)</b>\\s*</div>\\s*<div[^>]*class=\"transitoDescripcion floatfix\"[^>]*>\\s*([^<:]*):?[\\s\\u00A0]*<b[^>]*class=\"([^\"]*)\"[^>]*>[^<]*(?:<font[^>]*>([^<]*)</font>)?\\s*</b>\\s*(?:<span[^>]*>\\s*<img[^>]*>\\s*<span[^>]*>([^<]*)</span[^>]*>\\s*</span[^>]*>)?\\s*</div>\\s*(?:<div[^>]*>[^<]*</div>\\s*<div[^>]*class=\"transitoDescripcion floatfix\"[^>]*>\\s*([^<:]*):?[\\s\\u00A0]*<b[^>]*class=\"([^\"]*)\"[^>]*>[^<]*(?:<font[^>]*>([^<]*)</font>)?\\s*</b>\\s*(?:<span[^>]*>\\s*<img[^>]*>\\s*<span[^>]*>([^<]*)</span[^>]*>\\s*</span[^>]*>)?\\s*</div>)?", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+	private static final Pattern highwayGroupPattern = Pattern.compile("accesos\\s*a\\s*capital\\s*federal\\s*</div>(.*?)avenidas de", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+	private static final Pattern avenueGroupPattern = Pattern.compile("avenidas\\s*de\\s*capital\\s*federal\\s*</div>(.*?)<div[^>]*id=\"tercera\"[^>]*>", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+	private static final Pattern accessGroupPattern = Pattern.compile("<div[^>]*class=\"itemAutos\"[^>]*>(.*?)(?=<div[^>]*class=\"itemAutos\"[^>]*>|$)", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+	private static final Pattern accessNamePattern = Pattern.compile("<div[^>]*+>\\s*<b[^>]*+>\\s*([^<]++)</b>", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+	private static final Pattern accessDirectionPattern = Pattern.compile("<div[^>]*class=\"[^\"]*transitoDescripcion[^\"]*+\"[^>]*+>\\s*([^<:]+)[^<]*<b[^>]*>\\s*([^<]++)(?:<font[^>]*>([^<]*)</font>)?\\s*</b>\\s*(?:<span[^>]*>\\s*<img[^>]*>\\s*<span[^>]*>\\s*([^<]++))?", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
 	private static final Pattern subwayPattern = Pattern.compile("<b>([^:]*)\\s*:\\s*</b>\\s*&nbsp;\\s*([a-z‡Ž’—œ\\s]+)?(\\d+\\s+min\\.?\\s+\\d+\\s+seg\\.)?", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-	private static final Pattern trainGroupPattern = Pattern.compile("<div[^>]*>\\s*<img[^>]*>\\s*TRENES[^<]*<[^>]*>\\s*<div[^>]*>(.*?)</div>\\s*</div>\\s*<script", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-	private static final Pattern trainPattern = Pattern.compile("<b>((?!L’nea)[^<]*)\\s*\\((?:TBA-?)?\\s*([^\\)]+)\\)</b>\\s*<[^>]*><b>[^<]*<[^>]*>\\s*<span[^>]*>\\s*\\|\\s*</span>\\s*<span>\\s*Estado\\s*:\\s*</span[^>]*>\\s*<b>\\s*<font[^>]*>([^<]*)(?:</font>\\s*</b>\\s*<br>\\s*<span>[^<]*</span>\\s*<b>(.*?)<br>)?", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+	private static final Pattern trainGroupPattern = Pattern.compile("<div[^>]*>\\s*<img[^>]*>\\s*TRENES[^<]*<[^>]*>\\s*<div[^>]*>(.*?)<div[^>]*class=\"infoTransito\"[^>]*>", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+	private static final Pattern trainPattern = Pattern.compile("class=\"itemTrenes\">\\s*?<b>(?!L.nea)\\s*?([^\\<]+)\\((?:TBA-?)?\\s*([^\\)]++)\\).*?Estado:\\s*?</span>\\s*?<b>\\s*?<font[^>]*>([^<]+)", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -124,7 +126,7 @@ public class UpdateServlet extends HttpServlet{
 		StringBuffer buffer = new StringBuffer();
 		resp.setContentType("text/plain");
 
-		URL lanacion = new URL("http://www.lanacion.com.ar/informacion-general/transito/index.asp");
+		URL lanacion = new URL("http://servicios.lanacion.com.ar/informacion-general/transito");
 		BufferedReader in = new BufferedReader(new InputStreamReader(lanacion.openStream(), "iso-8859-1"));
 
 		String inputLine;
@@ -137,15 +139,15 @@ public class UpdateServlet extends HttpServlet{
 		Matcher highwayGroupMatcher = highwayGroupPattern.matcher(buffer.toString());
 		if (highwayGroupMatcher.find()) {
 			String highwaysString = highwayGroupMatcher.group(1);
-			Matcher accessMatcher = genericAccessPattern.matcher(highwaysString.replaceAll("\u00A0", " "));
-			persistAccess(resp, accessMatcher, pm, "Highway");
+			Matcher accessGroupMatcher = accessGroupPattern.matcher(highwaysString.replaceAll("\u00A0", " "));
+			persistAccess(resp, accessGroupMatcher, pm, "Highway");
 		}
 		
 		Matcher avenueGroupMatcher = avenueGroupPattern.matcher(buffer.toString());
 		if (avenueGroupMatcher.find()) {
 			String avenueString = avenueGroupMatcher.group(1);
-			Matcher accessMatcher = genericAccessPattern.matcher(avenueString.replaceAll("\u00A0", " "));
-			persistAccess(resp, accessMatcher, pm, "Avenue");
+			Matcher accessGroupMatcher = accessGroupPattern.matcher(avenueString.replaceAll("\u00A0", " "));
+			persistAccess(resp, accessGroupMatcher, pm, "Avenue");
 		}
 	}
 
@@ -156,17 +158,24 @@ public class UpdateServlet extends HttpServlet{
 		while(m.find()) {
 			Access access = new Access();
 			
-			access.setName(m.group(1));
+			String accessGroup = m.group(1);
+			Matcher matcher = accessNamePattern.matcher(accessGroup);
+			if ( matcher.find() )
+				access.setName(matcher.group(1));
 			
-			access.setDirectionFrom(m.group(2));
-			access.setStatusFrom(m.group(3));
-			access.setDelayFrom(m.group(4));
-			access.setStatusMessageFrom(m.group(5));
-
-			access.setDirectionTo(m.group(6));
-			access.setStatusTo(m.group(7));
-			access.setDelayTo(m.group(8));
-			access.setStatusMessageTo(m.group(9));
+			matcher = accessDirectionPattern.matcher(accessGroup);
+			if ( matcher.find() ){
+				access.setDirectionFrom(matcher.group(1));
+				access.setStatusFrom(matcher.group(2));
+				access.setDelayFrom(matcher.group(3));
+				access.setStatusMessageFrom(matcher.group(4));
+				if ( matcher.find() ){
+					access.setDirectionTo(matcher.group(1));
+					access.setStatusTo(matcher.group(2));
+					access.setDelayTo(matcher.group(3));
+					access.setStatusMessageTo(matcher.group(4));
+				}
+			}
 			
 			access.setType(type);
 			pm.makePersistent(access);
