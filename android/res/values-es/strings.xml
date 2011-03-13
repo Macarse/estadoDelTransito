@@ -69,11 +69,11 @@
     
 
 
-<string name="map_alert_subway_station">%s (Línea %s)</string>
+<string name="map_alert_subway_station" formatted="false">%s (Línea %s)</string>
 <string name="map_alert_bus_title">Colectivos :</string>
 <string name="map_alert_subway_title">Subtes :</string>
 <string name="map_alert_train_title">Trenes :</string>
 <string name="map_alert_nearby_services_title">Transportes cerca :</string>
-<string name="map_alert_location_title">Dirección :\n\t%s ( %f , %f )</string>
+<string name="map_alert_location_title" formatted="false">Dirección :\n\t%s ( %f , %f )</string>
 <string name="map_alert_address_not_found">No se encontró dirección</string>
 </resources>
