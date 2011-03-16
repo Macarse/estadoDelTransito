@@ -1,7 +1,12 @@
-package com.appspot.estadodeltransito;
+package com.appspot.estadodeltransito.domain;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.appspot.estadodeltransito.domain.bus.Bus;
+import com.appspot.estadodeltransito.domain.subway.SubwayStation;
+import com.appspot.estadodeltransito.domain.train.Train;
+
 
 public class PointInfo implements Serializable {
 

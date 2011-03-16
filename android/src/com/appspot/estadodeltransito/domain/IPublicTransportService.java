@@ -1,4 +1,4 @@
-package com.appspot.estadodeltransito;
+package com.appspot.estadodeltransito.domain;
 
 /**
  * Common interface for public transport services

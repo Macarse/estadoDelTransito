@@ -16,8 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Train;
 import com.appspot.estadodeltransito.adapters.TrainAdapter;
+import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.service.StatusService;
 
 public class TrainsActivity extends AbstractActivity {

@@ -1,4 +1,7 @@
-package com.appspot.estadodeltransito;
+package com.appspot.estadodeltransito.domain.subway;
+
+import com.appspot.estadodeltransito.domain.IPublicTransportService;
+
 
 public class SubwayStation implements IPublicTransportService {
 

@@ -6,8 +6,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.appspot.estadodeltransito.SubwayLine;
-import com.appspot.estadodeltransito.SubwayStation;
+import com.appspot.estadodeltransito.domain.subway.SubwayLine;
+import com.appspot.estadodeltransito.domain.subway.SubwayStation;
 import com.appspot.estadodeltransito.util.IconsUtil;
 import com.google.android.maps.GeoPoint;
 

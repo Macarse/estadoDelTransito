@@ -19,13 +19,13 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.appspot.estadodeltransito.Highway;
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Subway;
-import com.appspot.estadodeltransito.Train;
 import com.appspot.estadodeltransito.activities.AvenuesActivity;
 import com.appspot.estadodeltransito.activities.HighwaysActivity;
 import com.appspot.estadodeltransito.activities.SubwaysActivity;
+import com.appspot.estadodeltransito.domain.highway.Highway;
+import com.appspot.estadodeltransito.domain.subway.Subway;
+import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.service.receivers.AlarmReceiver;
 import com.appspot.estadodeltransito.util.Request;
 import com.google.gson.Gson;
@@ -38,7 +38,16 @@ public class StatusService extends Service {
 	public static final String NEW_HIGHWAYS_STATUS = "New_Highways_Status";
 	public static final String NEW_AVENUES_STATUS = "New_Avenues_Status";
 	public static final String NEW_TRAINS_STATUS = "New_Trains_Status";
-
+	
+	public static AsyncTaskProvider taskProvider = AsyncTaskProvider.getInstance();
+	
+	{
+		taskProvider.addAsyncTaskFor(NEW_SUBWAYS_STATUS, SubwaysAsyncTask.class);
+		taskProvider.addAsyncTaskFor(NEW_HIGHWAYS_STATUS, HighwaysAsyncTask.class);
+		taskProvider.addAsyncTaskFor(NEW_AVENUES_STATUS, AvenuesAsyncTask.class);
+		taskProvider.addAsyncTaskFor(NEW_TRAINS_STATUS, TrainsAsyncTask.class);
+	}
+	
 	private AlarmManager mAlarms;
 	private PendingIntent mAlarmIntent;
 
@@ -64,38 +73,29 @@ public class StatusService extends Service {
 		NetworkInfo info = mConnectivity.getActiveNetworkInfo();
 		if ( info == null || !mConnectivity.getBackgroundDataSetting() ) {
 			Log.d(TAG, "No more inet, don't set the alarm");
-			sendSubwaysUpdates(null);
-			sendHighwaysUpdates(null);
-			sendTrainsUpdates(null);
+			// TODO See a way of doing this. Push harder
+//			sendSubwaysUpdates(null);
+//			sendHighwaysUpdates(null);
+//			sendTrainsUpdates(null);
 			stopSelf();
 			return;
 		}
 
-		String subways_url = getString(R.string.subways_url);
-		String highways_url = getString(R.string.highways_url);
-		String avenues_url = getString(R.string.avenues_url);
-		String trains_url = getString(R.string.trains_url);
+		taskProvider.addUrlFor(NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
+		taskProvider.addUrlFor(NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));
+		taskProvider.addUrlFor(NEW_AVENUES_STATUS,getString(R.string.avenues_url));
+		taskProvider.addUrlFor(NEW_TRAINS_STATUS,getString(R.string.trains_url));
 		
+		AsyncTask<String, ?, ?> asyncTask = taskProvider.getAsyncTaskFor(intent.getAction());
+
 		/* If the service was lunch by an activity, just update what they
 		 * want and leave. */
-		if ( NEW_HIGHWAYS_STATUS.equals(intent.getAction()) ) {
-			new SubwaysAsyncTask().execute(subways_url);
-			stopSelf();
-			return;
-		} else if ( NEW_SUBWAYS_STATUS.equals(intent.getAction())) {
-			new SubwaysAsyncTask().execute(subways_url);
-			stopSelf();
-			return;
-		} else if ( NEW_AVENUES_STATUS.equals(intent.getAction()) ) {
-			new HighwaysAsyncTask().execute(avenues_url);
-			stopSelf();
-			return;
-		} else if ( NEW_TRAINS_STATUS.equals(intent.getAction()) ) {
-			new TrainsAsyncTask().execute(trains_url);
+		if ( asyncTask != null ){
+			asyncTask.execute(taskProvider.getAsyncTaskUrlFor(intent.getAction()));
 			stopSelf();
 			return;
 		}
-
+		
 		/* Check the settings and if autoUpdate is on set the alarm for
 		 * the next time */
 		SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(this);
@@ -114,32 +114,20 @@ public class StatusService extends Service {
 
 			/* We should update everything now because we were waken up
 			 * by an alarm */
-			new SubwaysAsyncTask().execute(subways_url);
-			new HighwaysAsyncTask().execute(highways_url);
-			new HighwaysAsyncTask().execute(avenues_url);
-			new TrainsAsyncTask().execute(trains_url);
+			updateAllServices();
 			stopSelf();
 		}
 
 	}
 
-	private void sendSubwaysUpdates(LinkedList<Subway> subways) {
-		  Intent intent = new Intent(NEW_SUBWAYS_STATUS);
-		  intent.putExtra("subways", subways);
-
-		  sendBroadcast(intent);
+	private void updateAllServices() {
+		for(String task:taskProvider.getRegisteredTaskNames())
+			taskProvider.getAsyncTaskFor(task).execute(taskProvider.getAsyncTaskUrlFor(task));
 	}
 
-	private void sendHighwaysUpdates(LinkedList<Highway> highways) {
-		  Intent intent = new Intent(NEW_HIGHWAYS_STATUS);
-		  intent.putExtra("highways", highways);
-
-		  sendBroadcast(intent);
-	}
-
-	private void sendTrainsUpdates(LinkedList<Train> trains) {
-		  Intent intent = new Intent(NEW_TRAINS_STATUS);
-		  intent.putExtra("trains", trains);
+	private void sendUpdates(LinkedList<?> instances, String intentName, String typeName) {
+		  Intent intent = new Intent(intentName);
+		  intent.putExtra(typeName, instances);
 
 		  sendBroadcast(intent);
 	}
@@ -155,7 +143,7 @@ public class StatusService extends Service {
 
 		return flag;
 	}
-	private void avenuesNotifications(LinkedList<Highway> highways) {
+	private void highwayAvenueNotifications(LinkedList<Highway> highways) {
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean sendNotifications = sp.getBoolean("pref_notifications_key", true);
@@ -236,80 +224,100 @@ public class StatusService extends Service {
         mNotificationManager.notify(SubwaysActivity.NOTIFICATION_ID, notification);
 	}
 
-	private class TrainsAsyncTask extends AsyncTask<String, Void, LinkedList<Train>> {
+	abstract private class BaseAsyncTask<T> extends AsyncTask<String, Void, LinkedList<T>> {
+		
+		@Override
+		protected LinkedList<T> doInBackground(String... gaeUrl) {
+			LinkedList<T> instances = null;
+			String json = Request.getJson(TAG,gaeUrl[0]);
+			
+			Gson gson = new Gson();
+			Type collectionType = new TypeToken<LinkedList<T>>(){}.getType();
+			instances = gson.fromJson(json, collectionType);
+			
+			return instances;
+			
+		}
+		
+		@Override
+		protected void onPostExecute(LinkedList<T> instances) {
+			super.onPostExecute(instances);
+			sendUpdates(instances, getIntentName(), getTypeName());
+			if ( instances != null )
+				sendNotifications(instances);
+		}
+		
+		abstract protected String getIntentName();
+		
+		abstract protected String getTypeName();
+		
+		abstract protected void sendNotifications(LinkedList<T> instances);
+	}
+
+	private class TrainsAsyncTask extends BaseAsyncTask<Train> {
 
 		@Override
-		protected LinkedList<Train> doInBackground(String... gaeUrl) {
-			LinkedList<Train> trains = null;
-			String json = Request.getJson(TAG,gaeUrl[0]);
-
-			Gson gson = new Gson();
-			Type collectionType = new TypeToken<LinkedList<Train>>(){}.getType();
-			trains = gson.fromJson(json, collectionType);
-			
-			return trains;
-
+		protected String getIntentName() {
+			return NEW_TRAINS_STATUS;
 		}
 
 		@Override
-		protected void onPostExecute(LinkedList<Train> trains) {
-			super.onPostExecute(trains);
-			sendTrainsUpdates(trains);
+		protected String getTypeName() {
+			return "trains";
+		}
+
+		@Override
+		protected void sendNotifications(LinkedList<Train> instances) {
+			return;
+		}
+		
+	}
+
+	private class AvenuesAsyncTask extends HighwaysAsyncTask {
+		@Override
+		protected String getIntentName() {
+			return NEW_AVENUES_STATUS;
+		}
+
+		@Override
+		protected String getTypeName() {
+			return "avenues";
+		}
+	}
+	
+	private class HighwaysAsyncTask extends BaseAsyncTask<Highway> {
+
+		@Override
+		protected String getIntentName() {
+			return NEW_HIGHWAYS_STATUS;
+		}
+
+		@Override
+		protected String getTypeName() {
+			return "highways";
+		}
+
+		@Override
+		protected void sendNotifications(LinkedList<Highway> instances) {
+			highwayAvenueNotifications(instances);			
 		}
 	}
 
-	private class HighwaysAsyncTask extends AsyncTask<String, Void, LinkedList<Highway>> {
+	private class SubwaysAsyncTask extends BaseAsyncTask<Subway> {
 
 		@Override
-		protected LinkedList<Highway> doInBackground(String... gaeUrl) {
-			LinkedList<Highway> highways = null;
-			String json = Request.getJson(TAG,gaeUrl[0]);
-
-			Gson gson = new Gson();
-			Type collectionType = new TypeToken<LinkedList<Highway>>(){}.getType();
-			highways = gson.fromJson(json, collectionType);
-			
-			return highways;
-
+		protected String getIntentName() {
+			return NEW_SUBWAYS_STATUS;
 		}
 
 		@Override
-		protected void onPostExecute(LinkedList<Highway> highways) {
-			super.onPostExecute(highways);
-			sendHighwaysUpdates(highways);
-			if ( highways != null ) {
-				avenuesNotifications(highways);
-			}
-		}
-	}
-
-	private class SubwaysAsyncTask extends AsyncTask<String, Void, LinkedList<Subway>> {
-
-		@Override
-		protected LinkedList<Subway> doInBackground(String... gaeUrl) {
-			LinkedList<Subway> subways = null;
-			String json = Request.getJson(TAG,gaeUrl[0]);
-
-			Gson gson = new Gson();
-			Type collectionType = new TypeToken<LinkedList<Subway>>(){}.getType();
-			subways = gson.fromJson(json, collectionType);
-			
-			return subways;
+		protected String getTypeName() {
+			return "subways";
 		}
 
 		@Override
-		protected void onPostExecute(LinkedList<Subway> subways) {
-			super.onPostExecute(subways);
-
-			/* If subways is null it's because there is no internet or somehow
-			 * the server is dead. We send the broadcast with subways == null
-			 * to let the activity show a toast to the user.
-			 * On the other side, if subways == null it doesn't make sense to
-			 * check if we need to send notifications.  */
-			sendSubwaysUpdates(subways);
-			if ( subways != null ) {
-				subwaysNotifications(subways);
-			}
+		protected void sendNotifications(LinkedList<Subway> instances) {
+			subwaysNotifications(instances);			
 		}
 	}
 }

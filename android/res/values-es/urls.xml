@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="subways_url">http://estado-del-transito.appspot.com/estadodeltransito/getSubways</string>
-    <string name="highways_url">http://estado-del-transito.appspot.com/estadodeltransito/getHighways?lang=es</string>
-    <string name="avenues_url">http://estado-del-transito.appspot.com/estadodeltransito/getAvenues?lang=es</string>
+    <string name="highways_url">http://estado-del-transito.appspot.com/estadodeltransito/getHighways</string>
+    <string name="avenues_url">http://estado-del-transito.appspot.com/estadodeltransito/getAvenues</string>
     <string name="trains_url">http://estado-del-transito.appspot.com/estadodeltransito/getTrains</string>
 </resources>

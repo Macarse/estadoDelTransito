@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Train;
+import com.appspot.estadodeltransito.domain.train.Train;
 
 public class TrainAdapter extends ArrayAdapter<Train> {
 

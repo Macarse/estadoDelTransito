@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.appspot.estadodeltransito.Highway;
 import com.appspot.estadodeltransito.R;
+import com.appspot.estadodeltransito.domain.highway.Highway;
 
 public class HighwayAdapter extends ArrayAdapter<Highway> {
 

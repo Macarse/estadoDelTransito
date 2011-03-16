@@ -19,12 +19,12 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.appspot.estadodeltransito.Bus;
-import com.appspot.estadodeltransito.IPublicTransportService;
-import com.appspot.estadodeltransito.PointInfo;
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.SubwayStation;
-import com.appspot.estadodeltransito.Train;
+import com.appspot.estadodeltransito.domain.IPublicTransportService;
+import com.appspot.estadodeltransito.domain.PointInfo;
+import com.appspot.estadodeltransito.domain.bus.Bus;
+import com.appspot.estadodeltransito.domain.subway.SubwayStation;
+import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.util.GeoPointUtils;
 import com.appspot.estadodeltransito.util.Request;
 import com.appspot.estadodeltransito.util.UnicodeUtils;

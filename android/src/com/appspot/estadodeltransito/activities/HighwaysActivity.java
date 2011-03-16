@@ -15,9 +15,9 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
-import com.appspot.estadodeltransito.Highway;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.adapters.HighwayAdapter;
+import com.appspot.estadodeltransito.domain.highway.Highway;
 import com.appspot.estadodeltransito.service.StatusService;
 
 public class HighwaysActivity extends AbstractActivity {

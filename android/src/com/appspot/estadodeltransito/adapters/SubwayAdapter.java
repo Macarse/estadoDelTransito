@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Subway;
+import com.appspot.estadodeltransito.domain.subway.Subway;
 
 public class SubwayAdapter extends ArrayAdapter<Subway> {
 

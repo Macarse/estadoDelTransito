@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Subway;
-import com.appspot.estadodeltransito.SubwayLine;
-import com.appspot.estadodeltransito.SubwayStation;
+import com.appspot.estadodeltransito.domain.subway.Subway;
+import com.appspot.estadodeltransito.domain.subway.SubwayLine;
+import com.appspot.estadodeltransito.domain.subway.SubwayStation;
 import com.appspot.estadodeltransito.mapoverlays.DefaultOverlay;
 import com.appspot.estadodeltransito.mapoverlays.LineItemizedOverlay;
 import com.appspot.estadodeltransito.mapoverlays.SubwayOverlayItem;

@@ -1,6 +1,9 @@
-package com.appspot.estadodeltransito;
+package com.appspot.estadodeltransito.domain.bus;
 
 import java.io.Serializable;
+
+import com.appspot.estadodeltransito.domain.IPublicTransportService;
+
 
 public class Bus implements Serializable, IPublicTransportService {
 

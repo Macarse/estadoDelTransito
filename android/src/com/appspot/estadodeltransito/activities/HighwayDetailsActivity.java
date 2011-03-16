@@ -11,10 +11,10 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.appspot.estadodeltransito.Highway;
 import com.appspot.estadodeltransito.R;
-import com.appspot.estadodeltransito.Highway.Text;
 import com.appspot.estadodeltransito.adapters.HighwayAdapter;
+import com.appspot.estadodeltransito.domain.highway.Highway;
+import com.appspot.estadodeltransito.domain.highway.Highway.Text;
 import com.appspot.estadodeltransito.preferences.Preferences;
 
 public class HighwayDetailsActivity extends Activity {
