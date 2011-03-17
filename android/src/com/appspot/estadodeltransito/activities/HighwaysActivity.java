@@ -19,6 +19,7 @@ import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.adapters.HighwayAdapter;
 import com.appspot.estadodeltransito.domain.highway.Highway;
 import com.appspot.estadodeltransito.service.StatusService;
+import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 
 public class HighwaysActivity extends AbstractActivity {
 
@@ -37,7 +38,7 @@ public class HighwaysActivity extends AbstractActivity {
 
 	@Override
 	protected IntentFilter getIntentFilter() {
-		return new IntentFilter(StatusService.NEW_HIGHWAYS_STATUS);
+		return new IntentFilter(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS);
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class HighwaysActivity extends AbstractActivity {
 	protected Intent getServerIntent() {
 		Intent i;
 		i = new Intent(this, StatusService.class);
-		i.setAction(StatusService.NEW_HIGHWAYS_STATUS);
+		i.setAction(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS);
 		return i;
 	}
 

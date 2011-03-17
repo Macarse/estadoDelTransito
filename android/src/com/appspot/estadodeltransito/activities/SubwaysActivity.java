@@ -19,6 +19,7 @@ import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.adapters.SubwayAdapter;
 import com.appspot.estadodeltransito.domain.subway.Subway;
 import com.appspot.estadodeltransito.service.StatusService;
+import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
 
 public class SubwaysActivity extends AbstractActivity {
 
@@ -38,13 +39,13 @@ public class SubwaysActivity extends AbstractActivity {
 	protected Intent getServerIntent() {
 		Intent i;
 		i = new Intent(this, StatusService.class);
-		i.setAction(StatusService.NEW_SUBWAYS_STATUS);
+		i.setAction(SubwaysAsyncTask.NEW_SUBWAYS_STATUS);
 		return i;
 	}
 
 	@Override
 	protected IntentFilter getIntentFilter() {
-		return new IntentFilter(StatusService.NEW_SUBWAYS_STATUS);
+		return new IntentFilter(SubwaysAsyncTask.NEW_SUBWAYS_STATUS);
 	}
 
 	private class SubwayUpdateReceiver extends BroadcastReceiver {
