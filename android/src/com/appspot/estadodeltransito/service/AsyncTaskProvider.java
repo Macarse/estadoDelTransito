@@ -15,9 +15,6 @@ import com.appspot.estadodeltransito.service.asyncTasks.TrainsAsyncTask;
 
 public class AsyncTaskProvider {
 
-	// public Map<String, Class<? extends AsyncTask<String, ?, ?>>> asyncTasks =
-	// new HashMap<String, Class<? extends AsyncTask<String, ?, ?>>>();
-
 	public Map<String, String> asyncTasksUrls = new HashMap<String, String>();
 	private LinkedList<String> asyncTasksNames;
 
@@ -40,34 +37,22 @@ public class AsyncTaskProvider {
 		return instance;
 	}
 
-	// public void addAsyncTaskFor(String taskName, Class<? extends
-	// AsyncTask<String, ?, ?>> taskClass){
-	// asyncTasks.put(taskName, taskClass);
-	// }
-
 	public void addUrlFor(String taskName, String url) {
 		asyncTasksUrls.put(taskName, url);
 	}
 
 	public BaseAsyncTask<?> getAsyncTaskFor(String taskName) {
-		/*
-		 * Class<? extends AsyncTask<String, ?, ?>> class1 =
-		 * asyncTasks.get(taskName); if ( taskName == null || class1 == null )
-		 * return null;
-		 * 
-		 * try { return class1.newInstance(); } catch (Exception e) { throw new
-		 * RuntimeException(e); }
-		 */
+
 		if ( taskName == null )
 			return null;
 		
-		if (taskName.contains(SubwaysAsyncTask.NEW_SUBWAYS_STATUS))
+		if (taskName.equals(SubwaysAsyncTask.NEW_SUBWAYS_STATUS))
 			return new SubwaysAsyncTask(service);
-		if (taskName.contains(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS))
+		if (taskName.equals(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS))
 			return new HighwaysAsyncTask(service);
-		if (taskName.contains(AvenuesAsyncTask.NEW_AVENUES_STATUS))
+		if (taskName.equals(AvenuesAsyncTask.NEW_AVENUES_STATUS))
 			return new AvenuesAsyncTask(service);
-		if (taskName.contains(TrainsAsyncTask.NEW_TRAINS_STATUS))
+		if (taskName.equals(TrainsAsyncTask.NEW_TRAINS_STATUS))
 			return new TrainsAsyncTask(service);
 
 		return null;
@@ -85,3 +70,4 @@ public class AsyncTaskProvider {
 		this.service = statusService;
 	}
 }
+

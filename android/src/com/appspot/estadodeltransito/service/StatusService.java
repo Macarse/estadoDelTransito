@@ -24,10 +24,9 @@ import com.appspot.estadodeltransito.service.receivers.AlarmReceiver;
 
 public class StatusService extends Service {
 
-	private static final String TAG = "StatusService";
-	
-	public static AsyncTaskProvider taskProvider = AsyncTaskProvider.getInstance();
-	
+	private static final String TAG = StatusService.class.getCanonicalName();
+	private AsyncTaskProvider mTaskProvider;
+
 	private AlarmManager mAlarms;
 	private PendingIntent mAlarmIntent;
 
@@ -42,7 +41,8 @@ public class StatusService extends Service {
 		mAlarms = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 		Intent intentToFire = new Intent(AlarmReceiver.ACTION_REFRESH_SUBWAY_ALARM);
 		mAlarmIntent = PendingIntent.getBroadcast(this, 0, intentToFire, 0);
-		taskProvider.setService(this);
+		mTaskProvider = AsyncTaskProvider.getInstance();
+		mTaskProvider.setService(this);
 	}
 
 	@Override
@@ -59,17 +59,17 @@ public class StatusService extends Service {
 			return;
 		}
 
-		taskProvider.addUrlFor(SubwaysAsyncTask.NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
-		taskProvider.addUrlFor(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));
-		taskProvider.addUrlFor(AvenuesAsyncTask.NEW_AVENUES_STATUS,getString(R.string.avenues_url));
-		taskProvider.addUrlFor(TrainsAsyncTask.NEW_TRAINS_STATUS,getString(R.string.trains_url));
+		mTaskProvider.addUrlFor(SubwaysAsyncTask.NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
+		mTaskProvider.addUrlFor(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));
+		mTaskProvider.addUrlFor(AvenuesAsyncTask.NEW_AVENUES_STATUS,getString(R.string.avenues_url));
+		mTaskProvider.addUrlFor(TrainsAsyncTask.NEW_TRAINS_STATUS,getString(R.string.trains_url));
 		
-		AsyncTask<String, ?, ?> asyncTask = taskProvider.getAsyncTaskFor(intent.getAction());
+		AsyncTask<String, ?, ?> asyncTask = mTaskProvider.getAsyncTaskFor(intent.getAction());
 
 		/* If the service was lunch by an activity, just update what they
 		 * want and leave. */
 		if ( asyncTask != null ){
-			asyncTask.execute(taskProvider.getAsyncTaskUrlFor(intent.getAction()));
+			asyncTask.execute(mTaskProvider.getAsyncTaskUrlFor(intent.getAction()));
 			stopSelf();
 			return;
 		}
@@ -99,13 +99,13 @@ public class StatusService extends Service {
 	}
 
 	private void updateAllServices() {
-		for(String task:taskProvider.getRegisteredTaskNames())
-			taskProvider.getAsyncTaskFor(task).execute(taskProvider.getAsyncTaskUrlFor(task));
+		for(String task:mTaskProvider.getRegisteredTaskNames())
+			mTaskProvider.getAsyncTaskFor(task).execute(mTaskProvider.getAsyncTaskUrlFor(task));
 	}
 
 	private void sendEmptyUpdates() {
-		for(String task:taskProvider.getRegisteredTaskNames())
-			taskProvider.getAsyncTaskFor(task).sendEmptyUpdates();
+		for(String task:mTaskProvider.getRegisteredTaskNames())
+			mTaskProvider.getAsyncTaskFor(task).sendEmptyUpdates();
 	}
-	
+
 }
