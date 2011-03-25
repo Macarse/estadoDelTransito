@@ -406,6 +406,11 @@
                 "nombreEstacion": "Once",
                 "latitude": -34.610111,
                 "longitude": -58.405992
+            },
+            {
+                "nombreEstacion": "Corrientes",
+                "latitude": -34.603889,
+                "longitude": -58.405278
             } 
         ] 
     },
