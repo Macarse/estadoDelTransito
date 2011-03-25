@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.admob.android.ads.AdView;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.preferences.Preferences;

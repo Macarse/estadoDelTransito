@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.appspot.estadodeltransito.R;
@@ -32,7 +33,7 @@ public class AboutDialog extends DialogPreference {
         LinearLayout layout = new LinearLayout(mContext);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(6,6,6,6);
-        
+
         TextView splashText = new TextView(mContext);
 
         try {
@@ -41,7 +42,7 @@ public class AboutDialog extends DialogPreference {
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         if (mVersionNumber != null) {
             String aboutMsg = String.format(mContext.getString(R.string.pref_about_text), mVersionNumber);
             splashText.setText(aboutMsg);
@@ -51,13 +52,9 @@ public class AboutDialog extends DialogPreference {
 
         ImageView authorLogo = new ImageView(mContext);
         authorLogo.setImageDrawable(mContext.getResources().getDrawable(R.drawable.monkey));
-        
+
         layout.addView(authorLogo);
-        
-        TextView authorView = new TextView(mContext);
-        authorView.setGravity(Gravity.CENTER_HORIZONTAL);
-        authorView.setText(mContext.getString(R.string.app_author).replaceAll("\\s+", ""));
-        layout.addView(authorView);
+
         return layout;
     }
 }
