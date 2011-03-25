@@ -5,7 +5,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -20,6 +20,7 @@ import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
 import com.appspot.estadodeltransito.service.asyncTasks.TrainsAsyncTask;
 import com.appspot.estadodeltransito.service.receivers.AlarmReceiver;
+import com.appspot.estadodeltransito.service.receivers.ConnectivityReceiver;
 
 
 public class StatusService extends Service {
@@ -48,16 +49,32 @@ public class StatusService extends Service {
 	@Override
 	public void onStart(Intent intent, int arg1) {
 		super.onStart(intent, arg1);
+		Log.d(TAG, "SERVICE STARTED");
 
-		/* If no inet connection let the Activity know with an empty list. */
-		ConnectivityManager mConnectivity = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = mConnectivity.getActiveNetworkInfo();
-		if ( info == null || !mConnectivity.getBackgroundDataSetting() ) {
-			Log.d(TAG, "No more inet, don't set the alarm");
-			sendEmptyUpdates();
+		/* We were called by a change in the connection status */
+		if (ConnectivityReceiver.INET_ACTION.equals(intent.getAction())) {
+
+			/* If no inet connection do nothing and cancel the alarm. */
+			ConnectivityManager mConnectivity = (ConnectivityManager) this
+					.getSystemService(Context.CONNECTIVITY_SERVICE);
+			NetworkInfo info = mConnectivity.getActiveNetworkInfo();
+
+			if (info == null || !info.isConnected() || !mConnectivity.getBackgroundDataSetting()) {
+				Log.d(TAG, "No inet, cancel the the alarm");
+				mAlarms.cancel(mAlarmIntent);
+			} else {
+				setAlarmAndUpdate();
+			}
 			stopSelf();
 			return;
 		}
+		if (AlarmReceiver.ACTION_REFRESH_ALARM.equals(intent.getAction())){
+			setAlarmAndUpdate();
+			stopSelf();
+			return;
+		}
+
+		Log.d(TAG, "Performing update!");
 
 		mTaskProvider.addUrlFor(SubwaysAsyncTask.NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
 		mTaskProvider.addUrlFor(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));
@@ -73,39 +90,73 @@ public class StatusService extends Service {
 			stopSelf();
 			return;
 		}
-		
-		/* Check the settings and if autoUpdate is on set the alarm for
-		 * the next time */
-		SharedPreferences prefs =  PreferenceManager.getDefaultSharedPreferences(this);
-		boolean autoUpdate = prefs.getBoolean("pref_update_key", true);
-
-		if ( autoUpdate ) {
-			int updateFreq = Integer.parseInt(prefs.getString("pref_update_time_key", "60"));
-	
-			int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
-			long timeToRefresh = SystemClock.elapsedRealtime() +
-			                       updateFreq*60*1000;
-
-			mAlarms.setInexactRepeating(alarmType, timeToRefresh,
-					AlarmManager.INTERVAL_FIFTEEN_MINUTES, mAlarmIntent);
-
-
-			/* We should update everything now because we were waken up
-			 * by an alarm */
-			updateAllServices();
-			stopSelf();
-		}
 
 	}
 
+	private void setAlarmAndUpdate() {
+		/* If we reach here, there is inet */
+		setAlarm();
+
+		if (!shouldUpdate()) {
+			Log.d(TAG, "We don't update because we didn't wait enough");
+		} else {
+			setLastUpdateTime(SystemClock.elapsedRealtime());
+			updateAllServices();
+		}
+	}
+	
+	private void setAlarm() {
+		/*
+		 * Check the settings and if autoUpdate is on set the alarm for the next
+		 * time
+		 */
+		if (isUpdateNotifications()) {
+			Log.d(TAG, "Setting the alarm");
+			int alarmType = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+			mAlarms.setInexactRepeating(alarmType,
+					SystemClock.elapsedRealtime() + timeToRefresh(),
+					AlarmManager.INTERVAL_HALF_DAY, mAlarmIntent);
+		}
+	}
+	
+	private long timeToRefresh() {
+		return getRefreshNotificationsTime() * 1000L * 60L;
+	}
+
+	private boolean shouldUpdate() {
+		if ( (getLastUpdateTime() + timeToRefresh()) < SystemClock.elapsedRealtime()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isUpdateNotifications() {
+		return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_update_key", true);
+	}
+
+	public Long getLastUpdateTime() {
+		return PreferenceManager.getDefaultSharedPreferences(this).getLong("last_update", 0);
+	}
+
+	public void setLastUpdateTime(Long lastUpdateTime) {
+		Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+		editor.putLong("last_update", lastUpdateTime);
+		editor.commit();
+	}
+
+	public int getRefreshNotificationsTime() {
+		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("pref_update_time_key", "60"));
+	}
+	
 	private void updateAllServices() {
 		for(String task:mTaskProvider.getRegisteredTaskNames())
 			mTaskProvider.getAsyncTaskFor(task).execute(mTaskProvider.getAsyncTaskUrlFor(task));
 	}
-
+/*
 	private void sendEmptyUpdates() {
 		for(String task:mTaskProvider.getRegisteredTaskNames())
 			mTaskProvider.getAsyncTaskFor(task).sendEmptyUpdates();
 	}
-
+*/
 }

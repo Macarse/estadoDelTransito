@@ -28,7 +28,7 @@ abstract public class UpdateServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static final String proxyURL = "http://edt.rocketzone.net/test.php?url=";
+	private static final String proxyURL = "http://dhost.info/guicamest/test.php?url=";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
