@@ -58,6 +58,10 @@
             android:theme="@style/ActionBar">
         </activity>
 
+        <activity android:name="com.admob.android.ads.AdMobActivity" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
+            android:configChanges="orientation|keyboard|keyboardHidden"/> 
+
 		<receiver android:name=".service.receivers.AlarmReceiver">
 			<intent-filter>
 				<action android:name="com.appspot.estadodeltransito.ACTION_REFRESH_SUBWAY_ALARM" />
