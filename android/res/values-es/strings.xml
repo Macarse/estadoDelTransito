@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Estado del Transito</string>
-    <string name="app_author">Nasa Trained Monkeys</string>
+    <string name="app_author">NASA Trained Monkeys</string>
     <string name="subway_menu">Estado de Subte</string>
     <string name="loading_msg">Cargando...</string>
     <string name="no_inet">No se pudo actualizar. No existe conexión o el servidor está caido.</string>
@@ -66,14 +66,12 @@
 
     <string name="pref_about_title">Acerca de...</string>
     <string name="pref_about_text">Estado del Tránsito versión %s\nCreado por:</string>
-    
 
-
-<string name="map_alert_subway_station" formatted="false">%s (Línea %s)</string>
-<string name="map_alert_bus_title">Colectivos :</string>
-<string name="map_alert_subway_title">Subtes :</string>
-<string name="map_alert_train_title">Trenes :</string>
-<string name="map_alert_nearby_services_title">Transportes cerca :</string>
-<string name="map_alert_location_title" formatted="false">Dirección :\n\t%s ( %f , %f )</string>
-<string name="map_alert_address_not_found">No se encontró dirección</string>
+	<string name="map_alert_subway_station" formatted="false">%s (Línea %s)</string>
+	<string name="map_alert_bus_title">Colectivos :</string>
+	<string name="map_alert_subway_title">Subtes :</string>
+	<string name="map_alert_train_title">Trenes :</string>
+	<string name="map_alert_nearby_services_title">Transportes cerca :</string>
+	<string name="map_alert_location_title" formatted="false">Dirección :\n\t%s ( %f , %f )</string>
+	<string name="map_alert_address_not_found">No se encontró dirección</string>
 </resources>

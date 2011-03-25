@@ -7,7 +7,7 @@
     android:background="@android:color/white"
     >
 
-	<ListView android:id="@id/android:list"
+	<ListView android:id="@+id/listview"
 		android:layout_width="fill_parent" 
 		android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -25,7 +25,5 @@
       android:layout_height="wrap_content"
       myapp:backgroundColor="#FFFFFF"
       myapp:primaryTextColor="#000000"
-      myapp:secondaryTextColor="#CCCCCC"
-	/>
-	
+      myapp:secondaryTextColor="#CCCCCC"/>
 </LinearLayout>

@@ -1,23 +1,21 @@
 package com.appspot.estadodeltransito.activities;
 
-import android.app.Activity;
+import greendroid.app.GDActivity;
+import greendroid.widget.ActionBarItem.Type;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.firstRun.FirstRun;
-import com.appspot.estadodeltransito.preferences.Preferences;
 import com.appspot.estadodeltransito.service.StatusService;
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends GDActivity {
     private static final String FIRST_RUN_KEY = "first_run_key";
 	private Button mSubways;
 	private Button mAvenues;
@@ -42,38 +40,38 @@ public class MenuActivity extends Activity {
         }
 
         /* Set the view status */
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-        setContentView(R.layout.menu);
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.menu_action_bar);
+        setActionBarContentView(R.layout.menu);;
+        addActionBarItem(Type.Locate);
+        addActionBarItem(Type.Settings);
 
-        ImageView menuPref = (ImageView) findViewById(R.id.menu_preferences);
-        menuPref.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(), Preferences.class));
-			}
-		});
-
-        ImageView menuMap = (ImageView) findViewById(R.id.menu_map);
-        menuMap.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(), MapActivity.class));
-			}
-		});
-
-        mSubways = (Button) findViewById(R.id.menu_subways_button);
-        mSubways.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(v.getContext(), SubwaysActivity.class);
-				startActivity(i);
-				
-			}
-		});
+//        ImageView menuPref = (ImageView) findViewById(R.id.menu_preferences);
+//        menuPref.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				startActivity(new Intent(v.getContext(), Preferences.class));
+//			}
+//		});
+//
+//        ImageView menuMap = (ImageView) findViewById(R.id.menu_map);
+//        menuMap.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				startActivity(new Intent(v.getContext(), MapActivity.class));
+//			}
+//		});
+//
+//        mSubways = (Button) findViewById(R.id.menu_subways_button);
+//        mSubways.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				Intent i = new Intent(v.getContext(), SubwaysActivity.class);
+//				startActivity(i);
+//				
+//			}
+//		});
 
         mHighways = (Button) findViewById(R.id.menu_highways_button);
         mHighways.setOnClickListener(new OnClickListener() {
