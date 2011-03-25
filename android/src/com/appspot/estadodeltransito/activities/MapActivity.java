@@ -15,7 +15,6 @@ import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.domain.subway.Subway;
 import com.appspot.estadodeltransito.domain.subway.SubwayLine;
 import com.appspot.estadodeltransito.domain.subway.SubwayStation;
-import com.appspot.estadodeltransito.mapoverlays.DefaultOverlay;
 import com.appspot.estadodeltransito.mapoverlays.LineItemizedOverlay;
 import com.appspot.estadodeltransito.mapoverlays.SubwayOverlayItem;
 import com.appspot.estadodeltransito.mapoverlays.SubwaysItemizedOverlay;
@@ -23,6 +22,7 @@ import com.appspot.estadodeltransito.util.IconsUtil;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.google.gson.Gson;
@@ -36,6 +36,8 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 	private Subway subwayLine = null;
 	private SubwayLine [] subwayLines = null;
 	private List<SubwaysItemizedOverlay> subwayLinesOverlays;
+	private MapView mapView;
+	protected MapController mapController;
 	
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -46,10 +48,12 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.map);
-	    MapView mapView = (MapView) findViewById(R.id.mapview);
+	    mapView = (MapView) findViewById(R.id.mapview);
 	    mapView.setBuiltInZoomControls(true);
-	    MapController mc = mapView.getController();
+	    mapController = mapView.getController();
 
+		initMyLocation();
+	    
 	    try {
 	    	// Load subway line information
 			loadSubwayLines();
@@ -77,9 +81,8 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 				SubwayOverlayItem firstStation = lineOverlay.getItem(0);
 				SubwayOverlayItem lastStation = lineOverlay.getItem(lineOverlay.size()-1);
 				int halfLat = ( firstStation.getPoint().getLatitudeE6() + lastStation.getPoint().getLatitudeE6() ) / 2;
-				int halfLong = ( firstStation.getPoint().getLongitudeE6() + firstStation.getPoint().getLongitudeE6() ) / 2;
-				mc.zoomToSpan(halfLat,halfLong);
-				mc.setCenter(new GeoPoint(halfLat,halfLong));
+				int halfLong = ( firstStation.getPoint().getLongitudeE6() + lastStation.getPoint().getLongitudeE6() ) / 2;
+				mapController.animateTo(new GeoPoint(halfLat,halfLong));
 			}
     		
 		}
@@ -88,13 +91,28 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 			return;
 		
 		List<Overlay> overlays = mapView.getOverlays();
-		overlays.add(new DefaultOverlay(this));
+
 		for(LineItemizedOverlay<? extends OverlayItem> lio:mapOverlays){
 			overlays.add(lio.getLineOverlay());
 		}
 		overlays.addAll(mapOverlays);
 	}
 
+	private void initMyLocation() {
+		final MyLocationOverlay overlay = new MyLocationOverlay(this, mapView);
+		overlay.enableMyLocation();
+
+		overlay.runOnFirstFix(new Runnable() {
+
+			public void run() {
+				mapController.setZoom(13);
+			}
+		});
+		mapView.getOverlays().add(overlay);
+
+	}
+
+	
 	private void loadSubwayLines() throws IOException {
 		if ( subwayLines == null ){
 			InputStream subwayJSON = this.getResources().openRawResource(R.raw.subwaygeo);
