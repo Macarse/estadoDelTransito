@@ -3,7 +3,8 @@
 	package="com.appspot.estadodeltransito"
 	android:versionCode="3"
 	android:versionName="1.1">
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+					android:name=".application.EDTApplication">
 
 		<activity android:name=".activities.MenuActivity"
 		          android:label="@string/app_name"

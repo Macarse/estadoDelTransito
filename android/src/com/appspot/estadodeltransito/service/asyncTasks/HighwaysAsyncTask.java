@@ -21,7 +21,11 @@ public class HighwaysAsyncTask extends BaseAsyncTask<Highway> {
 	public static final String NEW_HIGHWAYS_STATUS = "New_Highways_Status";
 
 	public HighwaysAsyncTask(Service service) {
-		super(service);
+		super(service, NEW_HIGHWAYS_STATUS);
+	}
+	
+	public HighwaysAsyncTask(Service service, String taskName) {
+		super(service, taskName);
 	}
 
 	@Override

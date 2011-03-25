@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken;
 public class TrainsAsyncTask extends BaseAsyncTask<Train> {
 	
 	public TrainsAsyncTask(Service service) {
-		super(service);
+		super(service, NEW_TRAINS_STATUS);
 	}
 
 	public static final String NEW_TRAINS_STATUS = "New_Trains_Status";

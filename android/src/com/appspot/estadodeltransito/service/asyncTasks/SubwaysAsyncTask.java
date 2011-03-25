@@ -19,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 public class SubwaysAsyncTask extends BaseAsyncTask<Subway> {
 	
 	public SubwaysAsyncTask(Service service) {
-		super(service);
+		super(service, NEW_SUBWAYS_STATUS);
 	}
 
 	public static final String NEW_SUBWAYS_STATUS = "New_Subways_Status";

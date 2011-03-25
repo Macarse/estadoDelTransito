@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.appspot.estadodeltransito.R;
+import com.appspot.estadodeltransito.application.EDTApplication;
 import com.appspot.estadodeltransito.service.asyncTasks.AvenuesAsyncTask;
 import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
@@ -124,7 +125,11 @@ public class StatusService extends Service {
 	}
 	
 	private long timeToRefresh() {
-		return getRefreshNotificationsTime() * 1000L * 60L;
+		return getEDTApplication().getRefreshNotificationsTime() * 1000L * 60L;
+	}
+	
+	public EDTApplication getEDTApplication(){
+		return (EDTApplication) getApplication();
 	}
 
 	private boolean shouldUpdate() {
@@ -149,10 +154,6 @@ public class StatusService extends Service {
 		editor.commit();
 	}
 
-	public int getRefreshNotificationsTime() {
-		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString("pref_update_time_key", "60"));
-	}
-	
 	private void updateAllServices() {
 		for(String task:mTaskProvider.getRegisteredTaskNames())
 			mTaskProvider.getAsyncTaskFor(task).execute(mTaskProvider.getAsyncTaskUrlFor(task));

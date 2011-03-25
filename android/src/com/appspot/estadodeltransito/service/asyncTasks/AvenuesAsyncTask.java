@@ -9,7 +9,7 @@ public class AvenuesAsyncTask extends HighwaysAsyncTask {
 	public static final String NEW_AVENUES_STATUS = "New_Avenues_Status";
 
 	public AvenuesAsyncTask(Service service) {
-		super(service);
+		super(service, NEW_AVENUES_STATUS);
 	}
 	
 	protected Class<?> getActivityClass() {
