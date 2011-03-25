@@ -49,7 +49,9 @@ public abstract class AbstractActivity extends ListActivity {
 
 		pd = ProgressDialog.show(this, "", getString(R.string.loading_msg),
 				true);
-			
+		pd.setCancelable(true);
+		
+
 		mButonAd = (AdView) findViewById(R.id.ad);
 		ImageView menuPref = (ImageView) findViewById(R.id.menu_preferences);
 		menuPref.setOnClickListener(new OnClickListener() {
