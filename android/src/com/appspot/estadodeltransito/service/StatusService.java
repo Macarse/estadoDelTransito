@@ -25,6 +25,8 @@ import com.appspot.estadodeltransito.service.receivers.ConnectivityReceiver;
 
 public class StatusService extends Service {
 
+    public static final String FIRST_RUN = "FIRST_RUN";
+
 	private static final String TAG = StatusService.class.getCanonicalName();
 	private AsyncTaskProvider mTaskProvider;
 
@@ -54,6 +56,7 @@ public class StatusService extends Service {
 		/* We were called by a change in the connection status */
 		if (ConnectivityReceiver.INET_ACTION.equals(intent.getAction())) {
 
+		    Log.d(TAG, "Started by the Connectivity receiver");
 			/* If no inet connection do nothing and cancel the alarm. */
 			ConnectivityManager mConnectivity = (ConnectivityManager) this
 					.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -68,13 +71,14 @@ public class StatusService extends Service {
 			stopSelf();
 			return;
 		}
-		if (AlarmReceiver.ACTION_REFRESH_ALARM.equals(intent.getAction())){
+		if (AlarmReceiver.ACTION_REFRESH_ALARM.equals(intent.getAction())) {
+		    Log.d(TAG, "Started by the Alarm receiver");
 			setAlarmAndUpdate();
 			stopSelf();
 			return;
 		}
 
-		Log.d(TAG, "Performing update!");
+		Log.d(TAG, "Performing update with action: " + intent.getAction());
 
 		mTaskProvider.addUrlFor(SubwaysAsyncTask.NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
 		mTaskProvider.addUrlFor(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));

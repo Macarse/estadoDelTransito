@@ -18,11 +18,11 @@ import com.appspot.estadodeltransito.preferences.Preferences;
 import com.appspot.estadodeltransito.service.StatusService;
 
 public class MenuActivity extends Activity {
-
-	Button mSubways;
-	Button mAvenues;
-	Button mHighways;
-	Button mTrains;
+    private static final String FIRST_RUN_KEY = "first_run_key";
+	private Button mSubways;
+	private Button mAvenues;
+	private Button mHighways;
+	private Button mTrains;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +30,15 @@ public class MenuActivity extends Activity {
 
 		/* Check if this is the first run. If it is, run firstRun. */
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean firstRun = sp.getBoolean("first_run_key", false);
+
+		boolean firstRun = sp.getBoolean(FIRST_RUN_KEY, false);
         if ( firstRun ) {
             FirstRun.firstRun(this);
             Editor editor = sp.edit();
-            editor.putBoolean("first_run_key", false);
+            editor.putBoolean(FIRST_RUN_KEY, false);
             editor.commit();
+
+            setupService();
         }
 
         /* Set the view status */
@@ -105,11 +108,11 @@ public class MenuActivity extends Activity {
         
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
+	private void setupService() {
 
 		/* We start the service to check for updates and set further alarms */
-		startService(new Intent(this, StatusService.class));
+		Intent i = new Intent(this, StatusService.class);
+		i.setAction(StatusService.FIRST_RUN);
+		startService(i);
 	}
 }
