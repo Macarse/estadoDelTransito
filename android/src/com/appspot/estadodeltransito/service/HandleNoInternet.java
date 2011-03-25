@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import android.content.Context;
 
-import com.appspot.estadodeltransito.service.exception.SteamServiceException;
+import com.appspot.estadodeltransito.service.exception.EstadoDelTransitoException;
 import com.appspot.estadodeltransito.util.NoInternetToast;
 
 public class HandleNoInternet implements InvocationHandler {
@@ -23,7 +23,7 @@ public class HandleNoInternet implements InvocationHandler {
 			// invoke the method on the delegate and handle the exception
 			return method.invoke(delegate, args);
 		} catch (Exception ex) {
-			if (ex.getCause() instanceof SteamServiceException) {
+			if (ex.getCause() instanceof EstadoDelTransitoException) {
 				NoInternetToast.show(ctx);
 			} else {
 				throw new RuntimeException(ex);
