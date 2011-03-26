@@ -4,10 +4,8 @@
  	android:paddingTop="2dp"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
     android:background="@android:color/white">
 
-                    
 		<ImageView android:id="@+id/avenue_highways_details_icon"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -96,23 +94,6 @@
             android:layout_marginBottom="5dp"
             android:layout_below="@id/avenue_highways_details_to_text" />
 
-         <TextView android:id="@+id/avenue_highways_details_from_explanation"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/avenue_highways_details_2_separator"
-            android:textColor="#444444"
-            android:text="ATENCION: cerrada la salida que lleva a la Av. 9 de Julio. El cierre se debe a los cortes por los festejos del Bicentenario. Alternativas: salir por Av Huergo o Av Entre Ríos."/>
-
-         <TextView android:id="@+id/avenue_highways_details_to_explanation"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/avenue_highways_details_from_explanation"
-            android:textColor="#444444"
-            android:layout_marginTop="5dp"
-            android:text="OBRAS: calzada parcialmente restringida por tarea de repavimentación en el cruce de Av. Saenz y 27 de Febrero, en Pompeya."/>
-
 	    <com.admob.android.ads.AdView
 	      android:id="@+id/ad_at_highway_details"
 	      android:layout_width="fill_parent"
@@ -120,8 +101,32 @@
 	      myapp:backgroundColor="#FFFFFF"
 	      myapp:primaryTextColor="#000000"
 	      myapp:secondaryTextColor="#CCCCCC"
-	      android:layout_below="@id/avenue_highways_details_to_explanation"
-	      android:layout_alignParentBottom="true"
-	    />
+	      android:layout_alignParentBottom="true"/>
 
+		<ScrollView android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_above="@id/ad_at_highway_details"
+			android:layout_below="@id/avenue_highways_details_2_separator">
+
+			<LinearLayout android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:orientation="vertical">
+
+		         <TextView android:id="@+id/avenue_highways_details_from_explanation"
+		            android:textSize="16sp"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textColor="#444444"
+		            android:text="ATENCION: cerrada la salida que lleva a la Av. 9 de Julio. El cierre se debe a los cortes por los festejos del Bicentenario. Alternativas: salir por Av Huergo o Av Entre Ríos."/>
+		
+		         <TextView android:id="@+id/avenue_highways_details_to_explanation"
+		            android:textSize="16sp"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_below="@id/avenue_highways_details_from_explanation"
+		            android:textColor="#444444"
+		            android:layout_marginTop="5dp"
+		            android:text="OBRAS: calzada parcialmente restringida por tarea de repavimentación en el cruce de Av. Saenz y 27 de Febrero, en Pompeya."/>
+		</LinearLayout>
+	</ScrollView>
 </RelativeLayout>

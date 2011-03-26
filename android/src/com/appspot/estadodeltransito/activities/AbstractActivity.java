@@ -4,7 +4,6 @@ import greendroid.app.GDActivity;
 import greendroid.widget.ActionBarItem;
 import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.LoaderActionBarItem;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,7 +21,6 @@ import com.appspot.estadodeltransito.preferences.Preferences;
 public abstract class AbstractActivity extends GDActivity {
 
 	private BroadcastReceiver mReceiver;
-	private ProgressDialog pd;
 	IntentFilter mFilter;
 
 	protected static final int REFRESH_ID = 1;
@@ -49,16 +47,12 @@ public abstract class AbstractActivity extends GDActivity {
 		super.onCreate(savedInstanceState);
 
 		setActionBarContentView(R.layout.list_activity);
-		addActionBarItem(Type.Refresh, REFRESH_ID);
+		mLoader = (LoaderActionBarItem) addActionBarItem(Type.Refresh, REFRESH_ID);
 		addActionBarItem(Type.Settings, SETTINGS_ID);
 		setTitle(getTitleId());
 
 		mAd = (AdView) findViewById(R.id.ad);
 		mListView = (ListView) findViewById(R.id.listview);
-		pd = ProgressDialog.show(this, "", getString(R.string.loading_msg),
-				true);
-		pd.setCancelable(true);
-
 		registerForContextMenu(getListView());
 
 		/* instantiate the filter and the receiver */
@@ -66,6 +60,7 @@ public abstract class AbstractActivity extends GDActivity {
 		mReceiver = getReceiver();
 
 		/* Start the service if it's not up */
+		mLoader.setLoading(true);
 		startService(getServerIntent());
 	}
 
@@ -77,7 +72,6 @@ public abstract class AbstractActivity extends GDActivity {
             return true;
 
         case REFRESH_ID:
-            mLoader = (LoaderActionBarItem) item;
             startService(getServerIntent());
             return true;
 
@@ -126,12 +120,6 @@ public abstract class AbstractActivity extends GDActivity {
 		    mAd.setVisibility(View.VISIBLE);
 		}
 
-		if (pd.isShowing()) {
-		    pd.dismiss();
-		}
-
-		if ( mLoader != null ) {
-		    mLoader.setLoading(false);
-		}
+	    mLoader.setLoading(false);
 	}
 }
