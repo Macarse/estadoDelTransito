@@ -1,20 +1,18 @@
 package com.appspot.estadodeltransito.activities;
 
 import greendroid.app.GDActivity;
-import greendroid.widget.LoaderActionBarItem;
+import greendroid.widget.ActionBarItem;
 import greendroid.widget.ActionBarItem.Type;
+import greendroid.widget.LoaderActionBarItem;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Adapter;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.admob.android.ads.AdView;
@@ -26,14 +24,15 @@ public abstract class AbstractActivity extends GDActivity {
 	private BroadcastReceiver mReceiver;
 	private ProgressDialog pd;
 	IntentFilter mFilter;
-	AdView mButonAd;
-	
-//	ImageView mRefresh;
-//	ImageView mRefreshSeparator;
-//	ProgressBar mProgressBar;
-//	ImageView mProgressBarSeparator;
+
+	protected static final int REFRESH_ID = 1;
+    protected static final int MAP_ID = 2;
+    protected static final int SETTINGS_ID = 3;
+
 	private ListView mListView;
     private ListAdapter mAdapter;
+    private LoaderActionBarItem mLoader;
+    AdView mAd;
 
 	protected abstract BroadcastReceiver getReceiver();
 
@@ -43,53 +42,22 @@ public abstract class AbstractActivity extends GDActivity {
 
 	protected abstract ListAdapter getAdapter(Object items);
 
+	protected abstract int getTitleId();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.list_activity);
 		setActionBarContentView(R.layout.list_activity);
-		addActionBarItem(Type.Refresh);
-		addActionBarItem(Type.Locate);
-		addActionBarItem(Type.Edit);
+		addActionBarItem(Type.Refresh, REFRESH_ID);
+		addActionBarItem(Type.Settings, SETTINGS_ID);
+		setTitle(getTitleId());
 
+		mAd = (AdView) findViewById(R.id.ad);
 		mListView = (ListView) findViewById(R.id.listview);
 		pd = ProgressDialog.show(this, "", getString(R.string.loading_msg),
 				true);
 		pd.setCancelable(true);
-		
-
-		mButonAd = (AdView) findViewById(R.id.ad);
-		ImageView menuPref = (ImageView) findViewById(R.id.menu_preferences);
-		menuPref.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(), Preferences.class));
-			}
-		});
-
-		ImageView menuMap = (ImageView) findViewById(R.id.menu_map);
-		menuMap.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(), MapActivity.class));
-			}
-		});
-
-
-//		mRefresh.setOnClickListener(new OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				mProgressBar.setVisibility(View.VISIBLE);
-//				mProgressBarSeparator.setVisibility(View.VISIBLE);
-//				mRefresh.setVisibility(View.GONE);
-//				mRefreshSeparator.setVisibility(View.GONE);
-//				startService(getServerIntent());
-//			}
-//		});
 
 		registerForContextMenu(getListView());
 
@@ -101,17 +69,25 @@ public abstract class AbstractActivity extends GDActivity {
 		startService(getServerIntent());
 	}
 
-   public void startLoading() {
-        LoaderActionBarItem loading = (LoaderActionBarItem) getActionBar()
-                .getItem(0);
-        loading.setLoading(true);
+    @Override
+    public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+        switch ( item.getItemId() ) {
+        case SETTINGS_ID:
+            startActivity(new Intent(this, Preferences.class));
+            return true;
+
+        case REFRESH_ID:
+            mLoader = (LoaderActionBarItem) item;
+            startService(getServerIntent());
+            return true;
+
+        default:
+            break;
+        }
+        
+        return super.onHandleActionBarItemClick(item, position);
     }
 
-    public void stopLoading() {
-        LoaderActionBarItem loading = (LoaderActionBarItem) getActionBar()
-                .getItem(0);
-        loading.setLoading(false);
-    }
 
 	private View getListView() {
 	    return mListView;
@@ -143,20 +119,19 @@ public abstract class AbstractActivity extends GDActivity {
 			ListAdapter adapter = getAdapter(items);
 			setListAdapter(adapter);
 		} else {
-			Toast
-					.makeText(this, getString(R.string.no_inet),
-							Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.no_inet), Toast.LENGTH_LONG).show();
 		}
 
-		if (!mButonAd.isShown()) {
-			mButonAd.setVisibility(View.VISIBLE);
+		if (!mAd.isShown()) {
+		    mAd.setVisibility(View.VISIBLE);
 		}
-		if (pd.isShowing())
-			pd.dismiss();
 
-//		mProgressBar.setVisibility(View.GONE);
-//		mProgressBarSeparator.setVisibility(View.GONE);
-//		mRefresh.setVisibility(View.VISIBLE);
-//		mRefreshSeparator.setVisibility(View.VISIBLE);
+		if (pd.isShowing()) {
+		    pd.dismiss();
+		}
+
+		if ( mLoader != null ) {
+		    mLoader.setLoading(false);
+		}
 	}
 }

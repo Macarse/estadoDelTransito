@@ -7,3 +7,4 @@ GAE/Estadodeltransito/war/WEB-INF/classes
 *.class
 GAE/Transportepublico/war/WEB-INF/appengine-generated
 *~
+android/gen

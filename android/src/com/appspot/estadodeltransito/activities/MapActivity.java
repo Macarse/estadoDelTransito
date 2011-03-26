@@ -27,9 +27,9 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.google.gson.Gson;
 
-public class MapActivity extends com.google.android.maps.MapActivity {
+public class MapActivity extends GDMapActivity {
 
-	private static final String TAG = "MapActivity";
+	private static final String TAG = MapActivity.class.getCanonicalName();
 	public static final String SHOW_SUBWAY_ACTION = "ShowSubwayLine";
 
 
@@ -47,7 +47,9 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.map);
+
+	    setActionBarContentView(R.layout.map);
+	    
 	    mapView = (MapView) findViewById(R.id.mapview);
 	    mapView.setBuiltInZoomControls(true);
 	    mapController = mapView.getController();
@@ -71,9 +73,11 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 				//Show that line only
 				subwayLine = (Subway) i.getExtras().get("subway_line");
 				addLineOverlay(mapOverlays);
+				setTitle(subwayLine.getName());
 			}
 			else
-				addAllLinesOverlays(mapOverlays);	
+				addAllLinesOverlays(mapOverlays);
+			    setTitle(R.string.map_title);
 			
 			/* Set the zoomToSpan an center it */
 			if ( ! mapOverlays.isEmpty() ){

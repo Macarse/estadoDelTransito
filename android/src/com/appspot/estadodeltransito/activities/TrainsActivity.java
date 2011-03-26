@@ -8,10 +8,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
@@ -23,10 +22,9 @@ import com.appspot.estadodeltransito.service.asyncTasks.TrainsAsyncTask;
 
 public class TrainsActivity extends AbstractActivity {
 
-	private static final int MENU_MAIN = 1;
-	private static final int CONTEXT_MENU_SHARE = MENU_MAIN +1;
+	private static final int CONTEXT_MENU_SHARE = 1;
 
-	private static final String TAG = "TrainsActivity";
+	private static final String TAG = TrainsActivity.class.getCanonicalName();
 
 	@Override
 	protected BroadcastReceiver getReceiver() {
@@ -39,6 +37,11 @@ public class TrainsActivity extends AbstractActivity {
 		i = new Intent(this, StatusService.class);
 		i.setAction(TrainsAsyncTask.NEW_TRAINS_STATUS);
 		return i;
+	}
+
+	@Override
+	protected int getTitleId() {
+	    return R.string.menu_trains;
 	}
 
 	@Override
@@ -89,11 +92,6 @@ public class TrainsActivity extends AbstractActivity {
 		Intent i;
 		switch (item.getItemId()) {
 
-		case MENU_MAIN:
-			i = new Intent(this, MenuActivity.class);
-			startActivity(i);
-			return true;
-
 		case CONTEXT_MENU_SHARE:
 			Train train = (Train) getListAdapter().getItem(info.position);
 			i = new Intent(android.content.Intent.ACTION_SEND);
@@ -105,14 +103,6 @@ public class TrainsActivity extends AbstractActivity {
 		}
 
 		return false;
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_MAIN, 0, R.string.menu_home)
-			.setIcon(R.drawable.ic_menu_home);
-
-		return true;
 	}
 
 	@SuppressWarnings("unchecked")

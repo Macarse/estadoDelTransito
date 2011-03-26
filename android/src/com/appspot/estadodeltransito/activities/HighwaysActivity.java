@@ -8,10 +8,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
@@ -23,12 +22,11 @@ import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 
 public class HighwaysActivity extends AbstractActivity {
 
-	private static final int MENU_MAIN = 1;
-	private static final int CONTEXT_MENU_SHARE = MENU_MAIN + 1;
-	private static final int CONTEXT_MENU_DETAILS = MENU_MAIN + 2;
+	private static final int CONTEXT_MENU_SHARE = 1;
+	private static final int CONTEXT_MENU_DETAILS = 2;
 	public static final int NOTIFICATION_ID = 101;
 
-	private static final String TAG = "HighwaysActivity";
+	private static final String TAG = HighwaysActivity.class.getCanonicalName();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -101,11 +99,6 @@ public class HighwaysActivity extends AbstractActivity {
 		Highway highway;
 		switch (item.getItemId()) {
 
-		case MENU_MAIN:
-			i = new Intent(this, MenuActivity.class);
-			startActivity(i);
-			return true;
-
 		case CONTEXT_MENU_SHARE:
 			highway = (Highway) getListAdapter().getItem(info.position);
 			i = new Intent(android.content.Intent.ACTION_SEND);
@@ -127,10 +120,7 @@ public class HighwaysActivity extends AbstractActivity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_MAIN, 0, R.string.menu_home).setIcon(
-				R.drawable.ic_menu_home);
-
-		return true;
+	protected int getTitleId() {
+	    return R.string.menu_highways;
 	}
 }

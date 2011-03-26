@@ -32,7 +32,6 @@
     <string name="pref_settings_title">Estado del Transito</string>
     <string name="pref_config_category_title">Configuración</string>
 
-    
 	<string name="pref_update_title">Actualizaciones</string>
 	<string name="pref_update_summeryOn">Actualizaciones automáticas</string>
 	<string name="pref_update_summeryOff">Sin actualizaciones automáticas</string>
@@ -52,8 +51,7 @@
 
     <string name="pref_avenues_notifications_title">Avenidas</string>
     <string name="pref_avenues_notifications_summary">Avenidas que realizan notificaciones</string>
- 
-            
+
     <string name="pref_info_category_title">Información</string>
 
     <string name="mail_support_feedback_to">nasatrainedmonkeys@gmail.com</string>
@@ -74,4 +72,6 @@
 	<string name="map_alert_nearby_services_title">Transportes cerca :</string>
 	<string name="map_alert_location_title" formatted="false">Dirección :\n\t%s ( %f , %f )</string>
 	<string name="map_alert_address_not_found">No se encontró dirección</string>
+
+	<string name="map_title">Mapa</string>
 </resources>

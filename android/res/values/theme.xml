@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ActionBar">
-        <item name="android:windowTitleSize">35dp</item>
-        <item name="android:windowTitleBackgroundStyle">@android:color/black</item>
-    </style>
+	<style name="Theme.EstadoDelTransito" parent="@style/Theme.GreenDroid.NoTitleBar">
+		<item name="gdActionBarBackground">@drawable/action_bar_background</item>
+	</style>
 </resources> 

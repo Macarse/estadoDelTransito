@@ -72,4 +72,6 @@
 	<string name="map_alert_nearby_services_title">Nearby public transport :</string>
 	<string name="map_alert_location_title" formatted="false">Address :\n\t%s ( %f , %f )</string>
 	<string name="map_alert_address_not_found">No address found</string>
+
+	<string name="map_title">Map</string>	
 </resources>

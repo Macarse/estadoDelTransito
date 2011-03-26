@@ -1,17 +1,20 @@
 package com.appspot.estadodeltransito.activities;
 
+import greendroid.widget.ActionBarItem;
+import greendroid.widget.ActionBarItem.Type;
+
 import java.util.ArrayList;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
@@ -24,12 +27,29 @@ import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
 public class SubwaysActivity extends AbstractActivity {
 
 	public static final int NOTIFICATION_ID = 100;
-	private static final int MENU_MAIN = 1;
-	private static final int CONTEXT_MENU_SHARE = MENU_MAIN +1;
-	private static final int CONTEXT_MENU_MAP = MENU_MAIN +2;
+	private static final int CONTEXT_MENU_SHARE = 1;
+	private static final int CONTEXT_MENU_MAP = 2;
 
-	private static final String TAG = "SubwaysActivity";
+	private static final String TAG = SubwaysActivity.class.getCanonicalName();
 
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    addActionBarItem(Type.Locate, MAP_ID);
+	}
+
+	@Override
+	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+	    switch (item.getItemId()) {
+        case MAP_ID:
+            startActivity(new Intent(this, MapActivity.class));
+            return true;
+
+        default:
+            break;
+        }
+	    return super.onHandleActionBarItemClick(item, position);
+	}
 	@Override
 	protected BroadcastReceiver getReceiver() {
 		return new SubwayUpdateReceiver();
@@ -41,6 +61,11 @@ public class SubwaysActivity extends AbstractActivity {
 		i = new Intent(this, StatusService.class);
 		i.setAction(SubwaysAsyncTask.NEW_SUBWAYS_STATUS);
 		return i;
+	}
+
+	@Override
+	protected int getTitleId() {
+	    return R.string.menu_subways;
 	}
 
 	@Override
@@ -94,11 +119,6 @@ public class SubwaysActivity extends AbstractActivity {
 
 		switch (item.getItemId()) {
 
-		case MENU_MAIN:
-			i = new Intent(this, MenuActivity.class);
-			startActivity(i);
-			return true;
-
 		case CONTEXT_MENU_SHARE:
 			subway = (Subway) getListAdapter().getItem(info.position);
 			i = new Intent(android.content.Intent.ACTION_SEND);
@@ -120,13 +140,6 @@ public class SubwaysActivity extends AbstractActivity {
 		return false;
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_MAIN, 0, R.string.menu_home)
-			.setIcon(R.drawable.ic_menu_home);
-
-		return true;
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

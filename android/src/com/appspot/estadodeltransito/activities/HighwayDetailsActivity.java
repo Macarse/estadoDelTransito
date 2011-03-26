@@ -1,13 +1,11 @@
 package com.appspot.estadodeltransito.activities;
 
-import android.app.Activity;
+import greendroid.app.GDActivity;
+import greendroid.widget.ActionBarItem;
+import greendroid.widget.ActionBarItem.Type;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,28 +15,17 @@ import com.appspot.estadodeltransito.domain.highway.Highway;
 import com.appspot.estadodeltransito.domain.highway.Highway.Text;
 import com.appspot.estadodeltransito.preferences.Preferences;
 
-public class HighwayDetailsActivity extends Activity {
-	private static final int MENU_MAIN = 1;
+public class HighwayDetailsActivity extends GDActivity {
+    
+	private static final int PREFERENCES_ID = 1;
 	public static final String DETAIL_ACTION = "DETAIL_ACTION";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		/* Set the view status */
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		setContentView(R.layout.highway_detail);
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
-				R.layout.menu_action_bar);
-
-		ImageView menuPref = (ImageView) findViewById(R.id.menu_preferences);
-		menuPref.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(v.getContext(), Preferences.class);
-				startActivity(i);
-			}
-		});
+		setActionBarContentView(R.layout.highway_detail);
+		addActionBarItem(Type.Settings);
 
 		Intent i = getIntent();
 		if (DETAIL_ACTION.equals(i.getAction())) {
@@ -47,6 +34,20 @@ public class HighwayDetailsActivity extends Activity {
 		}
 	}
 
+	@Override
+	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
+
+	    switch ( item.getItemId() ) {
+        case PREFERENCES_ID:
+            startActivity(new Intent(this, Preferences.class));
+            return true;
+
+        default:
+            break;
+        }
+
+	    return super.onHandleActionBarItemClick(item, position);
+	}
 	private void fillView(Highway highway) {
 		ImageView iv;
 		TextView tv;
@@ -54,6 +55,8 @@ public class HighwayDetailsActivity extends Activity {
 		ImageView status;
 		TextView smallText;
 		TextView longText;
+
+		setTitle(highway.getName());
 
 		iv = (ImageView) findViewById(R.id.avenue_highways_details_icon);
 		iv.setImageResource(HighwayAdapter.getIcon(highway.getName()));
@@ -107,26 +110,5 @@ public class HighwayDetailsActivity extends Activity {
 		} else {
 			return null;
 		}
-	}
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_MAIN, 0, R.string.menu_home).setIcon(
-				R.drawable.ic_menu_home);
-
-		return true;
-	}
-
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		Intent i;
-		switch (item.getItemId()) {
-
-			case MENU_MAIN:
-				i = new Intent(this, MenuActivity.class);
-				startActivity(i);
-				return true;
-		}
-
-		return false;
 	}
 }
