@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.appspot.estadodeltransito.views.DashboardLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/lay_main"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:gravity="center"
-	android:layout_gravity="center"
 	android:background="@android:color/white">
 
 	<Button android:id="@+id/menu_avenues_button"
@@ -14,13 +13,11 @@
 		android:text="@string/menu_avenues"
 		android:textSize="22sp"
 		android:drawableTop="@drawable/ic_menu_avenues"
-		android:paddingRight="30dp"
 		android:background="@null" />
 
 	<Button android:id="@+id/menu_highways_button"
 	    android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/menu_avenues_button"
 		android:text="@string/menu_highways"
 		android:textSize="22sp"
 		android:drawableTop="@drawable/ic_menu_highways"
@@ -28,21 +25,18 @@
 
 	<Button android:id="@+id/menu_subways_button"
 	    android:layout_width="wrap_content"
-		android:background="@null"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/menu_avenues_button"
+		android:background="@null"
 		android:text="@string/menu_subways"
 		android:textSize="22sp"
-		android:paddingRight="30dp"
 		android:drawableTop="@drawable/ic_menu_subways" />
 
 	<Button android:id="@+id/menu_trains_button"
 	    android:layout_width="wrap_content"
-		android:background="@null"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/menu_subways_button"
-		android:layout_below="@id/menu_highways_button"
+		android:background="@null"
 		android:text="@string/menu_trains"
 		android:textSize="22sp"
 		android:drawableTop="@drawable/ic_menu_trains" />
-</RelativeLayout>
+
+</com.appspot.estadodeltransito.views.DashboardLayout>
