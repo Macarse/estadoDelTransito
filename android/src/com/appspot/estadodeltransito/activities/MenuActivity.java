@@ -39,7 +39,7 @@ public class MenuActivity extends GDActivity {
 		super.onCreate(savedInstanceState);
 
 		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(getString(R.string.google_analytics), this);
+		tracker.start(getString(R.string.google_analytics), 20, this);
 
 		/* Check if this is the first run. If it is, run firstRun. */
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);

@@ -49,7 +49,7 @@ public abstract class AbstractActivity extends GDActivity {
 		super.onCreate(savedInstanceState);
 
 		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(getString(R.string.google_analytics), this);
+		tracker.start(getString(R.string.google_analytics), 20, this);
 
 		setActionBarContentView(R.layout.list_activity);
 		mLoader = (LoaderActionBarItem) addActionBarItem(Type.Refresh, REFRESH_ID);

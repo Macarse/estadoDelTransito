@@ -28,7 +28,7 @@ public class HighwayDetailsActivity extends GDActivity {
 		super.onCreate(savedInstanceState);
 
 		tracker = GoogleAnalyticsTracker.getInstance();
-        tracker.start(getString(R.string.google_analytics), this);
+        tracker.start(getString(R.string.google_analytics), 20, this);
 
 		setActionBarContentView(R.layout.highway_detail);
 		addActionBarItem(Type.Settings);
