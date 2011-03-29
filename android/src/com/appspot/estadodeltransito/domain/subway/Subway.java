@@ -1,9 +1,11 @@
 package com.appspot.estadodeltransito.domain.subway;
 
-import java.io.Serializable;
+import com.appspot.estadodeltransito.domain.IPublicTransportLineService;
+import com.appspot.estadodeltransito.domain.TransportLine;
+import com.google.gson.Gson;
 
 
-public class Subway implements Serializable {
+public class Subway implements IPublicTransportLineService {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -56,5 +58,15 @@ public class Subway implements Serializable {
 
 	public String getShareMsg() {
 		return String.format("Línea %s: %s (%s)", getLetter(), status, frequency);
+	}
+
+	public static TransportLine[] fromJson(String json) {
+		Gson gson = new Gson();
+		return gson.fromJson(json, TransportLine[].class);
+	}
+
+	@Override
+	public String getLineName() {
+		return getName();
 	}
 }

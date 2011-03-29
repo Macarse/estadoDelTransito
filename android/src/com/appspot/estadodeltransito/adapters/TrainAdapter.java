@@ -1,6 +1,5 @@
 package com.appspot.estadodeltransito.adapters;
 
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -13,22 +12,11 @@ import android.widget.TextView;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.domain.train.Train;
+import com.appspot.estadodeltransito.util.IconsUtil;
 
 public class TrainAdapter extends ArrayAdapter<Train> {
 
 	private LayoutInflater mInflater;
-	private static final HashMap<String, Integer> ICONS;
-
-	static {
-		ICONS = new HashMap<String, Integer>();
-		ICONS.put("Belgrano Sur", R.drawable.belgrano_sur);
-		ICONS.put("Belgrano Norte", R.drawable.belgrano_norte);
-		ICONS.put("Mitre", R.drawable.mitre);
-		ICONS.put("San Martín", R.drawable.san_martin);
-		ICONS.put("Sarmiento", R.drawable.sarmiento);
-		ICONS.put("Gral Roca", R.drawable.roca);
-
-	}
 	
 	public TrainAdapter(Context context, List<Train> subways) {
 		super(context, 1, subways);
@@ -51,20 +39,11 @@ public class TrainAdapter extends ArrayAdapter<Train> {
         
         Train train = getItem(position);
         
-        imageView.setImageResource(getIcon(train));
+        imageView.setImageResource(IconsUtil.getTrainIcon(train.getLine()));
         text1.setText(train.getName());
         text2.setText(train.getStatus());
 
         return view;
     }
 
-	public static int getIcon(Train train) {
-		Integer ret = ICONS.get(train.getLine());
-
-		if (ret == null ) {
-			return R.drawable.subway;
-		}
-		
-		return ret;
-	}
 }

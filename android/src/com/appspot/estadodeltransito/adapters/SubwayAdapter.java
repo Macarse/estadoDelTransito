@@ -1,6 +1,5 @@
 package com.appspot.estadodeltransito.adapters;
 
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -13,24 +12,12 @@ import android.widget.TextView;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.domain.subway.Subway;
+import com.appspot.estadodeltransito.util.IconsUtil;
 
 public class SubwayAdapter extends ArrayAdapter<Subway> {
 
 	private LayoutInflater mInflater;
-	private static final HashMap<Character, Integer> ICONS;
 
-	static {
-		ICONS = new HashMap<Character, Integer>();
-		ICONS.put('A', R.drawable.a);
-		ICONS.put('B', R.drawable.b);
-		ICONS.put('C', R.drawable.c);
-		ICONS.put('D', R.drawable.d);
-		ICONS.put('E', R.drawable.e);
-		ICONS.put('H', R.drawable.h);
-		ICONS.put('P', R.drawable.p);
-		ICONS.put('U', R.drawable.u);
-	}
-	
 	public SubwayAdapter(Context context, List<Subway> subways) {
 		super(context, 1, subways);
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -52,20 +39,11 @@ public class SubwayAdapter extends ArrayAdapter<Subway> {
         
         Subway subway = getItem(position);
         
-        imageView.setImageResource(getIcon(subway));
+        imageView.setImageResource(IconsUtil.getSubwayIcon(subway.getName()));
         text1.setText(subway.getStatus());
         text2.setText(subway.getFrequency());
 
         return view;
     }
 
-	public static int getIcon(Subway subway) {
-		Integer ret = ICONS.get(subway.getLetter());
-
-		if (ret == null ) {
-			return -1;
-		}
-		
-		return ret;
-	}
 }

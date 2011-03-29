@@ -1,0 +1,688 @@
+[
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 1",
+        "stations": [
+            {
+                "latitude": -34.56662,
+                "longitude": -58.402977
+            },
+            {
+                "latitude": -34.55835,
+                "longitude": -58.41023
+            },
+            {
+                "latitude": -34.55471,
+                "longitude": -58.417311
+            },
+            {
+                "latitude": -34.550857,
+                "longitude": -58.429413
+            },
+            {
+                "latitude": -34.548736,
+                "longitude": -58.431044
+            },
+            {
+                "latitude": -34.545095,
+                "longitude": -58.431559
+            },
+            {
+                "latitude": -34.543116,
+                "longitude": -58.434649
+            },
+            {
+                "latitude": -34.542692,
+                "longitude": -58.436837
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 2",
+        "stations": [
+            {
+                "latitude": -34.570861,
+                "longitude": -58.42392
+            },
+            {
+                "latitude": -34.568776,
+                "longitude": -58.421731
+            },
+            {
+                "latitude": -34.568776,
+                "longitude": -58.421731
+            },
+            {
+                "latitude": -34.561814,
+                "longitude": -58.430614
+            },
+            {
+                "latitude": -34.562061,
+                "longitude": -58.434863
+            },
+            {
+                "latitude": -34.563722,
+                "longitude": -58.43658
+            },
+            {
+                "latitude": -34.570861,
+                "longitude": -58.42392
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 3",
+        "stations": [
+            {
+                "latitude": -34.57715,
+                "longitude": -58.409972
+            },
+            {
+                "latitude": -34.576373,
+                "longitude": -58.409522
+            },
+            {
+                "latitude": -34.574589,
+                "longitude": -58.40758
+            },
+            {
+                "latitude": -34.571841,
+                "longitude": -58.411453
+            },
+            {
+                "latitude": -34.571417,
+                "longitude": -58.411721
+            },
+            {
+                "latitude": -34.571205,
+                "longitude": -58.412429
+            },
+            {
+                "latitude": -34.568705,
+                "longitude": -58.41583
+            },
+            {
+                "latitude": -34.567185,
+                "longitude": -58.41686
+            },
+            {
+                "latitude": -34.56533,
+                "longitude": -58.4198
+            },
+            {
+                "latitude": -34.553331,
+                "longitude": -58.435185
+            },
+            {
+                "latitude": -34.549019,
+                "longitude": -58.439155
+            },
+            {
+                "latitude": -34.547782,
+                "longitude": -58.442223
+            },
+            {
+                "latitude": -34.546315,
+                "longitude": -58.452094
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 4",
+        "stations": [
+            {
+                "latitude": -34.553473,
+                "longitude": -58.435078
+            },
+            {
+                "latitude": -34.551034,
+                "longitude": -58.430979
+            },
+            {
+                "latitude": -34.550804,
+                "longitude": -58.429306
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 5",
+        "stations": [
+            {
+                "latitude": -34.566585,
+                "longitude": -58.417912
+            },
+            {
+                "latitude": -34.565666,
+                "longitude": -58.417439
+            },
+            {
+                "latitude": -34.565083,
+                "longitude": -58.41598
+            },
+            {
+                "latitude": -34.565206,
+                "longitude": -58.414607
+            },
+            {
+                "latitude": -34.566814,
+                "longitude": -58.413813
+            },
+            {
+                "latitude": -34.567097,
+                "longitude": -58.413255
+            },
+            {
+                "latitude": -34.567026,
+                "longitude": -58.412483
+            },
+            {
+                "latitude": -34.567433,
+                "longitude": -58.412268
+            },
+            {
+                "latitude": -34.568617,
+                "longitude": -58.412483
+            },
+            {
+                "latitude": -34.569995,
+                "longitude": -58.412933
+            },
+            {
+                "latitude": -34.571179,
+                "longitude": -58.411603
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Parque Tres de Febrero - 6",
+        "stations": [
+            {
+                "latitude": -34.570861,
+                "longitude": -58.421195
+            },
+            {
+                "latitude": -34.571762,
+                "longitude": -58.418405
+            },
+            {
+                "latitude": -34.572875,
+                "longitude": -58.416753
+            },
+            {
+                "latitude": -34.572998,
+                "longitude": -58.415465
+            },
+            {
+                "latitude": -34.572133,
+                "longitude": -58.413706
+            },
+            {
+                "latitude": -34.570754,
+                "longitude": -58.414006
+            },
+            {
+                "latitude": -34.569341,
+                "longitude": -58.418641
+            },
+            {
+                "latitude": -34.57003,
+                "longitude": -58.419929
+            },
+            {
+                "latitude": -34.570861,
+                "longitude": -58.421195
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Sur - 1",
+        "stations": [
+            {
+                "latitude": -34.697873,
+                "longitude": -58.469839
+            },
+            {
+                "latitude": -34.680052,
+                "longitude": -58.450441
+            },
+            {
+                "latitude": -34.669994,
+                "longitude": -58.444004
+            },
+            {
+                "latitude": -34.66417,
+                "longitude": -58.437138
+            },
+            {
+                "latitude": -34.657392,
+                "longitude": -58.423319
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Sur - 2",
+        "stations": [
+            {
+                "latitude": -34.679947,
+                "longitude": -58.450356
+            },
+            {
+                "latitude": -34.673488,
+                "longitude": -58.458638
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Interparques - 1",
+        "stations": [
+            {
+                "latitude": -34.541419,
+                "longitude": -58.46323
+            },
+            {
+                "latitude": -34.546721,
+                "longitude": -58.465676
+            },
+            {
+                "latitude": -34.547587,
+                "longitude": -58.466449
+            },
+            {
+                "latitude": -34.548365,
+                "longitude": -58.46868
+            },
+            {
+                "latitude": -34.55015,
+                "longitude": -58.477178
+            },
+            {
+                "latitude": -34.54939,
+                "longitude": -58.477693
+            },
+            {
+                "latitude": -34.549178,
+                "longitude": -58.48016
+            },
+            {
+                "latitude": -34.549903,
+                "longitude": -58.482134
+            },
+            {
+                "latitude": -34.551051,
+                "longitude": -58.482928
+            },
+            {
+                "latitude": -34.551705,
+                "longitude": -58.482285
+            },
+            {
+                "latitude": -34.552253,
+                "longitude": -58.480868
+            },
+            {
+                "latitude": -34.55197,
+                "longitude": -58.479044
+            },
+            {
+                "latitude": -34.550945,
+                "longitude": -58.477392
+            },
+            {
+                "latitude": -34.550132,
+                "longitude": -58.477092
+            }
+        ]
+    },
+    {
+        "name": "Bicisenda Interparques - 2",
+        "stations": [
+            {
+                "latitude": -34.551051,
+                "longitude": -58.482928
+            },
+            {
+                "latitude": -34.549744,
+                "longitude": -58.483958
+            },
+            {
+                "latitude": -34.551794,
+                "longitude": -58.4887
+            },
+            {
+                "latitude": -34.555593,
+                "longitude": -58.49576
+            },
+            {
+                "latitude": -34.556636,
+                "longitude": -58.496876
+            },
+            {
+                "latitude": -34.558474,
+                "longitude": -58.495867
+            },
+            {
+                "latitude": -34.562167,
+                "longitude": -58.496361
+            },
+            {
+                "latitude": -34.562803,
+                "longitude": -58.49679
+            },
+            {
+                "latitude": -34.563598,
+                "longitude": -58.496811
+            },
+            {
+                "latitude": -34.564765,
+                "longitude": -58.499172
+            },
+            {
+                "latitude": -34.56017,
+                "longitude": -58.502562
+            },
+            {
+                "latitude": -34.561549,
+                "longitude": -58.503184
+            },
+            {
+                "latitude": -34.563528,
+                "longitude": -58.502433
+            },
+            {
+                "latitude": -34.564234,
+                "longitude": -58.502862
+            },
+            {
+                "latitude": -34.564058,
+                "longitude": -58.504128
+            },
+            {
+                "latitude": -34.563545,
+                "longitude": -58.505158
+            },
+            {
+                "latitude": -34.56404,
+                "longitude": -58.505974
+            },
+            {
+                "latitude": -34.564959,
+                "longitude": -58.505952
+            },
+            {
+                "latitude": -34.567256,
+                "longitude": -58.504107
+            },
+            {
+                "latitude": -34.566443,
+                "longitude": -58.502519
+            },
+            {
+                "latitude": -34.580542,
+                "longitude": -58.491147
+            },
+            {
+                "latitude": -34.586584,
+                "longitude": -58.48634
+            },
+            {
+                "latitude": -34.588616,
+                "longitude": -58.48958
+            },
+            {
+                "latitude": -34.590824,
+                "longitude": -58.487477
+            },
+            {
+                "latitude": -34.589146,
+                "longitude": -58.484602
+            },
+            {
+                "latitude": -34.590841,
+                "longitude": -58.479517
+            },
+            {
+                "latitude": -34.588086,
+                "longitude": -58.475955
+            },
+            {
+                "latitude": -34.591212,
+                "longitude": -58.473036
+            },
+            {
+                "latitude": -34.592325,
+                "longitude": -58.474324
+            },
+            {
+                "latitude": -34.592131,
+                "longitude": -58.469796
+            },
+            {
+                "latitude": -34.590506,
+                "longitude": -58.466964
+            },
+            {
+                "latitude": -34.590691,
+                "longitude": -58.466502
+            },
+            {
+                "latitude": -34.590691,
+                "longitude": -58.466502
+            },
+            {
+                "latitude": -34.586019,
+                "longitude": -58.461342
+            },
+            {
+                "latitude": -34.585657,
+                "longitude": -58.459861
+            },
+            {
+                "latitude": -34.586628,
+                "longitude": -58.457179
+            },
+            {
+                "latitude": -34.587282,
+                "longitude": -58.456299
+            },
+            {
+                "latitude": -34.587353,
+                "longitude": -58.455355
+            },
+            {
+                "latitude": -34.587865,
+                "longitude": -58.455462
+            },
+            {
+                "latitude": -34.590029,
+                "longitude": -58.452587
+            },
+            {
+                "latitude": -34.590135,
+                "longitude": -58.452265
+            },
+            {
+                "latitude": -34.591,
+                "longitude": -58.453145
+            },
+            {
+                "latitude": -34.593624,
+                "longitude": -58.449765
+            },
+            {
+                "latitude": -34.594268,
+                "longitude": -58.450431
+            },
+            {
+                "latitude": -34.596026,
+                "longitude": -58.452866
+            },
+            {
+                "latitude": -34.597324,
+                "longitude": -58.451235
+            },
+            {
+                "latitude": -34.595054,
+                "longitude": -58.448049
+            },
+            {
+                "latitude": -34.601316,
+                "longitude": -58.441064
+            },
+            {
+                "latitude": -34.603859,
+                "longitude": -58.439004
+            },
+            {
+                "latitude": -34.604919,
+                "longitude": -58.437996
+            },
+            {
+                "latitude": -34.604212,
+                "longitude": -58.435829
+            },
+            {
+                "latitude": -34.60529,
+                "longitude": -58.433275
+            },
+            {
+                "latitude": -34.607286,
+                "longitude": -58.432739
+            },
+            {
+                "latitude": -34.60884,
+                "longitude": -58.434584
+            },
+            {
+                "latitude": -34.613078,
+                "longitude": -58.432717
+            },
+            {
+                "latitude": -34.616151,
+                "longitude": -58.431559
+            }
+        ]
+    },
+    {
+        "name": "Carriles preferenciales - 1",
+        "stations": [
+            {
+                "latitude": -34.599938,
+                "longitude": -58.438854
+            },
+            {
+                "latitude": -34.60204,
+                "longitude": -58.432095
+            },
+            {
+                "latitude": -34.604142,
+                "longitude": -58.413191
+            },
+            {
+                "latitude": -34.604159,
+                "longitude": -58.408813
+            },
+            {
+                "latitude": -34.604795,
+                "longitude": -58.403599
+            },
+            {
+                "latitude": -34.604477,
+                "longitude": -58.392313
+            },
+            {
+                "latitude": -34.603029,
+                "longitude": -58.370211
+            }
+        ]
+    },
+    {
+        "name": "Carriles preferenciales - 2",
+        "stations": [
+            {
+                "latitude": -34.609264,
+                "longitude": -58.393407
+            },
+            {
+                "latitude": -34.611242,
+                "longitude": -58.419843
+            },
+            {
+                "latitude": -34.611683,
+                "longitude": -58.421388
+            },
+            {
+                "latitude": -34.62053,
+                "longitude": -58.441515
+            }
+        ]
+    },
+    {
+        "name": "Carriles preferenciales - 3",
+        "stations": [
+            {
+                "latitude": -34.615833,
+                "longitude": -58.420057
+            },
+            {
+                "latitude": -34.61525,
+                "longitude": -58.409758
+            },
+            {
+                "latitude": -34.61465,
+                "longitude": -58.404887
+            },
+            {
+                "latitude": -34.612902,
+                "longitude": -58.377571
+            }
+        ]
+    },
+    {
+        "name": "Carriles preferenciales - 4",
+        "stations": [
+            {
+                "latitude": -34.617228,
+                "longitude": -58.369632
+            },
+            {
+                "latitude": -34.617316,
+                "longitude": -58.371778
+            },
+            {
+                "latitude": -34.61714,
+                "longitude": -58.373108
+            },
+            {
+                "latitude": -34.618182,
+                "longitude": -58.391819
+            },
+            {
+                "latitude": -34.618817,
+                "longitude": -58.403535
+            },
+            {
+                "latitude": -34.62083,
+                "longitude": -58.41377
+            },
+            {
+                "latitude": -34.62219,
+                "longitude": -58.427825
+            },
+            {
+                "latitude": -34.62332,
+                "longitude": -58.436966
+            },
+            {
+                "latitude": -34.622843,
+                "longitude": -58.442802
+            },
+            {
+                "latitude": -34.623055,
+                "longitude": -58.443639
+            },
+            {
+                "latitude": -34.627964,
+                "longitude": -58.45293
+            }
+        ]
+    }
+]

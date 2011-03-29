@@ -1,10 +1,10 @@
-package com.appspot.estadodeltransito.domain.subway;
+package com.appspot.estadodeltransito.domain.train;
 
 import com.appspot.estadodeltransito.domain.IPublicTransportService;
 import com.appspot.estadodeltransito.domain.TransportStation;
 
 
-public class SubwayStation extends TransportStation implements IPublicTransportService {
+public class TrainStation extends TransportStation implements IPublicTransportService {
 
 	/**
 	 * 

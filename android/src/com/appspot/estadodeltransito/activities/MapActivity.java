@@ -1,46 +1,43 @@
 package com.appspot.estadodeltransito.activities;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.appspot.estadodeltransito.R;
+import com.appspot.estadodeltransito.domain.IPublicTransportLineService;
 import com.appspot.estadodeltransito.domain.subway.Subway;
-import com.appspot.estadodeltransito.domain.subway.SubwayLine;
 import com.appspot.estadodeltransito.domain.subway.SubwayStation;
-import com.appspot.estadodeltransito.mapoverlays.LineItemizedOverlay;
-import com.appspot.estadodeltransito.mapoverlays.SubwayOverlayItem;
-import com.appspot.estadodeltransito.mapoverlays.SubwaysItemizedOverlay;
 import com.appspot.estadodeltransito.util.IconsUtil;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+import com.appspot.estadodeltransito.domain.train.Train;
+import com.appspot.estadodeltransito.mapoverlays.PointInfoOverlay;
+import com.appspot.estadodeltransito.mapoverlays.TransportLineSegmentItemizedOverlay;
+import com.appspot.estadodeltransito.mapoverlays.TransportServiceOverlayProvider;
+import com.appspot.estadodeltransito.mapoverlays.TransportStationOverlayItem;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
-import com.google.gson.Gson;
 
 public class MapActivity extends GDMapActivity {
 
-	private static final String TAG = MapActivity.class.getCanonicalName();
+//	private static final String TAG = MapActivity.class.getCanonicalName();
 	public static final String SHOW_SUBWAY_ACTION = "ShowSubwayLine";
+	public static final String SHOW_SUBWAYS_ACTION = "ShowSubwayLines";
+	public static final String SHOW_TRAINS_ACTION = "ShowTrainsLine";
+	public static final String SHOW_TRAIN_ACTION = "ShowTrainLine";
 
-
-	private Subway subwayLine = null;
-	private SubwayLine [] subwayLines = null;
-	private List<SubwaysItemizedOverlay> subwayLinesOverlays;
+	private IPublicTransportLineService transportService = null;
 	private MapView mapView;
 	protected MapController mapController;
     private GoogleAnalyticsTracker tracker;
 	
+	private TransportServiceOverlayProvider overlayProvider;
+
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
@@ -60,128 +57,100 @@ public class MapActivity extends GDMapActivity {
 	    mapController = mapView.getController();
 
 		initMyLocation();
+		mapView.getOverlays().add(new PointInfoOverlay(this));
+		initOverlayProvider();
 	    
-	    try {
-	    	// Load subway line information
-			loadSubwayLines();
-		} catch (IOException e) {
-			Log.e(TAG, "This shouldn't happen");
-			return;
-		}
-		// Load subway line overlays
-	    loadSubwayOverlays();
-	    
-	    List<LineItemizedOverlay<? extends OverlayItem>> mapOverlays = new LinkedList<LineItemizedOverlay<? extends OverlayItem>>();
-		if ( subwayLines.length != 0 ) {
-			Intent i = getIntent();
-			if ( SHOW_SUBWAY_ACTION.equals(i.getAction()) ){
-				//Show that line only
-				subwayLine = (Subway) i.getExtras().get("subway_line");
-				addLineOverlay(mapOverlays);
-				setTitle(subwayLine.getName());
-			}
-			else
-				addAllLinesOverlays(mapOverlays);
-			    setTitle(R.string.map_title);
+	    List<TransportLineSegmentItemizedOverlay> mapOverlaysToAdd = getMapOverlaysToAdd(getIntent());
 			
-			/* Set the zoomToSpan an center it */
-			if ( ! mapOverlays.isEmpty() ){
-				SubwaysItemizedOverlay lineOverlay = (SubwaysItemizedOverlay) mapOverlays.get(0);
-				SubwayOverlayItem firstStation = lineOverlay.getItem(0);
-				SubwayOverlayItem lastStation = lineOverlay.getItem(lineOverlay.size()-1);
-				int halfLat = ( firstStation.getPoint().getLatitudeE6() + lastStation.getPoint().getLatitudeE6() ) / 2;
-				int halfLong = ( firstStation.getPoint().getLongitudeE6() + lastStation.getPoint().getLongitudeE6() ) / 2;
-				mapController.animateTo(new GeoPoint(halfLat,halfLong));
-			}
-    		
-		}
-		
-		if ( mapOverlays.isEmpty() )
+		/* Set the zoomToSpan an center it */
+		if ( !mapOverlaysToAdd.isEmpty() && ! ( mapOverlaysToAdd.size() == 1 && mapOverlaysToAdd.get(0).size() == 0 ) ){
+			TransportLineSegmentItemizedOverlay lineOverlay = mapOverlaysToAdd.get(0);
+			TransportStationOverlayItem firstStation = lineOverlay.getItem(0);
+			TransportStationOverlayItem lastStation = lineOverlay.getItem(lineOverlay.size()-1);
+			int halfLat = ( firstStation.getPoint().getLatitudeE6() + lastStation.getPoint().getLatitudeE6() ) / 2;
+			int halfLong = ( firstStation.getPoint().getLongitudeE6() + lastStation.getPoint().getLongitudeE6() ) / 2;
+			int diffLat = Math.abs( firstStation.getPoint().getLatitudeE6() - lastStation.getPoint().getLatitudeE6() );
+			int diffLong = Math.abs( firstStation.getPoint().getLongitudeE6() - lastStation.getPoint().getLongitudeE6() );
+			mapController.zoomToSpan(diffLat, diffLong);
+			mapController.animateTo(new GeoPoint(halfLat,halfLong));
+		}else
 			return;
 		
 		List<Overlay> overlays = mapView.getOverlays();
 
-		for(LineItemizedOverlay<? extends OverlayItem> lio:mapOverlays){
-			overlays.add(lio.getLineOverlay());
+		for(TransportLineSegmentItemizedOverlay lio:mapOverlaysToAdd){
+			overlays.add(lio.getSegmentOverlay());
 		}
-		overlays.addAll(mapOverlays);
+
+		overlays.addAll(mapOverlaysToAdd);
+	}
+
+	private List<TransportLineSegmentItemizedOverlay> getMapOverlaysToAdd(Intent intent) {
+		List<TransportLineSegmentItemizedOverlay> mapOverlaysToAdd = new LinkedList<TransportLineSegmentItemizedOverlay>();
+
+		if ( SHOW_SUBWAY_ACTION.equals(intent.getAction()) ){
+			//Show that line only
+			transportService = (Subway) intent.getExtras().get("line");
+			addLineOverlay(mapOverlaysToAdd, overlayProvider.getSubwaysOverlays());
+			setTitle(transportService.getName());
+		}else if ( SHOW_SUBWAYS_ACTION.equals(intent.getAction())) {
+			addAllLinesOverlays(mapOverlaysToAdd, overlayProvider.getSubwaysOverlays());
+		    setTitle(R.string.map_title);
+		}else if ( SHOW_TRAIN_ACTION.equals(intent.getAction()) ){
+			//Show that line only
+			transportService = (Train) intent.getExtras().get("line");
+			addLineOverlay(mapOverlaysToAdd, overlayProvider.getTrainsOverlays());
+			setTitle(transportService.getName());
+		}else if ( SHOW_TRAINS_ACTION.equals(intent.getAction())) {
+			overlayProvider.getTrainsOverlays();
+			addAllLinesOverlays(mapOverlaysToAdd, overlayProvider.getTrainsOverlays());
+		    setTitle(R.string.map_title);
+		}else{
+			addAllLinesOverlays(mapOverlaysToAdd, overlayProvider.getSubwaysOverlays());
+			addAllLinesOverlays(mapOverlaysToAdd, overlayProvider.getTrainsOverlays());
+		}
+		return mapOverlaysToAdd;
+	}
+
+	private void initOverlayProvider() {
+		if ( overlayProvider == null )
+			overlayProvider = TransportServiceOverlayProvider.getInstance();
+		overlayProvider.setContext(this);
+		overlayProvider.setMapView(mapView);
 	}
 
 	private void initMyLocation() {
 		final MyLocationOverlay overlay = new MyLocationOverlay(this, mapView);
 		overlay.enableMyLocation();
 
-		overlay.runOnFirstFix(new Runnable() {
-
-			public void run() {
-				mapController.setZoom(13);
-			}
-		});
 		mapView.getOverlays().add(overlay);
-
 	}
 
 	
-	private void loadSubwayLines() throws IOException {
-		if ( subwayLines == null ){
-			InputStream subwayJSON = this.getResources().openRawResource(R.raw.subwaygeo);
-			subwayLines = readSubwayInfo(subwayJSON);
-		}
-	}
-
-	private void loadSubwayOverlays() {
-		if ( subwayLinesOverlays == null ){
-			subwayLinesOverlays = new ArrayList<SubwaysItemizedOverlay>();
-			for (SubwayLine sl:subwayLines){
-				String lineName = sl.getName();
-				Drawable lineIcon = this.getResources().getDrawable(IconsUtil.getLineIconResource(lineName));
-				int colorRGB = IconsUtil.getLineColor(lineName);
-				List<SubwayStation> lineStations = sl.getStations();
-		
-				if ( !lineStations.isEmpty() ){
-					SubwaysItemizedOverlay lineOverlay = new SubwaysItemizedOverlay(lineIcon, this, colorRGB, sl);
-					for(SubwayStation ss:lineStations){
-						lineOverlay.addStation(ss);
-					}
-					subwayLinesOverlays.add(lineOverlay);
-				}
-			}	
-		}
-	}
-
 	@Override
     protected void onStart() {
         super.onStart();
         tracker.trackPageView(getString(R.string.map_title));
     }
 
-	private void addAllLinesOverlays(List<LineItemizedOverlay<? extends OverlayItem>> mapOverlays) {
-		subwayLine = null;
-		for (SubwaysItemizedOverlay lineOverlay:subwayLinesOverlays){
+	private void addAllLinesOverlays(List<TransportLineSegmentItemizedOverlay> mapOverlays, List<TransportLineSegmentItemizedOverlay> transportOverlays) {
+		transportService = null;
+		for (TransportLineSegmentItemizedOverlay lineOverlay:transportOverlays){
+ 				mapOverlays.add(lineOverlay);
+		}
+	}
+
+	private void addLineOverlay(List<TransportLineSegmentItemizedOverlay> mapOverlays, List<TransportLineSegmentItemizedOverlay> transportOverlays) {
+		for (TransportLineSegmentItemizedOverlay lineOverlay:transportOverlays){
+			if ( transportService.getLineName().equals(lineOverlay.getLineName()) )
 				mapOverlays.add(lineOverlay);
 		}
 	}
 
-	private void addLineOverlay(List<LineItemizedOverlay<? extends OverlayItem>> mapOverlays) {
-		for (SubwaysItemizedOverlay lineOverlay:subwayLinesOverlays){
-			if ( subwayLine.getName().equals(lineOverlay.getLineName()) )
-				mapOverlays.add(lineOverlay);
-		}
-	}
-	private static SubwayLine[] readSubwayInfo(InputStream subwayJSON) throws IOException {
-		byte [] data = new byte[subwayJSON.available()];
-		
-		while( subwayJSON.read(data) != -1);
-		String json = new String(data);
-
-		Gson gson = new Gson();
-		SubwayLine[] lines = gson.fromJson(json, SubwayLine[].class);
-		return lines;
-	}
-
-    @Override
+	@Override
     protected void onDestroy() {
       super.onDestroy();
       tracker.stop();
     }
+
 }
