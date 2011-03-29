@@ -24,6 +24,7 @@ public class TransportLineSegmentItemizedOverlay extends EDTBalloonItemizedOverl
 		else
 			boundCenter(defaultMarker);
 		
+		populate();
 		lineOverlay = new LineOverlay(this,defaultColor);
 		this.lineName = lineName;
 		for(TransportStation transportStation:transportLineSegment.getStations())

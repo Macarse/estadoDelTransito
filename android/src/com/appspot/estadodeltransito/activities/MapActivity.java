@@ -9,14 +9,12 @@ import android.os.Bundle;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.domain.IPublicTransportLineService;
 import com.appspot.estadodeltransito.domain.subway.Subway;
-import com.appspot.estadodeltransito.domain.subway.SubwayStation;
-import com.appspot.estadodeltransito.util.IconsUtil;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.mapoverlays.PointInfoOverlay;
 import com.appspot.estadodeltransito.mapoverlays.TransportLineSegmentItemizedOverlay;
 import com.appspot.estadodeltransito.mapoverlays.TransportServiceOverlayProvider;
 import com.appspot.estadodeltransito.mapoverlays.TransportStationOverlayItem;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
@@ -25,7 +23,6 @@ import com.google.android.maps.Overlay;
 
 public class MapActivity extends GDMapActivity {
 
-//	private static final String TAG = MapActivity.class.getCanonicalName();
 	public static final String SHOW_SUBWAY_ACTION = "ShowSubwayLine";
 	public static final String SHOW_SUBWAYS_ACTION = "ShowSubwayLines";
 	public static final String SHOW_TRAINS_ACTION = "ShowTrainsLine";
