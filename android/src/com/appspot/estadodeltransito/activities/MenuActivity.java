@@ -17,10 +17,10 @@ import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.firstRun.FirstRun;
 import com.appspot.estadodeltransito.preferences.Preferences;
 import com.appspot.estadodeltransito.service.StatusService;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class MenuActivity extends GDActivity {
     private static final String FIRST_RUN_KEY = "first_run_key";
-
     private static final int MAP_ID = 1;
     private static final int SETTINGS_ID = 2;
 
@@ -28,6 +28,7 @@ public class MenuActivity extends GDActivity {
 	private Button mAvenues;
 	private Button mHighways;
 	private Button mTrains;
+	private GoogleAnalyticsTracker tracker;
 
 	public MenuActivity() {
 	    super(ActionBar.Type.Normal);
@@ -36,6 +37,9 @@ public class MenuActivity extends GDActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(getString(R.string.google_analytics), this);
 
 		/* Check if this is the first run. If it is, run firstRun. */
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -61,6 +65,12 @@ public class MenuActivity extends GDActivity {
 			
 			@Override
 			public void onClick(View v) {
+			    tracker.trackEvent(
+			            "Menu",  // Category
+			            "Button",  // Action
+			            "subways", // Label
+			            1);
+
 				Intent i = new Intent(v.getContext(), SubwaysActivity.class);
 				startActivity(i);
 				
@@ -72,6 +82,11 @@ public class MenuActivity extends GDActivity {
 			
 			@Override
 			public void onClick(View v) {
+			    tracker.trackEvent(
+                        "Menu",  // Category
+                        "Button",  // Action
+                        "highways", // Label
+                        1);
 				Intent i = new Intent(v.getContext(), HighwaysActivity.class);
 				startActivity(i);
 				
@@ -83,6 +98,11 @@ public class MenuActivity extends GDActivity {
 			
 			@Override
 			public void onClick(View v) {
+			    tracker.trackEvent(
+                        "Menu",  // Category
+                        "Button",  // Action
+                        "avenues", // Label
+                        1);
 				Intent i = new Intent(v.getContext(), AvenuesActivity.class);
 				startActivity(i);
 				
@@ -93,6 +113,11 @@ public class MenuActivity extends GDActivity {
 			
 			@Override
 			public void onClick(View v) {
+			    tracker.trackEvent(
+                        "Menu",  // Category
+                        "Button",  // Action
+                        "trains", // Label
+                        1);
 				Intent i = new Intent(v.getContext(), TrainsActivity.class);
 				startActivity(i);
 			}
@@ -101,13 +126,29 @@ public class MenuActivity extends GDActivity {
 	}
 
 	@Override
+	protected void onStart() {
+	    super.onStart();
+	    tracker.trackPageView("/MenuActivity");
+	}
+
+	@Override
 	public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
 	    switch ( item.getItemId() ) {
         case MAP_ID:
+            tracker.trackEvent(
+                    "Menu",  // Category
+                    "ActionBar",  // Action
+                    "map", // Label
+                    1);
             startActivity(new Intent(this, MapActivity.class));
             return true;
 
         case SETTINGS_ID:
+            tracker.trackEvent(
+                    "Menu",  // Category
+                    "ActionBar",  // Action
+                    "settings", // Label
+                    1);
             startActivity(new Intent(this, Preferences.class));
             return true;
 
@@ -125,4 +166,10 @@ public class MenuActivity extends GDActivity {
 		i.setAction(StatusService.FIRST_RUN);
 		startService(i);
 	}
+
+	 @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    tracker.stop();
+	  }
 }

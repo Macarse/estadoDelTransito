@@ -19,6 +19,7 @@ import com.appspot.estadodeltransito.mapoverlays.LineItemizedOverlay;
 import com.appspot.estadodeltransito.mapoverlays.SubwayOverlayItem;
 import com.appspot.estadodeltransito.mapoverlays.SubwaysItemizedOverlay;
 import com.appspot.estadodeltransito.util.IconsUtil;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
@@ -38,6 +39,7 @@ public class MapActivity extends GDMapActivity {
 	private List<SubwaysItemizedOverlay> subwayLinesOverlays;
 	private MapView mapView;
 	protected MapController mapController;
+    private GoogleAnalyticsTracker tracker;
 	
 	@Override
 	protected boolean isRouteDisplayed() {
@@ -47,6 +49,9 @@ public class MapActivity extends GDMapActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+
+	    tracker = GoogleAnalyticsTracker.getInstance();
+        tracker.start(getString(R.string.google_analytics), this);
 
 	    setActionBarContentView(R.layout.map);
 	    
@@ -144,6 +149,11 @@ public class MapActivity extends GDMapActivity {
 		}
 	}
 
+	@Override
+    protected void onStart() {
+        super.onStart();
+        tracker.trackPageView(getString(R.string.map_title));
+    }
 
 	private void addAllLinesOverlays(List<LineItemizedOverlay<? extends OverlayItem>> mapOverlays) {
 		subwayLine = null;
@@ -168,5 +178,10 @@ public class MapActivity extends GDMapActivity {
 		SubwayLine[] lines = gson.fromJson(json, SubwayLine[].class);
 		return lines;
 	}
-	
+
+    @Override
+    protected void onDestroy() {
+      super.onDestroy();
+      tracker.stop();
+    }
 }

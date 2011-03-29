@@ -14,24 +14,36 @@ import com.appspot.estadodeltransito.adapters.HighwayAdapter;
 import com.appspot.estadodeltransito.domain.highway.Highway;
 import com.appspot.estadodeltransito.domain.highway.Highway.Text;
 import com.appspot.estadodeltransito.preferences.Preferences;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class HighwayDetailsActivity extends GDActivity {
     
 	private static final int PREFERENCES_ID = 1;
 	public static final String DETAIL_ACTION = "DETAIL_ACTION";
+    private GoogleAnalyticsTracker tracker;
+    private Highway mHighway;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/* Set the view status */
+
+		tracker = GoogleAnalyticsTracker.getInstance();
+        tracker.start(getString(R.string.google_analytics), this);
+
 		setActionBarContentView(R.layout.highway_detail);
 		addActionBarItem(Type.Settings);
 
 		Intent i = getIntent();
 		if (DETAIL_ACTION.equals(i.getAction())) {
-			Highway item = (Highway) i.getExtras().get("item");
-			fillView(item);
+			mHighway = (Highway) i.getExtras().get("item");
+			fillView(mHighway);
 		}
+	}
+
+	@Override
+	protected void onStart() {
+	    super.onStart();
+	    tracker.trackPageView("Details"+mHighway.getName());
 	}
 
 	@Override
@@ -48,6 +60,13 @@ public class HighwayDetailsActivity extends GDActivity {
 
 	    return super.onHandleActionBarItemClick(item, position);
 	}
+
+    @Override
+    protected void onDestroy() {
+      super.onDestroy();
+      tracker.stop();
+    }
+
 	private void fillView(Highway highway) {
 		ImageView iv;
 		TextView tv;

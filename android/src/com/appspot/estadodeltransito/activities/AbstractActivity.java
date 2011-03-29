@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.admob.android.ads.AdView;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.preferences.Preferences;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public abstract class AbstractActivity extends GDActivity {
 
@@ -31,6 +32,7 @@ public abstract class AbstractActivity extends GDActivity {
     private ListAdapter mAdapter;
     private LoaderActionBarItem mLoader;
     AdView mAd;
+    private GoogleAnalyticsTracker tracker;
 
 	protected abstract BroadcastReceiver getReceiver();
 
@@ -45,6 +47,9 @@ public abstract class AbstractActivity extends GDActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(getString(R.string.google_analytics), this);
 
 		setActionBarContentView(R.layout.list_activity);
 		mLoader = (LoaderActionBarItem) addActionBarItem(Type.Refresh, REFRESH_ID);
@@ -67,11 +72,22 @@ public abstract class AbstractActivity extends GDActivity {
     @Override
     public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
         switch ( item.getItemId() ) {
+
         case SETTINGS_ID:
+            tracker.trackEvent(
+                    "Abstract",  // Category
+                    "ActionBar",  // Action
+                    "settings", // Label
+                    1);
             startActivity(new Intent(this, Preferences.class));
             return true;
 
         case REFRESH_ID:
+            tracker.trackEvent(
+                    "Abstract",  // Category
+                    "ActionBar",  // Action
+                    "refresh", // Label
+                    1);
             startService(getServerIntent());
             return true;
 
@@ -94,6 +110,12 @@ public abstract class AbstractActivity extends GDActivity {
 
     protected Adapter getListAdapter() {
         return mAdapter;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        tracker.trackPageView(getString(getTitleId()));
     }
 
     @Override
@@ -122,4 +144,10 @@ public abstract class AbstractActivity extends GDActivity {
 
 	    mLoader.setLoading(false);
 	}
+
+    @Override
+    protected void onDestroy() {
+      super.onDestroy();
+      tracker.stop();
+    }
 }
