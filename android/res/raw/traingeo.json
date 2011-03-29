@@ -1,4 +1,123 @@
 [
+	{
+        "name": "Belgrano Norte",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Retiro",
+                        "latitude": -34.588471,
+                        "longitude": -58.380246
+                    },
+                    {
+                        "name": "Saldías",
+                        "latitude": -34.5757844,
+                        "longitude": -58.3989698 
+                    },
+                    {
+                        "name": "Raúl Scalabrini Ortiz",
+                        "latitude": -34.548209,
+                        "longitude": -58.438334
+                    },
+                    {
+                        "name": "Aristóbulo del Valle",
+                        "latitude": -34.5366169,
+                        "longitude": -58.4757453 
+                    },
+                    {
+                        "name": "M. M. Padilla",
+                        "latitude": -34.543293,
+                        "longitude": -58.500663 
+                    },
+                    {
+                        "name": "Florida",
+                        "latitude": -34.5368235,
+                        "longitude": -58.5136127
+                    },
+                    {
+                        "name": "Munro",
+                        "latitude": -34.531821,
+                        "longitude": -58.5240519
+                    },
+                    {
+                        "name": "Carapachay",
+                        "latitude": -34.528805,
+                        "longitude": -58.536626 
+                    },
+                    {
+                        "name": "Villa Adelina",
+                        "latitude": -34.523524,
+                        "longitude": -58.546363 
+                    },
+                    {
+                        "name": "Boulogne Sur Mer",
+                        "latitude": -34.5083425,
+                        "longitude": -58.565712 
+                    },
+                    {
+                        "name": "Vicealmirante Montes",
+                        "latitude": -34.5040855,
+                        "longitude": -58.6200482
+                    },
+                    {
+                        "name": "Don torcuato",
+                        "latitude": -34.5026874,
+                        "longitude": -58.6423414 
+                    },
+                    {
+                        "name": "Adolfo Sourdeaux",
+                        "latitude": -34.5031129,
+                        "longitude": -58.6652434
+                    },
+                    {
+                        "name": "Villa de Mayo",
+                        "latitude": -34.503478,
+                        "longitude": -58.679816 
+                    },
+                    {
+                        "name": "Los Polvorines",
+                        "latitude": -34.499831,
+                        "longitude": -58.692342 
+                    },
+                    {
+                        "name": "Pablo Nogués",
+                        "latitude": -34.4946378,
+                        "longitude": -58.7053156
+                    },
+                    {
+                        "name": "Grand Bourg",
+                        "latitude": -34.4852819,
+                        "longitude": -58.7252283
+                    },
+                    {
+                        "name": "Tierras Altas",
+                        "latitude": -34.4790581,
+                        "longitude": -58.7395942 
+                    },
+                    {
+                        "name": "Tortuguitas",
+                        "latitude": -34.4707243,
+                        "longitude": -58.7579191 
+                    },
+                    {
+                        "name": "Manuel Alberti",
+                        "latitude": -34.462512,
+                        "longitude": -58.776175 
+                    },
+                    {
+                        "name": "Del Viso",
+                        "latitude": -34.4536296,
+                        "longitude": -58.7961942 
+                    },
+                    {
+                        "name": "Villa Rosa",
+                        "latitude": -34.4164956,
+                        "longitude": -58.8716877
+                    } 
+                ] 
+            } 
+        ] 
+    },
     {
         "name": "Mitre",
         "segments": [
