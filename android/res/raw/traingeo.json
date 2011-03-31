@@ -1,0 +1,1334 @@
+[
+	{
+        "name": "Belgrano Norte",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Retiro",
+                        "latitude": -34.588471,
+                        "longitude": -58.380246
+                    },
+                    {
+                        "name": "Saldías",
+                        "latitude": -34.5757844,
+                        "longitude": -58.3989698 
+                    },
+                    {
+                        "name": "Raúl Scalabrini Ortiz",
+                        "latitude": -34.548209,
+                        "longitude": -58.438334
+                    },
+                    {
+                        "name": "Aristóbulo del Valle",
+                        "latitude": -34.5366169,
+                        "longitude": -58.4757453 
+                    },
+                    {
+                        "name": "M. M. Padilla",
+                        "latitude": -34.543293,
+                        "longitude": -58.500663 
+                    },
+                    {
+                        "name": "Florida",
+                        "latitude": -34.5368235,
+                        "longitude": -58.5136127
+                    },
+                    {
+                        "name": "Munro",
+                        "latitude": -34.531821,
+                        "longitude": -58.5240519
+                    },
+                    {
+                        "name": "Carapachay",
+                        "latitude": -34.528805,
+                        "longitude": -58.536626 
+                    },
+                    {
+                        "name": "Villa Adelina",
+                        "latitude": -34.523524,
+                        "longitude": -58.546363 
+                    },
+                    {
+                        "name": "Boulogne Sur Mer",
+                        "latitude": -34.5083425,
+                        "longitude": -58.565712 
+                    },
+                    {
+                        "name": "Vicealmirante Montes",
+                        "latitude": -34.5040855,
+                        "longitude": -58.6200482
+                    },
+                    {
+                        "name": "Don torcuato",
+                        "latitude": -34.5026874,
+                        "longitude": -58.6423414 
+                    },
+                    {
+                        "name": "Adolfo Sourdeaux",
+                        "latitude": -34.5031129,
+                        "longitude": -58.6652434
+                    },
+                    {
+                        "name": "Villa de Mayo",
+                        "latitude": -34.503478,
+                        "longitude": -58.679816 
+                    },
+                    {
+                        "name": "Los Polvorines",
+                        "latitude": -34.499831,
+                        "longitude": -58.692342 
+                    },
+                    {
+                        "name": "Pablo Nogués",
+                        "latitude": -34.4946378,
+                        "longitude": -58.7053156
+                    },
+                    {
+                        "name": "Grand Bourg",
+                        "latitude": -34.4852819,
+                        "longitude": -58.7252283
+                    },
+                    {
+                        "name": "Tierras Altas",
+                        "latitude": -34.4790581,
+                        "longitude": -58.7395942 
+                    },
+                    {
+                        "name": "Tortuguitas",
+                        "latitude": -34.4707243,
+                        "longitude": -58.7579191 
+                    },
+                    {
+                        "name": "Manuel Alberti",
+                        "latitude": -34.462512,
+                        "longitude": -58.776175 
+                    },
+                    {
+                        "name": "Del Viso",
+                        "latitude": -34.4536296,
+                        "longitude": -58.7961942 
+                    },
+                    {
+                        "name": "Villa Rosa",
+                        "latitude": -34.4164956,
+                        "longitude": -58.8716877
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "Mitre",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Retiro",
+                        "latitude": -34.591583,
+                        "longitude": -58.374546 
+                    },
+                    {
+                        "name": "Tres de Febrero",
+                        "latitude": -34.571868,
+                        "longitude": -58.425454 
+                    },
+                    {
+                        "name": "Ministro Carranza",
+                        "latitude": -34.575335,
+                        "longitude": -58.433994 
+                    },
+                    {
+                        "name": "Colegiales",
+                        "latitude": -34.573581,
+                        "longitude": -58.446987 
+                    },
+                    {
+                        "name": "Belgrano R",
+                        "latitude": -34.56745,
+                        "longitude": -58.463531 
+                    },
+                    {
+                        "name": "Coghlan",
+                        "latitude": -34.56541,
+                        "longitude": -58.47508 
+                    },
+                    {
+                        "name": "Saavedra",
+                        "latitude": -34.555063,
+                        "longitude": -58.486329 
+                    },
+                    {
+                        "name": "Juan B. Justo",
+                        "latitude": -34.542462,
+                        "longitude": -58.494666 
+                    },
+                    {
+                        "name": "Florida",
+                        "latitude": -34.530387,
+                        "longitude": -58.494422 
+                    },
+                    {
+                        "name": "Dr. Cetrángolo",
+                        "latitude": -34.523073,
+                        "longitude": -58.494135 
+                    },
+                    {
+                        "name": "Bartolome Mitre",
+                        "latitude": -34.51503,
+                        "longitude": -58.489199 
+                    } 
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Belgrano R",
+                        "latitude": -34.56745,
+                        "longitude": -58.463531 
+                    },
+                    {
+                        "name": "Luis M. Drago",
+                        "latitude": -34.568431,
+                        "longitude": -58.479034 
+                    },
+                    {
+                        "name": "Villa Urquiza",
+                        "latitude": -34.573749,
+                        "longitude": -58.486383 
+                    },
+                    {
+                        "name": "Pueyrredón",
+                        "latitude": -34.580472,
+                        "longitude": -58.501704 
+                    },
+                    {
+                        "name": "Miguelete",
+                        "latitude": -34.580913,
+                        "longitude": -58.517239 
+                    },
+                    {
+                        "name": "San Martín",
+                        "latitude": -34.57344,
+                        "longitude": -58.531723 
+                    },
+                    {
+                        "name": "San Andrés",
+                        "latitude": -34.562397,
+                        "longitude": -58.541186 
+                    },
+                    {
+                        "name": "Malaver",
+                        "latitude": -34.557325,
+                        "longitude": -58.547816 
+                    },
+                    {
+                        "name": "Villa Ballester",
+                        "latitude": -34.55068,
+                        "longitude": -58.555584 
+                    },
+                    {
+                        "name": "Chilavert",
+                        "latitude": -34.542356,
+                        "longitude": -58.566527 
+                    },
+                    {
+                        "name": "Jose León Suarez",
+                        "latitude": -34.534632,
+                        "longitude": -58.575969 
+                    } 
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Retiro",
+                        "latitude": -34.591583,
+                        "longitude": -58.374546 
+                    },
+                    {
+                        "name": "Lisandro de la Torre",
+                        "latitude": -34.562494,
+                        "longitude": -58.436751 
+                    },
+                    {
+                        "name": "Belgrano C",
+                        "latitude": -34.558403,
+                        "longitude": -58.449454 
+                    },
+                    {
+                        "name": "Nuñez",
+                        "latitude": -34.548135,
+                        "longitude": -58.46293 
+                    },
+                    {
+                        "name": "Rivadavia",
+                        "latitude": -34.536187,
+                        "longitude": -58.467951 
+                    },
+                    {
+                        "name": "Vicente Lopez",
+                        "latitude": -34.524166,
+                        "longitude": -58.472843 
+                    },
+                    {
+                        "name": "Olivos",
+                        "latitude": -34.507122,
+                        "longitude": -58.48074 
+                    },
+                    {
+                        "name": "La Lucila",
+                        "latitude": -34.497149,
+                        "longitude": -58.488207 
+                    },
+                    {
+                        "name": "Martinez",
+                        "latitude": -34.488625,
+                        "longitude": -58.496361 
+                    },
+                    {
+                        "name": "Acassuso",
+                        "latitude": -34.482045,
+                        "longitude": -58.501725 
+                    },
+                    {
+                        "name": "San Isidro",
+                        "latitude": -34.471892,
+                        "longitude": -58.513656 
+                    },
+                    {
+                        "name": "Beccar",
+                        "latitude": -34.460428,
+                        "longitude": -58.526359 
+                    },
+                    {
+                        "name": "Victoria",
+                        "latitude": -34.455934,
+                        "longitude": -58.540692 
+                    },
+                    {
+                        "name": "Virreyes",
+                        "latitude": -34.450661,
+                        "longitude": -58.55052 
+                    },
+                    {
+                        "name": "San Fernando",
+                        "latitude": -34.444043,
+                        "longitude": -58.55906 
+                    },
+                    {
+                        "name": "Carúpa",
+                        "latitude": -34.434593,
+                        "longitude": -58.56554 
+                    },
+                    {
+                        "name": "Tigre",
+                        "latitude": -34.424399,
+                        "longitude": -58.578286 
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "Sarmiento",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Once",
+                        "latitude": -34.608526,
+                        "longitude": -58.407193 
+                    },
+                    {
+                        "name": "Caballito",
+                        "latitude": -34.619259,
+                        "longitude": -58.443789 
+                    },
+                    {
+                        "name": "Flores",
+                        "latitude": -34.62784,
+                        "longitude": -58.465548 
+                    },
+                    {
+                        "name": "Floresta",
+                        "latitude": -34.632078,
+                        "longitude": -58.480825 
+                    },
+                    {
+                        "name": "Villa Luro",
+                        "latitude": -34.636209,
+                        "longitude": -58.501961 
+                    },
+                    {
+                        "name": "Liniers",
+                        "latitude": -34.638857,
+                        "longitude": -58.526316 
+                    },
+                    {
+                        "name": "Ciudadela",
+                        "latitude": -34.64004,
+                        "longitude": -58.541036 
+                    },
+                    {
+                        "name": "Ramos Mejía",
+                        "latitude": -34.640482,
+                        "longitude": -58.564382 
+                    },
+                    {
+                        "name": "Haedo",
+                        "latitude": -34.644471,
+                        "longitude": -58.591547 
+                    },
+                    {
+                        "name": "Morón",
+                        "latitude": -34.648178,
+                        "longitude": -58.61927 
+                    },
+                    {
+                        "name": "Castelar",
+                        "latitude": -34.652556,
+                        "longitude": -58.642273 
+                    },
+                    {
+                        "name": "Ituzaingo",
+                        "latitude": -34.659616,
+                        "longitude": -58.666134 
+                    },
+                    {
+                        "name": "San Antonio de Padua",
+                        "latitude": -34.665264,
+                        "longitude": -58.699093 
+                    },
+                    {
+                        "name": "Merlo",
+                        "latitude": -34.664699,
+                        "longitude": -58.727589 
+                    },
+                    {
+                        "name": "Paso del Rey",
+                        "latitude": -34.658487,
+                        "longitude": -58.761749 
+                    },
+                    {
+                        "name": "Moreno",
+                        "latitude": -34.650014,
+                        "longitude": -58.78973 
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "Urquiza",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Federico Lacroze",
+                        "latitude": -34.586637,
+                        "longitude": -58.455559 
+                    },
+                    {
+                        "name": "José Artigas",
+                        "latitude": -34.590117,
+                        "longitude": -58.466341 
+                    },
+                    {
+                        "name": "Arata",
+                        "latitude": -34.592378,
+                        "longitude": -58.476105 
+                    },
+                    {
+                        "name": "Francisco Beiró",
+                        "latitude": -34.593115,
+                        "longitude": -58.494433
+                    },
+                    {
+                        "name": "El Libertador",
+                        "latitude": -34.594351,
+                        "longitude": -58.503574
+                    },
+                    {
+                        "name": "Antonio Devoto",
+                        "latitude": -34.59557,
+                        "longitude": -58.510677
+                    },
+                    {
+                        "name": "Villa Lynch",
+                        "latitude": -34.597195,
+                        "longitude": -58.524925
+                    },
+                    {
+                        "name": "F. Moreno",
+                        "latitude": -34.595575,
+                        "longitude": -58.535264 
+                    },
+                    {
+                        "name": "Lourdes",
+                        "latitude": -34.593703,
+                        "longitude": -58.546979 
+                    },
+                    {
+                        "name": "Tropezón",
+                        "latitude": -34.591848,
+                        "longitude": -58.559275 
+                    },
+                    {
+                        "name": "José Maria Bosch",
+                        "latitude": -34.589552,
+                        "longitude": -58.571978 
+                    },
+                    {
+                        "name": "Martín Coronado",
+                        "latitude": -34.589022,
+                        "longitude": -58.59071 
+                    },
+                    {
+                        "name": "Podestá",
+                        "latitude": -34.588298,
+                        "longitude": -58.607533 
+                    },
+                    {
+                        "name": "Jorge Newbery",
+                        "latitude": -34.587737,
+                        "longitude": -58.622966 
+                    },
+                    {
+                        "name": "Rubén Darío",
+                        "latitude": -34.587415,
+                        "longitude": -58.629892 
+                    },
+                    {
+                        "name": "Ejército de los Andes",
+                        "latitude": -34.580118,
+                        "longitude": -58.640519 
+                    },
+                    {
+                        "name": "La Salle",
+                        "latitude": -34.573387,
+                        "longitude": -58.645535 
+                    },
+                    {
+                        "name": "Barrufaldi",
+                        "latitude": -34.562344,
+                        "longitude": -58.66004 
+                    },
+                    {
+                        "name": "Lozano",
+                        "latitude": -34.562344,
+                        "longitude": -58.66004 
+                    },
+                    {
+                        "name": "Agnetta",
+                        "latitude": -34.548701,
+                        "longitude": -58.67888 
+                    },
+                    {
+                        "name": "Campo de Mayo",
+                        "latitude": -34.543717,
+                        "longitude": -58.68566 
+                    },
+                    {
+                        "name": "Sargento Cabral",
+                        "latitude": -34.536894,
+                        "longitude": -58.695359 
+                    },
+                    {
+                        "name": "General Lemos",
+                        "latitude": -34.533147,
+                        "longitude": -58.700509 
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "San Martín",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Retiro",
+                        "latitude": -34.591583,
+                        "longitude": -58.374546 
+                    },
+                    {
+                        "name": "Palermo",
+                        "latitude": -34.578727,
+                        "longitude": -58.426661 
+                    },
+                    {
+                        "name": "Chacarita",
+                        "latitude": -34.592484,
+                        "longitude": -58.446579 
+                    },
+                    {
+                        "name": "La Paternal",
+                        "latitude": -34.596847,
+                        "longitude": -58.466728 
+                    },
+                    {
+                        "name": "Villa del Parque",
+                        "latitude": -34.601493,
+                        "longitude": -58.494151 
+                    },
+                    {
+                        "name": "Devoto",
+                        "latitude": -34.602588,
+                        "longitude": -58.512754 
+                    },
+                    {
+                        "name": "Saenz Peña",
+                        "latitude": -34.603153,
+                        "longitude": -58.527818 
+                    },
+                    {
+                        "name": "Santos Lugares",
+                        "latitude": -34.603753,
+                        "longitude": -58.540993 
+                    },
+                    {
+                        "name": "Caseros",
+                        "latitude": -34.60446,
+                        "longitude": -58.564553 
+                    },
+                    {
+                        "name": "Palomar",
+                        "latitude": -34.60453,
+                        "longitude": -58.596182 
+                    },
+                    {
+                        "name": "Hurlingham",
+                        "latitude": -34.590965,
+                        "longitude": -58.632317 
+                    },
+                    {
+                        "name": "William Morris",
+                        "latitude": -34.579306,
+                        "longitude": -58.655362 
+                    },
+                    {
+                        "name": "Bella Vista",
+                        "latitude": -34.563757,
+                        "longitude": -58.684587 
+                    },
+                    {
+                        "name": "Muñíz",
+                        "latitude": -34.55121,
+                        "longitude": -58.703513 
+                    },
+                    {
+                        "name": "San Miguel",
+                        "latitude": -34.544318,
+                        "longitude": -58.713255 
+                    },
+                    {
+                        "name": "Jose C. Paz",
+                        "latitude": -34.519252,
+                        "longitude": -58.749862 
+                    },
+                    {
+                        "name": "Sol y Verde",
+                        "latitude": -34.504063,
+                        "longitude": -58.79739 
+                    },
+                    {
+                        "name": "Presidente Derqui",
+                        "latitude": -34.490729,
+                        "longitude": -58.839126 
+                    },
+                    {
+                        "name": "Villa Astolfi",
+                        "latitude": -34.478614,
+                        "longitude": -58.876762 
+                    },
+                    {
+                        "name": "Pilar",
+                        "latitude": -34.468495,
+                        "longitude": -58.908348 
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "Belgrano Sur",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Buenos Aires",
+                        "latitude": -34.645636,
+                        "longitude": -58.394158 
+                    },
+                    {
+                        "name": "Dr. A. Saenz",
+                        "latitude": -34.649035,
+                        "longitude": -58.415734 
+                    },
+                    {
+                        "name": "Villa Soldati",
+                        "latitude": -34.659934,
+                        "longitude": -58.443618 
+                    },
+                    {
+                        "name": "Presidente Illia",
+                        "latitude": -34.665935,
+                        "longitude": -58.449883 
+                    },
+                    {
+                        "name": "Villa Lugano",
+                        "latitude": -34.677335,
+                        "longitude": -58.475461 
+                    },
+                    {
+                        "name": "Villa Madero",
+                        "latitude": -34.68397,
+                        "longitude": -58.49237 
+                    },
+                    {
+                        "name": "Marinos del Fournier",
+                        "latitude": -34.690039,
+                        "longitude": -58.507476 
+                    },
+                    {
+                        "name": "Tapiales",
+                        "latitude": -34.702424,
+                        "longitude": -58.511767 
+                    },
+                    {
+                        "name": "Ing. Castello",
+                        "latitude": -34.710521,
+                        "longitude": -58.506188 
+                    },
+                    {
+                        "name": "Querandí",
+                        "latitude": -34.722179,
+                        "longitude": -58.530478 
+                    },
+                    {
+                        "name": "Laferrere",
+                        "latitude": -34.750358,
+                        "longitude": -58.583393 
+                    },
+                    {
+                        "name": "María Eva Duarte",
+                        "latitude": -34.755717,
+                        "longitude": -58.600559 
+                    },
+                    {
+                        "name": "Independencia",
+                        "latitude": -34.759948,
+                        "longitude": -58.616524 
+                    },
+                    {
+                        "name": "Gonzales Catán",
+                        "latitude": -34.771653,
+                        "longitude": -58.646736 
+                    } 
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Tapiales",
+                        "latitude": -34.702424,
+                        "longitude": -58.511767 
+                    },
+                    {
+                        "name": "Aldo Bonzi",
+                        "latitude": -34.710781,
+                        "longitude": -58.514396 
+                    },
+                    {
+                        "name": "Sanchez de Mendeville",
+                        "latitude": -34.712355,
+                        "longitude": -58.524492 
+                    },
+                    {
+                        "name": "José Ingenieros",
+                        "latitude": -34.71075,
+                        "longitude": -58.537195 
+                    },
+                    {
+                        "name": "Justo Villegas",
+                        "latitude": -34.708916,
+                        "longitude": -58.551807 
+                    },
+                    {
+                        "name": "Isidro Casanova",
+                        "latitude": -34.704488,
+                        "longitude": -58.587449 
+                    },
+                    {
+                        "name": "Rafael Castillo",
+                        "latitude": -34.699531,
+                        "longitude": -58.62618 
+                    },
+                    {
+                        "name": "Merlo Gómez",
+                        "latitude": -34.697026,
+                        "longitude": -58.647466 
+                    },
+                    {
+                        "name": "Libertad",
+                        "latitude": -34.691945,
+                        "longitude": -58.68639 
+                    },
+                    {
+                        "name": "Marinos del Crucero General Belgrano",
+                        "latitude": -34.708739,
+                        "longitude": -58.730764 
+                    } 
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Aldo Bonzi",
+                        "latitude": -34.710781,
+                        "longitude": -58.514396 
+                    },
+                    {
+                        "name": "KM 12",
+                        "latitude": -34.709974,
+                        "longitude": -58.505952 
+                    },
+                    {
+                        "name": "La salada",
+                        "latitude": -34.717946,
+                        "longitude": -58.479753 
+                    },
+                    {
+                        "name": "Ingeniero Budge",
+                        "latitude": -34.719181,
+                        "longitude": -58.462973 
+                    },
+                    {
+                        "name": "Villa Fiorito",
+                        "latitude": -34.705317,
+                        "longitude": -58.440957 
+                    },
+                    {
+                        "name": "Puente Alsina",
+                        "latitude": -34.661099,
+                        "longitude": -58.415616 
+                    } 
+                ] 
+            } 
+        ] 
+    },
+    {
+        "name": "Gral Roca",
+        "segments": [
+            {
+                "stations": [
+                    {
+                        "name": "Constitución",
+                        "latitude": -34.630177,
+                        "longitude": -58.37989 
+                    },
+                    {
+                        "name": "Hipólito Yrigoyen",
+                        "latitude": -34.650819,
+                        "longitude": -58.37863 
+                    },
+                    {
+                        "name": "Avellaneda",
+                        "latitude": -34.661811,
+                        "longitude": -58.376597 
+                    },
+                    {
+                        "name": "Gerli",
+                        "latitude": -34.685184,
+                        "longitude": -58.382573 
+                    },
+                    {
+                        "name": "Lanús",
+                        "latitude": -34.707246,
+                        "longitude": -58.390705 
+                    },
+                    {
+                        "name": "Remedios de Escalada",
+                        "latitude": -34.727273,
+                        "longitude": -58.393722
+                    },
+                    {
+                        "name": "Banfield",
+                        "latitude": -34.743223,
+                        "longitude": -58.395404 
+                    },
+                    {
+                        "name": "Lomas de Zamora",
+                        "latitude": -34.760933,
+                        "longitude": -58.397378 
+                    },
+                    {
+                        "name": "Temperley",
+                        "latitude": -34.776052,
+                        "longitude": -58.396253 
+                    },
+                    {
+                        "name": "Turdera",
+                        "latitude": -34.794972,
+                        "longitude": -58.407929 
+                    },
+                    {
+                        "name": "Llavallol",
+                        "latitude": -34.795247,
+                        "longitude": -58.430114 
+                    },
+                    {
+                        "name": "Luis Guillón",
+                        "latitude": -34.802436,
+                        "longitude": -58.449168 
+                    },
+                    {
+                        "name": "Monte Grande",
+                        "latitude": -34.812937,
+                        "longitude": -58.469167 
+                    },
+                    {
+                        "name": "El Jagüel",
+                        "latitude": -34.830108,
+                        "longitude": -58.495874 
+                    },
+                    {
+                        "name": "Ezeiza",
+                        "latitude": -34.85458,
+                        "longitude": -58.522511
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Adrogué",
+                        "latitude": -34.796445,
+                        "longitude": -58.394494 
+                    },
+                    {
+                        "name": "Burzaco",
+                        "latitude": -34.821371,
+                        "longitude": -58.389959 
+                    },
+                    {
+                        "name": "Longchamps",
+                        "latitude": -34.861556,
+                        "longitude": -58.387105
+                    },
+                    {
+                        "name": "Glew",
+                        "latitude": -34.877313,
+                        "longitude": -58.381462 
+                    },
+                    {
+                        "name": "Guernica",
+                        "latitude": -34.917175,
+                        "longitude": -58.380454
+                    },
+                    {
+                        "name": "Alejandro Korn",
+                        "latitude": -34.980128,
+                        "longitude": -58.373863
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Constitución",
+                        "latitude": -34.630177,
+                        "longitude": -58.37989 
+                    },
+                    {
+                        "name": "Avellaneda",
+                        "latitude": -34.661811,
+                        "longitude": -58.376597 
+                    },
+                    {
+                        "name": "Lanús",
+                        "latitude": -34.707246,
+                        "longitude": -58.390705 
+                    },
+                    {
+                        "name": "Banfield",
+                        "latitude": -34.743223,
+                        "longitude": -58.395404 
+                    },
+                    {
+                        "name": "Lomas de Zamora",
+                        "latitude": -34.760933,
+                        "longitude": -58.397378 
+                    },
+                    {
+                        "name": "Temperley",
+                        "latitude": -34.776052,
+                        "longitude": -58.396253 
+                    },
+                    {
+                        "name": "José Marmol",
+                        "latitude": -34.789657,
+                        "longitude": -58.380003
+                    },
+                    {
+                        "name": "Rafael Calzada",
+                        "latitude": -34.796068,
+                        "longitude": -58.359125 
+                    },
+                    {
+                        "name": "Claypole",
+                        "latitude": -34.800508,
+                        "longitude": -58.338053
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Constitución",
+                        "latitude": -34.630177,
+                        "longitude": -58.37989 
+                    },
+                    {
+                        "name": "Temperley",
+                        "latitude": -34.776052,
+                        "longitude": -58.396253 
+                    },
+                    {
+                        "name": "José Marmol",
+                        "latitude": -34.789657,
+                        "longitude": -58.380003
+                    },
+                    {
+                        "name": "Rafael Calzada",
+                        "latitude": -34.796068,
+                        "longitude": -58.359125 
+                    },
+                    {
+                        "name": "Claypole",
+                        "latitude": -34.800508,
+                        "longitude": -58.338053
+                    },
+                    {
+                        "name": "Ing. Ardigó",
+                        "latitude": -34.784145,
+                        "longitude": -58.303299 
+                    },
+                    {
+                        "name": "Florencio Varela",
+                        "latitude": -34.81041,
+                        "longitude": -58.273852
+                    },
+                    {
+                        "name": "Zeballos",
+                        "latitude": -34.81034,
+                        "longitude": -58.256557
+                    },
+                    {
+                        "name": "Bosques",
+                        "latitude": -34.818796,
+                        "longitude": -58.230121
+                    },
+                    {
+                        "name": "Santa Sofía",
+                        "latitude": -34.796551,
+                        "longitude": -58.212662
+                    },
+                    {
+                        "name": "J.M. Gutiérrez",
+                        "latitude": -34.833809,
+                        "longitude": -58.18555
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Constitución",
+                        "latitude": -34.630177,
+                        "longitude": -58.37989 
+                    },
+                    {
+                        "name": "Avellaneda",
+                        "latitude": -34.661811,
+                        "longitude": -58.376597 
+                    },
+                    {
+                        "name": "Sarandí",
+                        "latitude": -34.67581,
+                        "longitude": -58.344641
+                    },
+                    {
+                        "name": "Villa Domínico",
+                        "latitude": -34.689383,
+                        "longitude": -58.3254
+                    },
+                    {
+                        "name": "Wilde",
+                        "latitude": -34.696017,
+                        "longitude": -58.310809
+                    },
+                    {
+                        "name": "Don Bosco",
+                        "latitude": -34.702625,
+                        "longitude": -58.295996
+                    },
+                    {
+                        "name": "Bernal",
+                        "latitude": -34.708083,
+                        "longitude": -58.280082
+                    },
+                    {
+                        "name": "Quilmes",
+                        "latitude": -34.723957,
+                        "longitude": -58.260427
+                    },
+                    {
+                        "name": "Ezpeleta",
+                        "latitude": -34.751551,
+                        "longitude": -58.234152
+                    },
+                    {
+                        "name": "Berazategui",
+                        "latitude": -34.762113,
+                        "longitude": -58.208671
+                    },
+                    {
+                        "name": "Plátanos",
+                        "latitude": -34.781618,
+                        "longitude": -58.170598
+                    },
+                    {
+                        "name": "Hudson",
+                        "latitude": -34.788389,
+                        "longitude": -58.15547
+                    },
+                    {
+                        "name": "Pereyra",
+                        "latitude": -34.835705,
+                        "longitude": -58.09438
+                    },
+                    {
+                        "name": "Villa Elisa",
+                        "latitude": -34.847811,
+                        "longitude": -58.074861
+                    },
+                    {
+                        "name": "City Bell",
+                        "latitude": -34.862088,
+                        "longitude": -58.04183
+                    },
+                    {
+                        "name": "Gonnet",
+                        "latitude": -34.879501,
+                        "longitude": -58.010434
+                    },
+                    {
+                        "name": "Ringuelet",
+                        "latitude": -34.88064,
+                        "longitude": -57.995889
+                    },
+                    {
+                        "name": "Tolosa",
+                        "latitude": -34.890391,
+                        "longitude": -57.967951
+                    },
+                    {
+                        "name": "La Plata",
+                        "latitude": -34.902102,
+                        "longitude": -57.950664
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Constitución",
+                        "latitude": -34.630177,
+                        "longitude": -58.37989 
+                    },
+                    {
+                        "name": "Avellaneda",
+                        "latitude": -34.661811,
+                        "longitude": -58.376597 
+                    },
+                    {
+                        "name": "Sarandí",
+                        "latitude": -34.67581,
+                        "longitude": -58.344641
+                    },
+                    {
+                        "name": "Villa Domínico",
+                        "latitude": -34.689383,
+                        "longitude": -58.3254
+                    },
+                    {
+                        "name": "Wilde",
+                        "latitude": -34.696017,
+                        "longitude": -58.310809
+                    },
+                    {
+                        "name": "Don Bosco",
+                        "latitude": -34.702625,
+                        "longitude": -58.295996
+                    },
+                    {
+                        "name": "Bernal",
+                        "latitude": -34.708083,
+                        "longitude": -58.280082
+                    },
+                    {
+                        "name": "Quilmes",
+                        "latitude": -34.723957,
+                        "longitude": -58.260427
+                    },
+                    {
+                        "name": "Ezpeleta",
+                        "latitude": -34.751551,
+                        "longitude": -58.234152
+                    },
+                    {
+                        "name": "Berazategui",
+                        "latitude": -34.762113,
+                        "longitude": -58.208671
+                    },
+                    {
+                        "name": "Villa España",
+                        "latitude": -34.77351,
+                        "longitude": -58.194544
+                    },
+                    {
+                        "name": "Ranelagh",
+                        "latitude": -34.781297,
+                        "longitude": -58.201504
+                    },
+                    {
+                        "name": "Sourigues",
+                        "latitude": -34.783017,
+                        "longitude": -58.209915
+                    },
+                    {
+                        "name": "Bosques",
+                        "latitude": -34.818796,
+                        "longitude": -58.230121
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Ezeiza",
+                        "latitude": -34.85458,
+                        "longitude": -58.522511
+                    },
+                    {
+                        "name": "Unión Ferroviaria",
+                        "latitude": -34.850664,
+                        "longitude": -58.542252 
+                    },
+                    {
+                        "name": "Tristán Suárez",
+                        "latitude": -34.88774,
+                        "longitude": -58.567872
+                    },
+                    {
+                        "name": "Carlos Spegazzini",
+                        "latitude": -34.887846,
+                        "longitude": -58.594437
+                    },
+                    {
+                        "name": "Máximo Paz",
+                        "latitude": -34.936139,
+                        "longitude": -58.620624
+                    },
+                    {
+                        "name": "Vicente Casares",
+                        "latitude": -34.919043,
+                        "longitude": -58.645477
+                    },
+                    {
+                        "name": "Alejandro Petión",
+                        "latitude": -34.976518,
+                        "longitude": -58.674037
+                    },
+                    {
+                        "name": "Kloosterman",
+                        "latitude": -34.96216,
+                        "longitude": -58.686447
+                    },
+                    {
+                        "name": "Ricardo Levene",
+                        "latitude": -34.997829,
+                        "longitude": -58.722382
+                    },
+                    {
+                        "name": "Cañuelas",
+                        "latitude": -35.058083,
+                        "longitude": -58.754125
+                    }
+                ] 
+            },
+            {
+                "stations": [
+                    {
+                        "name": "Temperley",
+                        "latitude": -34.776052,
+                        "longitude": -58.396253 
+                    },
+                    {
+                        "name": "Hospital Español",
+                        "latitude": -34.760456,
+                        "longitude": -58.404923
+                    },
+                    {
+                        "name": "Santa Catalina",
+                        "latitude": -34.767958,
+                        "longitude": -58.435707
+                    },
+                    {
+                        "name": "Juan XXIII",
+                        "latitude": -34.77096,
+                        "longitude": -58.444072
+                    },
+                    {
+                        "name": "Kilómetro 34",
+                        "latitude": -34.679512,
+                        "longitude": -58.760211
+                    },
+                    {
+                        "name": "Int. Pedro Turner",
+                        "latitude": -34.720564,
+                        "longitude": -58.474846
+                    },
+                    {
+                        "name": "Agustín De Elía",
+                        "latitude": -34.697985,
+                        "longitude": -58.503685
+                    },
+                    {
+                        "name": "San Justo",
+                        "latitude": -34.671152,
+                        "longitude": -58.554754
+                    },
+                    {
+                        "name": "Tablada",
+                        "latitude": -34.691288,
+                        "longitude": -58.528476
+                    },
+                    {
+                        "name": "Ingeniero S. Brian",
+                        "latitude": -34.631739,
+                        "longitude": -58.573837
+                    },
+                    {
+                        "name": "Haedo",
+                        "latitude": -34.642508,
+                        "longitude": -58.59139
+                    }
+                ] 
+            }
+        ] 
+    }
+]

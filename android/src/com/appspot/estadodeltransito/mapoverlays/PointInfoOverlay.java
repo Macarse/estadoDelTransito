@@ -9,12 +9,12 @@ import com.appspot.estadodeltransito.util.GeoPointUtils;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 
-public class DefaultOverlay extends com.google.android.maps.Overlay {
+public class PointInfoOverlay extends com.google.android.maps.Overlay {
 
 	private static final String TAG = "DefaultOverlay";
 	private Context mContext;
 	
-	public DefaultOverlay(Context context) {
+	public PointInfoOverlay(Context context) {
 		mContext = context;
 	}
 	

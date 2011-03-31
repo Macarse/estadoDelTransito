@@ -59,7 +59,7 @@ public class MenuActivity extends GDActivity {
         setTitle(R.string.app_name);
         addActionBarItem(Type.Locate, MAP_ID);
         addActionBarItem(Type.Settings, SETTINGS_ID);
-//
+
         mSubways = (Button) findViewById(R.id.menu_subways_button);
         mSubways.setOnClickListener(new OnClickListener() {
 			

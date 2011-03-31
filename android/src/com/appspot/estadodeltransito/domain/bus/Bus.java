@@ -23,6 +23,11 @@ public class Bus implements Serializable, IPublicTransportService {
 	public String toString() {
 		return "Bus [name=" + name + "]";
 	}
+
+	@Override
+	public String getShareMsg() {
+		return toString();
+	}
 	
 	
 }

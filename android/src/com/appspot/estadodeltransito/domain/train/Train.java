@@ -1,12 +1,10 @@
 package com.appspot.estadodeltransito.domain.train;
 
-import java.io.Serializable;
+import com.appspot.estadodeltransito.domain.IPublicTransportLineService;
+import com.appspot.estadodeltransito.domain.TransportLine;
+import com.google.gson.Gson;
 
-import com.appspot.estadodeltransito.domain.IPublicTransportService;
-
-
-
-public class Train implements Serializable, IPublicTransportService {
+public class Train implements IPublicTransportLineService {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -45,5 +43,15 @@ public class Train implements Serializable, IPublicTransportService {
 
 	public String getShareMsg() {
 		return String.format("%s - %s: (%s)", name, line, status);
+	}
+
+	public static TransportLine[] fromJson(String json) {
+		Gson gson = new Gson();
+		return gson.fromJson(json, TransportLine[].class);
+	}
+
+	@Override
+	public String getLineName() {
+		return getLine();
 	}
 }

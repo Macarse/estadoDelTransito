@@ -9,7 +9,6 @@ import android.content.IntentFilter;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -19,13 +18,18 @@ import com.appspot.estadodeltransito.adapters.TrainAdapter;
 import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.service.StatusService;
 import com.appspot.estadodeltransito.service.asyncTasks.TrainsAsyncTask;
+import com.appspot.estadodeltransito.util.IconsUtil;
 
-public class TrainsActivity extends AbstractActivity {
+public class TrainsActivity extends AbstractActivityWithMap<Train> {
 
 	private static final int CONTEXT_MENU_SHARE = 1;
 
 	private static final String TAG = TrainsActivity.class.getCanonicalName();
 
+	public TrainsActivity() {
+		super(TAG);
+	}
+	
 	@Override
 	protected BroadcastReceiver getReceiver() {
 		return new TrainUpdateReceiver();
@@ -71,43 +75,27 @@ public class TrainsActivity extends AbstractActivity {
 
 		Train train = (Train) getListAdapter().getItem(info.position);
 
-		String title = String.format(getString(R.string.context_menu_share_title_fmt), train.getName());
+		String title = String.format(getString(R.string.context_menu_share_title_fmt), train.getLine());
 		menu.setHeaderTitle(title);
-		menu.setHeaderIcon(TrainAdapter.getIcon(train));
+		menu.setHeaderIcon(IconsUtil.getTrainIcon(train.getLine()));
 		
 		menu.add(0, CONTEXT_MENU_SHARE, 0, R.string.context_menu_share);
-	}
-
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		AdapterView.AdapterContextMenuInfo info;
-		
-		try {
-		    info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-		} catch (ClassCastException e) {
-		    Log.e(TAG, "bad menuInfo", e);
-		    return false;
-		}
-
-		Intent i;
-		switch (item.getItemId()) {
-
-		case CONTEXT_MENU_SHARE:
-			Train train = (Train) getListAdapter().getItem(info.position);
-			i = new Intent(android.content.Intent.ACTION_SEND);
-			i.setType("text/plain");
-			i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
-			i.putExtra(Intent.EXTRA_TEXT, train.getShareMsg());
-			startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
-			return true;
-		}
-
-		return false;
+		menu.add(0, CONTEXT_MENU_MAP, 0, R.string.context_menu_map);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected ListAdapter getAdapter(Object items) {
 		return new TrainAdapter(this, (ArrayList<Train>) items);
+	}
+
+	@Override
+	protected String getMapAction() {
+		return MapActivity.SHOW_TRAINS_ACTION;
+	}
+
+	@Override
+	protected String getEachMapAction() {
+		return MapActivity.SHOW_TRAIN_ACTION;
 	}
 }
