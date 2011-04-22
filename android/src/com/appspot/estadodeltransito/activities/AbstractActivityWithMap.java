@@ -27,7 +27,8 @@ abstract public class AbstractActivityWithMap<IPTL extends IPublicTransportLineS
 	    super.onCreate(savedInstanceState);
 	    addActionBarItem(Type.Locate, MAP_ID);
 	}
-	
+
+	@Deprecated
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {

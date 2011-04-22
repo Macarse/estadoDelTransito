@@ -1,16 +1,24 @@
 package com.appspot.estadodeltransito.activities;
 
+import greendroid.widget.QuickAction;
+import greendroid.widget.QuickActionBar;
+import greendroid.widget.QuickActionWidget;
+import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
+
 import java.util.ArrayList;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 
 import com.appspot.estadodeltransito.R;
@@ -18,16 +26,25 @@ import com.appspot.estadodeltransito.adapters.SubwayAdapter;
 import com.appspot.estadodeltransito.domain.subway.Subway;
 import com.appspot.estadodeltransito.service.StatusService;
 import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
-import com.appspot.estadodeltransito.util.IconsUtil;
 
 public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
 
+    private static final String TAG = SubwaysActivity.class.getCanonicalName();
 	public static final int NOTIFICATION_ID = 100;
+	private static final int QA_SHARE_POS = 0;
+	private static final int QA_MAP_POS = 1;
 
-	private static final String TAG = SubwaysActivity.class.getCanonicalName();
+	private Subway mLastSubway;
+	private QuickActionWidget mBar;
 
 	public SubwaysActivity() {
 		super(TAG);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    prepareQuickActionBar();
 	}
 
 	@Override
@@ -61,28 +78,6 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
 		}
 	}
 
-	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		super.onCreateContextMenu(menu, v, menuInfo);
-		AdapterView.AdapterContextMenuInfo info;
-		try {
-		    info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-		} catch (ClassCastException e) {
-		    Log.e(TAG, "bad menuInfo", e);
-		    return;
-		}
-
-		Subway subway = (Subway) getListAdapter().getItem(info.position);
-
-		String title = String.format(getString(R.string.context_menu_share_title_fmt), subway.getLetter());
-		menu.setHeaderTitle(title);
-		menu.setHeaderIcon(IconsUtil.getSubwayIcon(subway.getName()));
-		
-		menu.add(0, CONTEXT_MENU_SHARE, 0, R.string.context_menu_share);
-		menu.add(0, CONTEXT_MENU_MAP, 0, R.string.context_menu_map);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	protected ListAdapter getAdapter(Object items) {
@@ -98,4 +93,51 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
 	protected String getEachMapAction() {
 		return MapActivity.SHOW_SUBWAY_ACTION;
 	}
+
+    private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
+        public void onQuickActionClicked(QuickActionWidget widget, int position) {
+
+            Intent i = new Intent();
+
+            switch (position) {
+
+            case QA_SHARE_POS:
+                i = new Intent(android.content.Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
+                i.putExtra(Intent.EXTRA_TEXT, mLastSubway.getShareMsg());
+                startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
+                break;
+
+            case QA_MAP_POS:
+                i = new Intent(SubwaysActivity.this, MapActivity.class);
+                i.setAction(getEachMapAction());
+                i.putExtra("line", mLastSubway);
+                startActivity(i);
+                break;
+            }
+        }
+    };
+
+    private void prepareQuickActionBar() {
+        mBar = new QuickActionBar(this);
+        mBar.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_share, R.string.context_menu_share));
+        mBar.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_locate, R.string.context_menu_map));
+
+        mBar.setOnQuickActionClickListener(mActionListener);
+    }
+
+    @Override
+    protected OnItemClickListener getOnItemClickListener() {
+        return new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+
+                mLastSubway = (Subway) getListAdapter().getItem(position);
+                mBar.show(view);
+            }
+        };
+    }
 }

@@ -2,14 +2,21 @@ package com.appspot.estadodeltransito.activities;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBarItem;
+import greendroid.widget.QuickAction;
 import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.LoaderActionBarItem;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -58,7 +65,8 @@ public abstract class AbstractActivity extends GDActivity {
 
 		mAd = (AdView) findViewById(R.id.ad);
 		mListView = (ListView) findViewById(R.id.listview);
-		registerForContextMenu(getListView());
+		
+		mListView.setOnItemClickListener(getOnItemClickListener());
 
 		/* instantiate the filter and the receiver */
 		mFilter = getIntentFilter();
@@ -68,6 +76,8 @@ public abstract class AbstractActivity extends GDActivity {
 		mLoader.setLoading(true);
 		startService(getServerIntent());
 	}
+
+    protected abstract OnItemClickListener getOnItemClickListener();
 
     @Override
     public boolean onHandleActionBarItemClick(ActionBarItem item, int position) {
@@ -96,11 +106,6 @@ public abstract class AbstractActivity extends GDActivity {
         }
         
         return super.onHandleActionBarItemClick(item, position);
-    }
-
-
-	private View getListView() {
-	    return mListView;
     }
 
     private void setListAdapter(ListAdapter adapter) {
@@ -149,5 +154,21 @@ public abstract class AbstractActivity extends GDActivity {
     protected void onDestroy() {
       super.onDestroy();
       tracker.stop();
+    }
+
+    protected static class MyQuickAction extends QuickAction {
+        
+        private static final ColorFilter BLACK_CF = new LightingColorFilter(Color.BLACK, Color.BLACK);
+
+        public MyQuickAction(Context ctx, int drawableId, int titleId) {
+            super(ctx, buildDrawable(ctx, drawableId), titleId);
+        }
+
+        private static Drawable buildDrawable(Context ctx, int drawableId) {
+            Drawable d = ctx.getResources().getDrawable(drawableId);
+            d.setColorFilter(BLACK_CF);
+            return d;
+        }
+
     }
 }

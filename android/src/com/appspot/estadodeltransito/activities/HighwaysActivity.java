@@ -1,17 +1,19 @@
 package com.appspot.estadodeltransito.activities;
 
+import greendroid.widget.QuickActionBar;
+import greendroid.widget.QuickActionWidget;
+import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
+
 import java.util.ArrayList;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 
 import com.appspot.estadodeltransito.R;
@@ -22,11 +24,21 @@ import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 
 public class HighwaysActivity extends AbstractActivity {
 
-	private static final int CONTEXT_MENU_SHARE = 1;
-	private static final int CONTEXT_MENU_DETAILS = 2;
+    private static final String TAG = HighwaysActivity.class.getCanonicalName();
+
+    private static final int QA_SHARE_POS = 0;
+    private static final int QA_DETAILS_POS = 1;
+
 	public static final int NOTIFICATION_ID = 101;
 
-	private static final String TAG = HighwaysActivity.class.getCanonicalName();
+	private Highway mLastHighway;
+	private QuickActionWidget mBar;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    prepareQuickActionBar();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -61,66 +73,58 @@ public class HighwaysActivity extends AbstractActivity {
 	}
 
 	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		super.onCreateContextMenu(menu, v, menuInfo);
-		AdapterView.AdapterContextMenuInfo info;
-		try {
-			info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-		} catch (ClassCastException e) {
-			Log.e(TAG, "bad menuInfo", e);
-			return;
-		}
-
-		Highway highway = (Highway) getListAdapter().getItem(info.position);
-
-		menu.setHeaderTitle(highway.getName());
-		menu.setHeaderIcon(HighwayAdapter.getIcon(highway.getName()));
-
-		menu.add(0, CONTEXT_MENU_SHARE, 0, R.string.context_menu_share);
-
-		if (HighwayAdapter.shouldShowDetails(highway) ) {
-			menu.add(0, CONTEXT_MENU_DETAILS, 0, R.string.details);
-		}
-	}
-
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		AdapterView.AdapterContextMenuInfo info;
-
-		try {
-			info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-		} catch (ClassCastException e) {
-			Log.e(TAG, "bad menuInfo", e);
-			return false;
-		}
-
-		Intent i;
-		Highway highway;
-		switch (item.getItemId()) {
-
-		case CONTEXT_MENU_SHARE:
-			highway = (Highway) getListAdapter().getItem(info.position);
-			i = new Intent(android.content.Intent.ACTION_SEND);
-			i.setType("text/plain");
-			i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
-			i.putExtra(Intent.EXTRA_TEXT, highway.getShareMsg());
-			startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
-			return true;
-
-		case CONTEXT_MENU_DETAILS:
-			highway = (Highway) getListAdapter().getItem(info.position);
-			i = new Intent(this, HighwayDetailsActivity.class);
-			i.setAction(HighwayDetailsActivity.DETAIL_ACTION);
-			i.putExtra("item", highway);
-			startActivity(i);
-		}
-
-		return false;
-	}
-
-	@Override
 	protected int getTitleId() {
 	    return R.string.menu_highways;
 	}
+
+    private void prepareQuickActionBar() {
+        mBar = new QuickActionBar(this);
+        mBar.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_share, R.string.context_menu_share));
+
+        if (HighwayAdapter.shouldShowDetails(mLastHighway) ) {
+            mBar.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_info, R.string.details));
+        }
+
+        mBar.setOnQuickActionClickListener(mActionListener);
+    }
+
+    private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
+        public void onQuickActionClicked(QuickActionWidget widget, int position) {
+
+            Intent i = new Intent();
+
+            switch (position) {
+
+            case QA_SHARE_POS:
+                i = new Intent(android.content.Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
+                i.putExtra(Intent.EXTRA_TEXT, mLastHighway.getShareMsg());
+                startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
+                break;
+
+            case QA_DETAILS_POS:
+                i = new Intent(HighwaysActivity.this, HighwayDetailsActivity.class);
+                i.setAction(HighwayDetailsActivity.DETAIL_ACTION);
+                i.putExtra("item", mLastHighway);
+                startActivity(i);
+                break;
+            }
+        }
+    };
+
+    @Override
+    protected OnItemClickListener getOnItemClickListener() {
+        return new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                    int position, long id) {
+
+                mLastHighway = (Highway) getListAdapter().getItem(position);
+                prepareQuickActionBar();
+                mBar.show(view);
+            }
+        };
+    }
 }

@@ -102,8 +102,9 @@ public class HighwayAdapter extends ArrayAdapter<Highway> {
 	}
 
 	public static final boolean shouldShowDetails(Highway highway) {
-		if (highway.getStatusMessageFrom() == null
-				&& highway.getStatusMessageTo() == null)
+		if (highway == null ||
+		    (highway.getStatusMessageFrom() == null &&
+		            highway.getStatusMessageTo() == null) )
 			return false;
 
 		return true;
