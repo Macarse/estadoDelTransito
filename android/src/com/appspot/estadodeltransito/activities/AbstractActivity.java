@@ -2,9 +2,9 @@ package com.appspot.estadodeltransito.activities;
 
 import greendroid.app.GDActivity;
 import greendroid.widget.ActionBarItem;
-import greendroid.widget.QuickAction;
 import greendroid.widget.ActionBarItem.Type;
 import greendroid.widget.LoaderActionBarItem;
+import greendroid.widget.QuickAction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,11 @@ import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.Adapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
@@ -65,8 +70,23 @@ public abstract class AbstractActivity extends GDActivity {
 
 		mAd = (AdView) findViewById(R.id.ad);
 		mListView = (ListView) findViewById(R.id.listview);
-		
 		mListView.setOnItemClickListener(getOnItemClickListener());
+
+		AnimationSet set = new AnimationSet(true);
+
+        Animation animation = new AlphaAnimation(0.0f, 1.0f);
+        animation.setDuration(50);
+        set.addAnimation(animation);
+
+        animation = new TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0.0f,Animation.RELATIVE_TO_SELF, 0.0f,
+            Animation.RELATIVE_TO_SELF, -1.0f,Animation.RELATIVE_TO_SELF, 0.0f
+        );
+        animation.setDuration(100);
+        set.addAnimation(animation);
+
+        LayoutAnimationController controller = new LayoutAnimationController(set, 0.5f);
+        mListView.setLayoutAnimation(controller);
 
 		/* instantiate the filter and the receiver */
 		mFilter = getIntentFilter();

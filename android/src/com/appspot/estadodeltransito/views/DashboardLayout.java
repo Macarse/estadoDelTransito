@@ -3,7 +3,6 @@ package com.appspot.estadodeltransito.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 
 public class DashboardLayout extends ViewGroup {

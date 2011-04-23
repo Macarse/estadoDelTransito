@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito"
+    xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/white"
-    >
+    android:background="@android:color/white">
 
-	<ListView android:id="@+id/listview"
-		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"
+    <ListView android:id="@+id/listview"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
         android:layout_weight="1"
         android:headerDividersEnabled="false"
         android:footerDividersEnabled="true"
         android:divider="@drawable/list_divider"
         android:dividerHeight="1dip"
-        android:cacheColorHint="#FFFFFF"
-    />
+        android:cacheColorHint="#FFFFFF"/>
 
-	<com.admob.android.ads.AdView
-      android:id="@+id/ad"
-      android:visibility="invisible"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      myapp:backgroundColor="#FFFFFF"
-      myapp:primaryTextColor="#000000"
-      myapp:secondaryTextColor="#CCCCCC"/>
+    <com.admob.android.ads.AdView
+        android:id="@+id/ad"
+        android:visibility="invisible"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        myapp:backgroundColor="#FFFFFF"
+        myapp:primaryTextColor="#000000"
+        myapp:secondaryTextColor="#CCCCCC"/>
 </LinearLayout>
