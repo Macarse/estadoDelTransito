@@ -28,6 +28,7 @@ public class HighwayDetailsActivity extends GDActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setActionBarContentView(R.layout.highway_detail);
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start(getString(R.string.google_analytics), 20, this);
 
@@ -37,7 +38,6 @@ public class HighwayDetailsActivity extends GDActivity {
             fillView(mHighway);
         }
 
-        setActionBarContentView(R.layout.highway_detail);
         addActionBarItem(Type.Share, SHARE_ID);
         addActionBarItem(Type.Settings, PREFERENCES_ID);
 
@@ -61,7 +61,7 @@ public class HighwayDetailsActivity extends GDActivity {
             Intent i = new Intent(android.content.Intent.ACTION_SEND);
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.context_menu_share_subject));
-            i.putExtra(Intent.EXTRA_TEXT, mHighway.getShareMsg());
+            i.putExtra(Intent.EXTRA_TEXT, mHighway.getCompleteShareMsg());
             startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
             return true;
 

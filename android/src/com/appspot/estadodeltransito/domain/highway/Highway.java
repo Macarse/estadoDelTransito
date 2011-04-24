@@ -141,6 +141,30 @@ public class Highway implements Serializable {
 		return sb.toString();
 	}
 
+    public String getCompleteShareMsg() {
+        StringBuffer sb = new StringBuffer(name.trim());
+        sb.append(".\n");
+
+        if ( directionFrom != null ) {
+            sb.append(directionFrom.trim());
+            sb.append(": ");
+            sb.append(statusFrom.trim());
+            sb.append(".\n");
+            sb.append(statusMessageFrom.getValue().trim());
+            sb.append("\n\n");
+        }
+
+        if ( directionTo != null ) {
+            sb.append(directionTo.trim());
+            sb.append(": ");
+            sb.append(statusTo.trim());
+            sb.append(".\n");
+            sb.append(statusMessageTo.getValue().trim());
+        }
+
+        return sb.toString();
+    }
+
 	public static class Text implements Serializable {
 		private static final long serialVersionUID = 1L;
 		private String value;
