@@ -13,7 +13,7 @@
 		android:text="@string/menu_avenues"
 		android:textSize="22sp"
 		android:drawableTop="@drawable/ic_menu_avenues"
-		android:background="@null" />
+		android:background="@drawable/menu_selector"/>
 
 	<Button android:id="@+id/menu_highways_button"
 	    android:layout_width="wrap_content"
@@ -21,22 +21,22 @@
 		android:text="@string/menu_highways"
 		android:textSize="22sp"
 		android:drawableTop="@drawable/ic_menu_highways"
-		android:background="@null" />
+		android:background="@drawable/menu_selector"/>
 
 	<Button android:id="@+id/menu_subways_button"
 	    android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="@null"
 		android:text="@string/menu_subways"
 		android:textSize="22sp"
-		android:drawableTop="@drawable/ic_menu_subways" />
+		android:drawableTop="@drawable/ic_menu_subways"
+		android:background="@drawable/menu_selector"/>
 
 	<Button android:id="@+id/menu_trains_button"
 	    android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="@null"
 		android:text="@string/menu_trains"
 		android:textSize="22sp"
-		android:drawableTop="@drawable/ic_menu_trains" />
+		android:drawableTop="@drawable/ic_menu_trains"
+		android:background="@drawable/menu_selector"/>
 
 </com.appspot.estadodeltransito.views.DashboardLayout>
