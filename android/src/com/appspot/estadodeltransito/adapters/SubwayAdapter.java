@@ -25,25 +25,33 @@ public class SubwayAdapter extends ArrayAdapter<Subway> {
 
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
+	    ViewHolder viewHolder;
         
         if (convertView == null) {
-            view = mInflater.inflate(R.layout.subway_row_layout, parent, false);
+            convertView = mInflater.inflate(R.layout.subway_row_layout, parent, false);
+            viewHolder = new ViewHolder();
+
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.text1 = (TextView) convertView.findViewById(R.id.text1);
+            viewHolder.text2 = (TextView) convertView.findViewById(R.id.text2);
+
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.ImageView01);
-        TextView text1 = (TextView) view.findViewById(R.id.text1);
-        TextView text2 = (TextView) view.findViewById(R.id.text2);
-        
         Subway subway = getItem(position);
-        
-        imageView.setImageResource(IconsUtil.getSubwayIcon(subway.getName()));
-        text1.setText(subway.getStatus());
-        text2.setText(subway.getFrequency());
 
-        return view;
+        viewHolder.imageView.setImageResource(IconsUtil.getSubwayIcon(subway.getName()));
+        viewHolder.text1.setText(subway.getStatus());
+        viewHolder.text2.setText(subway.getFrequency());
+
+        return convertView;
     }
 
+	private class ViewHolder {
+	    public ImageView imageView;
+	    public TextView text1;
+	    public TextView text2;
+	}
 }

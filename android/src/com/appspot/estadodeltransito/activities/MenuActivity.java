@@ -57,8 +57,8 @@ public class MenuActivity extends GDActivity {
         /* Set the view status */
         setActionBarContentView(R.layout.menu);
         setTitle(R.string.app_name);
-        addActionBarItem(Type.Locate, MAP_ID);
         addActionBarItem(Type.Settings, SETTINGS_ID);
+        addActionBarItem(Type.Locate, MAP_ID);
 
         mSubways = (Button) findViewById(R.id.menu_subways_button);
         mSubways.setOnClickListener(new OnClickListener() {

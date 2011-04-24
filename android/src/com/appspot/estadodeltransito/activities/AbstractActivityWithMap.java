@@ -28,6 +28,7 @@ abstract public class AbstractActivityWithMap<IPTL extends IPublicTransportLineS
 	    addActionBarItem(Type.Locate, MAP_ID);
 	}
 
+	
 	@Deprecated
 	@SuppressWarnings("unchecked")
 	@Override

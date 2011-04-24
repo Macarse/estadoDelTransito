@@ -23,27 +23,36 @@ public class TrainAdapter extends ArrayAdapter<Train> {
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	@Override
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
-        
-        if (convertView == null) {
-            view = mInflater.inflate(R.layout.subway_row_layout, parent, false);
-        } else {
-            view = convertView;
-        }
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.ImageView01);
-        TextView text1 = (TextView) view.findViewById(R.id.text1);
-        TextView text2 = (TextView) view.findViewById(R.id.text2);
+        ViewHolder viewHolder;
+
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.subway_row_layout, parent, false);
+
+            viewHolder = new ViewHolder();
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.image);
+            viewHolder.text1 = (TextView) convertView.findViewById(R.id.text1);
+            viewHolder.text2 = (TextView) convertView.findViewById(R.id.text2);
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
         
         Train train = getItem(position);
         
-        imageView.setImageResource(IconsUtil.getTrainIcon(train.getLine()));
-        text1.setText(train.getName());
-        text2.setText(train.getStatus());
+        viewHolder.imageView.setImageResource(IconsUtil.getTrainIcon(train.getLine()));
+        viewHolder.text1.setText(train.getName());
+        viewHolder.text2.setText(train.getStatus());
 
-        return view;
+        return convertView;
     }
 
+	private class ViewHolder {
+	    public ImageView imageView;
+	    public TextView text1;
+	    public TextView text2;
+	}
 }

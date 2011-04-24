@@ -33,52 +33,67 @@ public class HighwayAdapter extends ArrayAdapter<Highway> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View view;
-        
+		ViewHolder viewHolder;
+
         if (convertView == null) {
-            view = mInflater.inflate(R.layout.highway_row_layout, parent, false);
+            convertView = mInflater.inflate(R.layout.highway_row_layout, parent, false);
+            viewHolder = new ViewHolder();
+
+            viewHolder.icon = (ImageView) convertView.findViewById(R.id.avenue_highways_icon);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.avenue_highways_title);
+
+            viewHolder.from = (TextView) convertView.findViewById(R.id.avenue_highways_from);
+            viewHolder.fromText = (TextView) convertView.findViewById(R.id.avenue_highways_from_text);
+            viewHolder.fromStatus = (ImageView) convertView.findViewById(R.id.avenue_highways_from_status);
+
+            viewHolder.to = (TextView) convertView.findViewById(R.id.avenue_highways_to);
+            viewHolder.toText = (TextView) convertView.findViewById(R.id.avenue_highways_to_text);
+            viewHolder.toStatus = (ImageView) convertView.findViewById(R.id.avenue_highways_to_status);
+
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ImageView icon = (ImageView) view.findViewById(R.id.avenue_highways_icon);
-        TextView title = (TextView) view.findViewById(R.id.avenue_highways_title);
 
-        TextView from = (TextView) view.findViewById(R.id.avenue_highways_from);
-        TextView fromText = (TextView) view.findViewById(R.id.avenue_highways_from_text);
-        ImageView fromStatus = (ImageView) view.findViewById(R.id.avenue_highways_from_status);
-
-        TextView to = (TextView) view.findViewById(R.id.avenue_highways_to);
-        TextView toText = (TextView) view.findViewById(R.id.avenue_highways_to_text);
-        ImageView toStatus = (ImageView) view.findViewById(R.id.avenue_highways_to_status);
         
         Highway highway = getItem(position);
 
-        icon.setImageResource(getIcon(highway.getName()));
-        title.setText(highway.getName());
+        viewHolder.icon.setImageResource(getIcon(highway.getName()));
+        viewHolder.title.setText(highway.getName());
 
-        from.setText(highway.getDirectionFrom());
-        fromText.setText(highway.getDelayFrom());
+        viewHolder.from.setText(highway.getDirectionFrom());
+        viewHolder.fromText.setText(highway.getDelayFrom());
         if ( highway.getStatusFrom() != null ) {
-        	fromStatus.setImageResource(getStatusIcon(highway.getStatusFrom()));
+            viewHolder.fromStatus.setImageResource(getStatusIcon(highway.getStatusFrom()));
         } else {
-        	from.setVisibility(View.GONE);
-        	fromText.setVisibility(View.GONE);
-        	fromStatus.setVisibility(View.GONE);
-        	
+            viewHolder.from.setVisibility(View.GONE);
+            viewHolder.fromText.setVisibility(View.GONE);
+            viewHolder.fromStatus.setVisibility(View.GONE);
         }
 
-        to.setText(highway.getDirectionTo());
-        toText.setText(highway.getDelayTo());
+        viewHolder.to.setText(highway.getDirectionTo());
+        viewHolder.toText.setText(highway.getDelayTo());
         if ( highway.getStatusTo() != null ) {
-        	toStatus.setImageResource(getStatusIcon(highway.getStatusTo()));
-    	} else {
-        	to.setVisibility(View.GONE);
-        	toText.setVisibility(View.GONE);
-        	toStatus.setVisibility(View.GONE);
-    	}
+            viewHolder.toStatus.setImageResource(getStatusIcon(highway.getStatusTo()));
+        } else {
+            viewHolder.to.setVisibility(View.GONE);
+            viewHolder.toText.setVisibility(View.GONE);
+            viewHolder.toStatus.setVisibility(View.GONE);
+        }
 
-        return view;
+        return convertView;
+	}
+
+	private class ViewHolder {
+	    public ImageView icon;
+	    public TextView title;
+	    public TextView from;
+	    public TextView fromText;
+	    public ImageView fromStatus;
+	    public TextView to;
+	    public TextView toText;
+	    public ImageView toStatus;
 	}
 
 	public static final int getStatusIcon(String statusFrom) {
