@@ -106,7 +106,7 @@ public class TrainsActivity extends AbstractActivityWithMap<Train> {
             case QA_SHARE_POS:
                 i = new Intent(android.content.Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.context_menu_share_subject));
                 i.putExtra(Intent.EXTRA_TEXT, mLastTrain.getShareMsg());
                 startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
                 break;

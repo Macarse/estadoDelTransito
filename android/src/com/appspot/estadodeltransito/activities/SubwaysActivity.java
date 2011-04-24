@@ -1,6 +1,5 @@
 package com.appspot.estadodeltransito.activities;
 
-import greendroid.widget.QuickAction;
 import greendroid.widget.QuickActionBar;
 import greendroid.widget.QuickActionWidget;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
@@ -11,10 +10,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -104,7 +99,7 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
             case QA_SHARE_POS:
                 i = new Intent(android.content.Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.context_menu_share_subject));
                 i.putExtra(Intent.EXTRA_TEXT, mLastSubway.getShareMsg());
                 startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
                 break;

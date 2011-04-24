@@ -24,8 +24,6 @@ import com.appspot.estadodeltransito.service.asyncTasks.HighwaysAsyncTask;
 
 public class HighwaysActivity extends AbstractActivity {
 
-    private static final String TAG = HighwaysActivity.class.getCanonicalName();
-
     private static final int QA_SHARE_POS = 0;
     private static final int QA_DETAILS_POS = 1;
 
@@ -98,7 +96,7 @@ public class HighwaysActivity extends AbstractActivity {
             case QA_SHARE_POS:
                 i = new Intent(android.content.Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT, R.string.context_menu_share_subject);
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.context_menu_share_subject));
                 i.putExtra(Intent.EXTRA_TEXT, mLastHighway.getShareMsg());
                 startActivity(Intent.createChooser(i, getString(R.string.context_menu_share)));
                 break;
