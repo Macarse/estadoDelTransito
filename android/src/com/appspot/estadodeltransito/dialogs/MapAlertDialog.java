@@ -136,15 +136,13 @@ public class MapAlertDialog extends Dialog {
 		@Override
 		protected PointInfo doInBackground(String... url) {
 			String json = UnicodeUtils.translateToUnicodeCharacters(Request.getJson(TAG,url[0], "utf-8"));
-			Log.d(TAG,"Transports url: "+url[0]);
-			Log.d(TAG,"Response: "+json);
 
 			PointInfo pi = new PointInfo(lat,lng);
-			
+
 			getPointInfoFromJson(pi,json);
-			
+
 			getAddress(pi,url[1]);
-			
+
 			return pi;
 		}
 
@@ -152,12 +150,11 @@ public class MapAlertDialog extends Dialog {
 			super.onPostExecute(result);
 			update(result);
 		}
-		
+
 		private void getAddress(PointInfo pi, String url) {
 			List<Address> addresses = null;
-			String json = Request.getJson(TAG,url);
-			Log.d(TAG,"Address url: "+url);
-			Log.d(TAG,"Response: "+json);
+			String json = Request.getJson(TAG, url);
+
 			Matcher m = addressPattern.matcher(json);
 			if ( m.find() ){
 				addresses = new LinkedList<Address>();
@@ -179,7 +176,7 @@ public class MapAlertDialog extends Dialog {
 			if ( addresses == null || addresses.isEmpty() )
 				pi.setAddress(mContext.getString(R.string.map_alert_address_not_found));
 			else{
-				Log.d(TAG,"Address :"+addresses.get(0).getThoroughfare()+" "+addresses.get(0).getSubThoroughfare());
+
 				if ( addresses.get(0).getSubThoroughfare() != null )
 					pi.setAddress(addresses.get(0).getThoroughfare()+" "+addresses.get(0).getSubThoroughfare());
 				else
@@ -190,30 +187,26 @@ public class MapAlertDialog extends Dialog {
 		private void getPointInfoFromJson(PointInfo pi, String json) {
 			if ( json.equals("") )
 				return;
-			
+
 			Matcher m = subwayPattern.matcher(json);
 			if ( m.find() ){
 				if ( m.group(1) != null )
-					Log.d("SUB", m.group(1));
 				pi.setSubways(getSubways(m.group(1)));
 			}
-			
+
 			m = trainPattern.matcher(json);
 			if ( m.find() ){
 				if ( m.group(1) != null )
-					Log.d("TRAIN", m.group(1));
 				pi.setTrains(getTrains(m.group(1)));
 			}
-			
+
 			m = busPattern.matcher(json);
 			if ( m.find() ){
 				if ( m.group(1) != null )
-					Log.d("BUS", m.group(1));
 				pi.setBuses(getBuses(m.group(1)));
 			}
-			
 		}
-		
+
 		private List<SubwayStation> getSubways(String stations) {
 			if ( stations == null )
 				return null;
@@ -234,7 +227,7 @@ public class MapAlertDialog extends Dialog {
 			}
 			return lss;
 		}
-		
+
 		private List<Bus> getBuses(String buses) {
 			if ( buses == null )
 				return null;

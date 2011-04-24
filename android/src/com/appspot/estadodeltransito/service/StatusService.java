@@ -80,7 +80,6 @@ public class StatusService extends Service {
 		}
 
 		Log.d(TAG, "Performing update with action: " + intent.getAction());
-
 		mTaskProvider.addUrlFor(SubwaysAsyncTask.NEW_SUBWAYS_STATUS,getString(R.string.subways_url));
 		mTaskProvider.addUrlFor(HighwaysAsyncTask.NEW_HIGHWAYS_STATUS,getString(R.string.highways_url));
 		mTaskProvider.addUrlFor(AvenuesAsyncTask.NEW_AVENUES_STATUS,getString(R.string.avenues_url));
@@ -158,10 +157,4 @@ public class StatusService extends Service {
 		for(String task:mTaskProvider.getRegisteredTaskNames())
 			mTaskProvider.getAsyncTaskFor(task).execute(mTaskProvider.getAsyncTaskUrlFor(task));
 	}
-/*
-	private void sendEmptyUpdates() {
-		for(String task:mTaskProvider.getRegisteredTaskNames())
-			mTaskProvider.getAsyncTaskFor(task).sendEmptyUpdates();
-	}
-*/
 }

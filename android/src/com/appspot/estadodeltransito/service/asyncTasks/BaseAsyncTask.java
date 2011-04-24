@@ -43,7 +43,6 @@ abstract public class BaseAsyncTask<T> extends AsyncTask<String, Void, LinkedLis
 			String jsonFromServer = getFromServer(gaeUrl[0]);
 			instances = getInstancesFromJson(jsonFromServer);
 
-			Log.d(TAG, taskName + "jsonFromServer: " + jsonFromServer);
 			if ( instances == null ) {
 			    Log.d(TAG, taskName + "instances: null");
 			} else {
@@ -104,11 +103,11 @@ abstract public class BaseAsyncTask<T> extends AsyncTask<String, Void, LinkedLis
 
 		  getService().sendBroadcast(intent);
 	}
-	
+
 	public void sendEmptyUpdates() {
 		sendUpdates(null);
 	}
-	
+
 	abstract protected String getIntentName();
 	
 	abstract protected String getTypeName();
