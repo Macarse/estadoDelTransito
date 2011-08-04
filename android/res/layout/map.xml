@@ -5,9 +5,8 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:clickable="true"
-	    android:apiKey="0Dcnvz7JMRI6PowID-JWPhd_2WtHNwYWeCWPiyA"
+	    android:apiKey="0Dcnvz7JMRI5A6-okVRmk6bTT9eypuoZa_7CsHg"
 	/>
 
-<!--    laburo android:apiKey="0Dcnvz7JMRI4e2CKKerEL2vP3x5g8Vf3LNWYfaQ"-->
 <!--    debug casa android:apiKey="0Dcnvz7JMRI5A6-okVRmk6bTT9eypuoZa_7CsHg"-->
 <!--	casa android:apiKey="0Dcnvz7JMRI6PowID-JWPhd_2WtHNwYWeCWPiyA"-->

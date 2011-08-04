@@ -10,7 +10,7 @@ import android.util.Log;
 public class Request {
 
 	static public String getJson(String tag, String gaeUrl) {
-		return getJson(tag,gaeUrl,"ISO-8859-1");
+		return getJson(tag, gaeUrl,"ISO-8859-1");
 	}
 
 	static public String getJson(String tag, String gaeUrl, String charset) {

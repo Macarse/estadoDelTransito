@@ -26,7 +26,7 @@ public class SubwayAdapter extends ArrayAdapter<Subway> {
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
 	    ViewHolder viewHolder;
-        
+
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.subway_row_layout, parent, false);
             viewHolder = new ViewHolder();
@@ -49,7 +49,7 @@ public class SubwayAdapter extends ArrayAdapter<Subway> {
         return convertView;
     }
 
-	private class ViewHolder {
+	static class ViewHolder {
 	    public ImageView imageView;
 	    public TextView text1;
 	    public TextView text2;

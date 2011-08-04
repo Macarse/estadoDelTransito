@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-	android:key="pref_first_preferencescreen_key" android:title="@string/pref_settings_title">
+	android:key="pref_first_preferencescreen_key"
+	android:title="@string/pref_settings_title">
 
     <PreferenceCategory
         android:title="@string/pref_config_category_title">

@@ -26,9 +26,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.admob.android.ads.AdView;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.preferences.Preferences;
+import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public abstract class AbstractActivity extends GDActivity {
@@ -43,7 +43,7 @@ public abstract class AbstractActivity extends GDActivity {
 	private ListView mListView;
     private ListAdapter mAdapter;
     private LoaderActionBarItem mLoader;
-    AdView mAd;
+    private AdView mAd;
     private GoogleAnalyticsTracker tracker;
 
 	protected abstract BroadcastReceiver getReceiver();

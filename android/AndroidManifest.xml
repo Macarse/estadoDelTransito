@@ -73,8 +73,8 @@
 
 		<service android:enabled="true" android:name=".service.StatusService" />
 
-		<!-- The application's publisher ID assigned by AdMob -->
-		<meta-data android:value="a14bcc9e258fc81" android:name="ADMOB_PUBLISHER_ID" />
+		<activity android:name="com.google.ads.AdActivity"
+              android:configChanges="keyboard|keyboardHidden|orientation"/>
 
 	</application>
 

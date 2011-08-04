@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:myapp="http://schemas.android.com/apk/res/com.appspot.estadodeltransito"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -16,12 +16,11 @@
         android:dividerHeight="1dip"
         android:cacheColorHint="#FFFFFF"/>
 
-    <com.admob.android.ads.AdView
-        android:id="@+id/ad"
-        android:visibility="invisible"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        myapp:backgroundColor="#FFFFFF"
-        myapp:primaryTextColor="#000000"
-        myapp:secondaryTextColor="#CCCCCC"/>
+        <com.google.ads.AdView android:id="@+id/ad"
+            android:visibility="invisible"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adUnitId="a14bcc9e258fc81"
+            ads:adSize="BANNER"
+            ads:loadAdOnCreate="true"/>
 </LinearLayout>
