@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import android.app.Service;
 
 import com.appspot.estadodeltransito.domain.train.Train;
+import com.appspot.estadodeltransito.parsers.TrainsParser;
 import com.google.gson.reflect.TypeToken;
 
 public class TrainsAsyncTask extends BaseAsyncTask<Train> {
@@ -35,4 +36,14 @@ public class TrainsAsyncTask extends BaseAsyncTask<Train> {
 	protected Type getDeserializationType() {
 		return new TypeToken<LinkedList<Train>>(){}.getType();
 	}
+
+	   @Override
+	    protected String getFromServer(String gaeUrl) {
+	        return TrainsParser.getUrlContent();
+	    }
+
+	    @Override
+	    protected LinkedList<Train> getInstancesFromJson(String json) {
+	        return TrainsParser.getTrains(json);
+	    }
 }
