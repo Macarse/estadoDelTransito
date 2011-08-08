@@ -55,8 +55,6 @@ public class HighwayAdapter extends ArrayAdapter<Highway> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-
-        
         Highway highway = getItem(position);
 
         viewHolder.icon.setImageResource(getIcon(highway.getName()));
@@ -66,6 +64,9 @@ public class HighwayAdapter extends ArrayAdapter<Highway> {
         viewHolder.fromText.setText(highway.getDelayFrom());
         if ( highway.getStatusFrom() != null ) {
             viewHolder.fromStatus.setImageResource(getStatusIcon(highway.getStatusFrom()));
+            viewHolder.from.setVisibility(View.VISIBLE);
+            viewHolder.fromText.setVisibility(View.VISIBLE);
+            viewHolder.fromStatus.setVisibility(View.VISIBLE);
         } else {
             viewHolder.from.setVisibility(View.GONE);
             viewHolder.fromText.setVisibility(View.GONE);
@@ -76,6 +77,9 @@ public class HighwayAdapter extends ArrayAdapter<Highway> {
         viewHolder.toText.setText(highway.getDelayTo());
         if ( highway.getStatusTo() != null ) {
             viewHolder.toStatus.setImageResource(getStatusIcon(highway.getStatusTo()));
+            viewHolder.to.setVisibility(View.VISIBLE);
+            viewHolder.toText.setVisibility(View.VISIBLE);
+            viewHolder.toStatus.setVisibility(View.VISIBLE);
         } else {
             viewHolder.to.setVisibility(View.GONE);
             viewHolder.toText.setVisibility(View.GONE);

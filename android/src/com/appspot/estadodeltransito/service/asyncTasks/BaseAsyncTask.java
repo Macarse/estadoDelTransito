@@ -66,7 +66,7 @@ abstract public class BaseAsyncTask<T> extends AsyncTask<String, Void, LinkedLis
 		return instances;
 	}
 
-	private LinkedList<T> getInstancesFromJson(String json) {
+	protected LinkedList<T> getInstancesFromJson(String json) {
 		LinkedList<T> instances = null;
 		
 		Gson gson = new Gson();
@@ -79,7 +79,7 @@ abstract public class BaseAsyncTask<T> extends AsyncTask<String, Void, LinkedLis
 		return instances;
 	}
 	
-	private String getFromServer(String gaeUrl) {
+	protected String getFromServer(String gaeUrl) {
 		Log.d(TAG, taskName + ": Getting json from server");
 		return Request.getJson(getIntentName(), gaeUrl);
 	}

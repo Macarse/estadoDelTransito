@@ -148,18 +148,30 @@ public class Highway implements Serializable {
         if ( directionFrom != null ) {
             sb.append(directionFrom.trim());
             sb.append(": ");
-            sb.append(statusFrom.trim());
-            sb.append(".\n");
-            sb.append(statusMessageFrom.getValue().trim());
-            sb.append("\n\n");
+
+            if ( statusFrom != null ) {
+                sb.append(statusFrom.trim());
+                sb.append(".\n");
+            }
+
+            if ( statusMessageFrom != null && statusMessageFrom.getValue() != null ) {
+                sb.append(statusMessageFrom.getValue().trim());
+                sb.append("\n\n");
+            }
         }
 
         if ( directionTo != null ) {
             sb.append(directionTo.trim());
             sb.append(": ");
-            sb.append(statusTo.trim());
-            sb.append(".\n");
-            sb.append(statusMessageTo.getValue().trim());
+
+            if ( statusTo != null ) {
+                sb.append(statusTo.trim());
+                sb.append(".\n");
+            }
+
+            if ( statusMessageTo != null && statusMessageTo.getValue() != null ) {
+                sb.append(statusMessageTo.getValue().trim());
+            }
         }
 
         return sb.toString();
@@ -174,7 +186,9 @@ public class Highway implements Serializable {
 		}
 
 		public void setValue(String value) {
-			this.value = value;
+		    if ( value != null ) {
+		        this.value = value;
+		    }
 		}
 
 		@Override

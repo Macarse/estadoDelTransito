@@ -14,6 +14,7 @@ import android.preference.PreferenceManager;
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.activities.HighwaysActivity;
 import com.appspot.estadodeltransito.domain.highway.Highway;
+import com.appspot.estadodeltransito.parsers.HighwaysParser;
 import com.google.gson.reflect.TypeToken;
 
 public class HighwaysAsyncTask extends BaseAsyncTask<Highway> {
@@ -41,6 +42,16 @@ public class HighwaysAsyncTask extends BaseAsyncTask<Highway> {
 	@Override
 	protected void sendNotifications(LinkedList<Highway> instances) {
 		highwayAvenueNotifications(instances);
+	}
+
+	@Override
+	protected String getFromServer(String gaeUrl) {
+	    return HighwaysParser.getUrlContent();
+	}
+
+	@Override
+	protected LinkedList<Highway> getInstancesFromJson(String json) {
+	    return HighwaysParser.getHighways(json);
 	}
 
 	private void highwayAvenueNotifications(LinkedList<Highway> highways) {
