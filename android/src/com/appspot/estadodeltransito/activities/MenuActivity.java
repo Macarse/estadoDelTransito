@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.firstRun.FirstRun;
@@ -140,7 +141,7 @@ public class MenuActivity extends GDActivity {
                     "ActionBar",  // Action
                     "map", // Label
                     1);
-            startActivity(new Intent(this, MapActivity.class));
+            Toast.makeText(this, getString(R.string.map_not_available), Toast.LENGTH_SHORT).show();
             return true;
 
         case SETTINGS_ID:

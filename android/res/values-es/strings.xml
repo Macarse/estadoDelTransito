@@ -74,4 +74,5 @@
 	<string name="map_alert_address_not_found">No se encontró dirección</string>
 
 	<string name="map_title">Mapa</string>
+	<string name="map_not_available">Mapas no disponibles en esta versión</string>
 </resources>

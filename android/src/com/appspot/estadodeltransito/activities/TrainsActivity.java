@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.adapters.TrainAdapter;
@@ -22,7 +23,7 @@ import com.appspot.estadodeltransito.domain.train.Train;
 import com.appspot.estadodeltransito.service.StatusService;
 import com.appspot.estadodeltransito.service.asyncTasks.TrainsAsyncTask;
 
-public class TrainsActivity extends AbstractActivityWithMap<Train> {
+public class TrainsActivity extends AbstractActivity {
 
     private static final String TAG = TrainsActivity.class.getCanonicalName();
     private static final int QA_SHARE_POS = 0;
@@ -30,10 +31,6 @@ public class TrainsActivity extends AbstractActivityWithMap<Train> {
 
     private Train mLastTrain;
     private QuickActionWidget mBar;
-
-    public TrainsActivity() {
-        super(TAG);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +75,6 @@ public class TrainsActivity extends AbstractActivityWithMap<Train> {
         return new TrainAdapter(this, (ArrayList<Train>) items);
     }
 
-    @Override
-    protected String getMapAction() {
-        return MapActivity.SHOW_TRAINS_ACTION;
-    }
-
-    @Override
-    protected String getEachMapAction() {
-        return MapActivity.SHOW_TRAIN_ACTION;
-    }
-
     private void prepareQuickActionBar() {
         mBar = new QuickActionBar(this);
         mBar.addQuickAction(new MyQuickAction(this, R.drawable.gd_action_bar_share, R.string.context_menu_share));
@@ -112,10 +99,7 @@ public class TrainsActivity extends AbstractActivityWithMap<Train> {
                 break;
 
             case QA_MAP_POS:
-                i = new Intent(TrainsActivity.this, MapActivity.class);
-                i.setAction(getEachMapAction());
-                i.putExtra("line", mLastTrain);
-                startActivity(i);
+              Toast.makeText(TrainsActivity.this, getString(R.string.map_not_available), Toast.LENGTH_SHORT).show();
                 break;
             }
         }

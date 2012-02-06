@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.appspot.estadodeltransito.R;
 import com.appspot.estadodeltransito.adapters.SubwayAdapter;
@@ -22,7 +23,7 @@ import com.appspot.estadodeltransito.domain.subway.Subway;
 import com.appspot.estadodeltransito.service.StatusService;
 import com.appspot.estadodeltransito.service.asyncTasks.SubwaysAsyncTask;
 
-public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
+public class SubwaysActivity extends AbstractActivity {
 
     private static final String TAG = SubwaysActivity.class.getCanonicalName();
 	public static final int NOTIFICATION_ID = 100;
@@ -31,10 +32,6 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
 
 	private Subway mLastSubway;
 	private QuickActionWidget mBar;
-
-	public SubwaysActivity() {
-		super(TAG);
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +75,6 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
 	protected ListAdapter getAdapter(Object items) {
 		return new SubwayAdapter(this, (ArrayList<Subway>) items);
 	}
-	
-	@Override
-	protected String getMapAction() {
-		return MapActivity.SHOW_SUBWAYS_ACTION;
-	}
-
-	@Override
-	protected String getEachMapAction() {
-		return MapActivity.SHOW_SUBWAY_ACTION;
-	}
 
     private OnQuickActionClickListener mActionListener = new OnQuickActionClickListener() {
         public void onQuickActionClicked(QuickActionWidget widget, int position) {
@@ -105,10 +92,7 @@ public class SubwaysActivity extends AbstractActivityWithMap<Subway> {
                 break;
 
             case QA_MAP_POS:
-                i = new Intent(SubwaysActivity.this, MapActivity.class);
-                i.setAction(getEachMapAction());
-                i.putExtra("line", mLastSubway);
-                startActivity(i);
+                Toast.makeText(SubwaysActivity.this, getString(R.string.map_not_available), Toast.LENGTH_SHORT).show();
                 break;
             }
         }

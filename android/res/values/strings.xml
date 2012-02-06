@@ -73,5 +73,6 @@
 	<string name="map_alert_location_title" formatted="false">Address :\n\t%s ( %f , %f )</string>
 	<string name="map_alert_address_not_found">No address found</string>
 
-	<string name="map_title">Map</string>	
+	<string name="map_title">Map</string>
+	<string name="map_not_available">Maps are not available in this version</string>
 </resources>
