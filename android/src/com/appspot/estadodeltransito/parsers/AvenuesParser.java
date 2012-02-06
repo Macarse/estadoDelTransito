@@ -11,9 +11,8 @@ public class AvenuesParser {
     private static final Pattern groupPattern = Pattern.compile("avenidas\\s*de\\s*capital\\s*federal\\s*</div>(.*?)<div[^>]*id=\"tercera\"[^>]*>", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
     private static final Pattern accessGroupPattern = Pattern.compile("<div[^>]*class=\"itemAutos\"[^>]*>(.*?)(?=<div[^>]*class=\"itemAutos\"[^>]*>|$)", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
     private static final Pattern accessNamePattern = Pattern.compile("<div[^>]*+>\\s*<b[^>]*+>\\s*([^<]++)</b>", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
-    private static final Pattern accessDirectionPattern = Pattern.compile("<div[^>]*class=\"[^\"]*transitoDescripcion[^\"]*+\"[^>]*+>\\s*([^<:]+)[^<]*<b[^>]*>\\s*([^<]++)(?:<font[^>]*>([^<]*)</font>)?\\s*</b>\\s*(?:<span[^>]*>\\s*<img[^>]*>\\s*<span[^>]*>\\s*([^<]++))?", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+    private static final Pattern accessDirectionPattern = Pattern.compile("<div[^>]*class=\"[^\"]*transitoDescripcion[^\"]*+\"[^>]*+>\\s*([^<:]+)[^<]*<b[^>]*>\\s*([^<]++)(?:<font[^>]*>\\s*([^<]*)</font>)?\\s*</b>\\s*(?:<span[^>]*>\\s*[^<]?\\s*<img[^>]*>\\s*<span[^>]*>([^<]++))?", Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
 
-    
     public static final String avenuesURL = "http://servicios.lanacion.com.ar/informacion-general/transito";
 
     public static String getUrlContent() {

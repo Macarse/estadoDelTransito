@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.appspot.estadodeltransito"
-	android:versionCode="6"
-	android:versionName="2.1"
-	android:installLocation="preferExternal">
+    package="com.appspot.estadodeltransito"
+    android:versionCode="7"
+    android:versionName="2.2"
+    android:installLocation="preferExternal">
 
-	<application android:icon="@drawable/icon"
-		android:label="@string/app_name"
-		android:name=".application.EDTApplication"
-		android:theme="@style/Theme.EstadoDelTransito">
+    <application android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:name=".application.EDTApplication"
+        android:theme="@style/Theme.EstadoDelTransito">
 
-		<activity android:name=".activities.MenuActivity"
-		          android:label="@string/app_name"
-		          android:configChanges="orientation|keyboardHidden">
-          <intent-filter>
+        <activity android:name=".activities.MenuActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-		</activity>
+        </activity>
 
         <activity android:name=".preferences.Preferences"
                   android:label="@string/pref_settings_title"
@@ -35,10 +35,10 @@
             android:configChanges="orientation|keyboardHidden">
         </activity>
 
-		<activity android:name=".activities.SubwaysActivity"
-		    android:label="@string/app_name"
-			android:configChanges="orientation|keyboardHidden">
-		</activity>
+        <activity android:name=".activities.SubwaysActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
 
         <activity android:name=".activities.TrainsActivity"
             android:label="@string/app_name"
@@ -59,11 +59,12 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
             android:configChanges="orientation|keyboard|keyboardHidden"/> 
 
-		<receiver android:name=".service.receivers.AlarmReceiver">
-			<intent-filter>
-				<action android:name="com.appspot.estadodeltransito.ACTION_REFRESH_SUBWAY_ALARM" />
-			</intent-filter>
-		</receiver>
+        <receiver android:name=".service.receivers.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.appspot.estadodeltransito.ACTION_REFRESH_SUBWAY_ALARM" />
+            </intent-filter>
+        </receiver>
+
         <receiver android:name=".service.receivers.ConnectivityReceiver" 
                   android:enabled="true" 
                   android:priority = "0"> 
@@ -72,16 +73,23 @@
             </intent-filter> 
         </receiver> 
 
-		<service android:enabled="true" android:name=".service.StatusService" />
+        <service android:enabled="true" android:name=".service.StatusService" />
 
-		<activity android:name="com.google.ads.AdActivity"
-              android:configChanges="keyboard|keyboardHidden|orientation"/>
+        <activity android:name="com.google.ads.AdActivity"
+              android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 
-	</application>
+    </application>
 
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
-	<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="7" />
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="false"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
 
 </manifest> 

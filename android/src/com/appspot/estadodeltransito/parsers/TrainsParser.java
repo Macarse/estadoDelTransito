@@ -9,7 +9,7 @@ import com.appspot.estadodeltransito.domain.train.Train;
 public class TrainsParser {
     public static final String trainsURL = "http://servicios.lanacion.com.ar/informacion-general/transito";
     private static final Pattern groupPattern = Pattern.compile("<div[^>]*>\\s*<img[^>]*>\\s*TRENES[^<]*<[^>]*>\\s*<div[^>]*>(.*?)<div[^>]*class=\"infoTransito\"[^>]*>", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-    private static final Pattern trainPattern = Pattern.compile("<b>((?!L.nea)[^<]*)\\s*\\((?:TBA-?)?\\s*([^\\)]+)\\)</b>\\s*<[^>]*><b>[^<]*<[^>]*>[^<]*<span[^>]*>\\s*\\|\\s*</span>\\s*<span>\\s*Estado\\s*:\\s*</span[^>]*>\\s*<b>\\s*<font[^>]*>([^<]*)(?:</font>\\s*</b>\\s*<br>\\s*<span>[^<]*</span>\\s*<b>(.*?)<br>)?", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
+    private static final Pattern trainPattern = Pattern.compile("<b>((?!L.nea)[^<]*)\\s*\\((?:TBA-?)?\\s*([^\\)]+)\\)</b>\\s*<[^>]*><b>[^<]*<[^>]*>[^<]*<span[^>]*>\\s*\\|\\s*</span>\\s*[^<]*?\\s*<span>\\s*Estado\\s*:\\s*</span[^>]*>\\s*<b>\\s*<font[^>]*>([^<]*)(?:</font>\\s*</b>\\s*<br>\\s*<span>[^<]*</span>\\s*<b>(.*?)<br>)?", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 
     public static String getUrlContent() {
         String urlContent = null;

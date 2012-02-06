@@ -45,7 +45,7 @@ public class MapActivity extends GDMapActivity {
 	    super.onCreate(savedInstanceState);
 
 	    tracker = GoogleAnalyticsTracker.getInstance();
-        tracker.start(getString(R.string.google_analytics), 20, this);
+      tracker.start(getString(R.string.google_analytics), 20, this);
 
 	    setActionBarContentView(R.layout.map);
 	    
@@ -149,5 +149,4 @@ public class MapActivity extends GDMapActivity {
       super.onDestroy();
       tracker.stop();
     }
-
 }

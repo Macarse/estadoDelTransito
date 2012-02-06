@@ -21,6 +21,7 @@ public class ParserUtils {
         HttpURLConnection connection = (HttpURLConnection) pageUrl
                 .openConnection();
 
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.75 Safari/535.7");
         InputStream input = connection.getInputStream();
         InputStream gzipInput = null;
         try {
